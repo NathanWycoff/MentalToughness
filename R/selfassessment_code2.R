@@ -1,6 +1,7 @@
 library(psych)
+library(dplyr)
 
-dat <- read.csv("sp_17.csv")
+dat <- read.csv("./data/sp_17.csv")
 colnames(dat)
 
 #bfi recodings
@@ -45,16 +46,16 @@ dat$grt_5 <- 6-dat$grt_5
 dat$grt_6 <- 6-dat$grt_6
 
 #"Self-control on Homework" reverse recoding
-dat$sc.hw_1 <- 8-dat$"sc-hw_1R" 	
-dat$sc.hw_2 <- 8-dat$"sc-hw_2R"	
-dat$sc.hw_3 <- 8-dat$"sc-hw_3R"
-dat$sc.hw_4 <- dat$"sc-hw_4" #not reverse-coded, but renamed with period, not -
-dat$sc.hw_5 <- 8-dat$"sc-hw_5R"	
-dat$sc.hw_6 <- 8-dat$"sc-hw_6R"
-dat$sc.hw_7 <- 8-dat$"sc-hw_7R"	
+dat$sc.hw_1 <- 8-dat$"sc.hw_1R" 	
+dat$sc.hw_2 <- 8-dat$"sc.hw_2R"	
+dat$sc.hw_3 <- 8-dat$"sc.hw_3R"
+dat$sc.hw_4 <- dat$"sc-hw_4" #not reverse.coded, but renamed with period, not -
+dat$sc.hw_5 <- 8-dat$"sc.hw_5R"	
+dat$sc.hw_6 <- 8-dat$"sc.hw_6R"
+dat$sc.hw_7 <- 8-dat$"sc.hw_7R"	
 dat$sc.hw_8 <- dat$"sc-hw_8" # " " for rename.
-dat$sc.hw_9 <- 8-dat$"sc-hw_9R"	
-dat$sc.hw_10 <- 8-dat$"sc-hw_10R"
+dat$sc.hw_9 <- 8-dat$"sc.hw_9R"	
+dat$sc.hw_10 <- 8-dat$"sc.hw_10R"
 
 #DIS reverse recoding; Note that the variable names are coded incorrectly.  Items 2 & 4 should not be reverse coded and should just be used as they are.
 dat$dis_1 <- 10-dat$dis_1R
@@ -77,7 +78,7 @@ ffmq_scal <-  dat %>% select(ffmq_2,	ffmq_3,	ffmq_4,	ffmq_5,	ffmq_7,	ffmq_8,	ffm
 grt_scal  <-  dat %>% select(starts_with("grt"))
 auth_scal <-  dat %>% select(starts_with("auth"))
 tfl_scal  <-  dat %>% select(tfl_1, tfl_7, tfl_13, tfl_2, tfl_8, tfl_14, tfl_3, tfl_9, tfl_15, tfl_4, tfl_10, tfl_16, tfl_5, tfl_11, tfl_17)
-uh.vmi_scal  <-  dat %>% select(starts_with("uh-vmi")) 
+uh.vmi_scal  <-  dat %>% select(starts_with("uh.vmi")) 
 dis_scal  <-  dat %>% select(dis_1, dis_2R, dis_3, dis_4R, dis_5, dis_6)
 leadChal_scal <- dat %>% select(starts_with("leadChal"))
 sc.hw_scal <- dat %>% select(starts_with("sc.hw"))
@@ -99,7 +100,7 @@ alpha(uh.vmi_scal, check.keys = TRUE) # good 0.88
 alpha(dis_scal, check.keys = TRUE) #A little low at .62. Remove item 3 for .68. Perhaps item 3 is inappropriate (asks about aspirin) for this cadet sample?
 alpha(leadChal_scal, check.keys = TRUE)   # (0.93)
 alpha(sc.hw_scal, check.keys = TRUE) # 0.85
-alpha(brs_scal, check.keys = TRUE) # 0.79
+#alpha(brs_scal, check.keys = TRUE) # 0.79
 
 
 #This is how the person I was working with calculated variable scores - feel free to do it differently if you'd like.  
@@ -112,6 +113,12 @@ tfl <- rowMeans(as.matrix(tfl_scal))
 dis <- rowMeans(as.matrix(dis_scal[,-3])) #drop item 3
 leadChal <- rowMeans(as.matrix(leadChal_scal))
 sc.hw <- rowMeans(as.matrix(sc.hw_scal))
-brs <- rowMeans(as.matrix(brs_scal))
+uh.vmi <- rowMeans(as.matrix(uh.vmi_scal))
+#brs <- rowMeans(as.matrix(brs_scal))
 
+#Put those bad boys into a data frame
+df <- as.data.frame(cbind(uh, ili, ffmq, grt, auth, tfl, dis, leadChal, 
+                          sc.hw, uh.vmi))
 
+#Save all the results in a convenient file
+save(df, file = "./data/processed_metrics.RData")
