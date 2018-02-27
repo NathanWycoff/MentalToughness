@@ -1,0 +1,31 @@
+blavaan (0.3-1) results of 10000 samples after 5000 adapt/burnin iterations
+
+  Number of observations                           187
+
+  Number of missing patterns                         1
+
+  Statistic                                 MargLogLik         PPP
+  Value                                       -524.264       0.000
+
+Parameter Estimates:
+
+
+Regressions:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  uh ~                                                                       
+    ffmq              0.732    0.143     0.45    1.012    1.002 dnorm(0,1e-2)
+  leadChal ~                                                                 
+    uh                0.103    0.196   -0.286    0.443    1.100 dnorm(0,1e-2)
+    uh_ffmq           0.048    0.081   -0.092     0.21    1.098 dnorm(0,1e-2)
+    ffmq             -0.098    0.446   -0.984    0.733    1.094 dnorm(0,1e-2)
+
+Intercepts:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .uh                3.578    0.339    2.915    4.247    1.002 dnorm(0,1e-3)
+   .leadChal          4.626    1.036     2.88    6.689    1.102 dnorm(0,1e-3)
+
+Variances:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .uh                1.024    0.108    0.829    1.248    1.000  dgamma(1,.5)
+   .leadChal          0.643    0.068    0.518     0.78    1.000  dgamma(1,.5)
+

@@ -1,7 +1,11 @@
+#!/usr/bin/Rscript
+#  R/data_processing_18.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 02.24.2018
+
+##Process the raw 2018 data
 library(psych)
 library(dplyr)
 
-dat <- read.csv("./data/sp_17.csv")
+dat <- read.csv('./data/leadershipData_rawSP18.csv')
 colnames(dat)
 
 #bfi recodings
@@ -62,6 +66,10 @@ dat$dis_1 <- 10-dat$dis_1R
 dat$dis_3 <- 10-dat$dis_3
 dat$dis_6 <- 10-dat$dis_6
 
+#Reverse the Leadership Nonresistance (LNR) scale
+dat$lnr_1R <- 6-dat$
+
+
 ##Decided not to use this scale in analyses after all.
 #BRS reverse recoding (my explanation page had previously incorrectly stated that this scale had no reversed items); I didn't indicate reversed items with an R so I just replaced the items below.
 #dat$brs_2 <- 8-dat$brs_2
@@ -69,7 +77,7 @@ dat$dis_6 <- 10-dat$dis_6
 #dat$brs_6 <- 8-dat$brs_6
 
 #TFL reverse coding
-dat$tfl_13 <- 8-dat$tfl_13R
+dat$tfl_13 <- 8-dat$tfl_13
 
 #Scales - The starts_with code won't work for all scales because it would also bring in the reverse-coded items in some cases.  To get around this as needed, I just listed out all of the items where necessary.
 uh_scal   <-  dat %>% select(starts_with("uh_")) #need the underscore there to not select "uh-vmi" items
@@ -82,6 +90,8 @@ uh.vmi_scal  <-  dat %>% select(starts_with("uh.vmi"))
 dis_scal  <-  dat %>% select(dis_1, dis_2R, dis_3, dis_4R, dis_5, dis_6)
 leadChal_scal <- dat %>% select(starts_with("leadChal"))
 sc.hw_scal <- dat %>% select(starts_with("sc.hw"))
+mt_scal <- dat %>% select(starts_with("mt"))
+lnr_scal <- dat %>% select(starts_with("lnr"))
 #brs_scal <- dat %>% select(starts_with("brs"))
 
 #See explanation document for differences in UH scale between semesters.  There was an error in survey for it in first semester.
@@ -90,17 +100,18 @@ sc.hw_scal <- dat %>% select(starts_with("sc.hw"))
 
 
 #These alphas are from the SP17 dataset.  
-alpha(uh_scal, check.keys = TRUE) # all good (.92)
-alpha(ili_scal, check.keys = TRUE) # all good (.92) 
-alpha(ffmq_scal, check.keys = TRUE) # close enough (.67)
-alpha(grt_scal, check.keys = TRUE)  # all good 0.7
-alpha(auth_scal, check.keys = TRUE) # good 0.91
-alpha(tfl_scal, check.keys = TRUE) # good 0.92
-alpha(uh.vmi_scal, check.keys = TRUE) # good 0.88
-alpha(dis_scal, check.keys = TRUE) #A little low at .62. Remove item 3 for .68. Perhaps item 3 is inappropriate (asks about aspirin) for this cadet sample?
-alpha(leadChal_scal, check.keys = TRUE)   # (0.93)
-alpha(sc.hw_scal, check.keys = TRUE) # 0.85
-#alpha(brs_scal, check.keys = TRUE) # 0.79
+alpha(uh_scal, check.keys = TRUE)
+alpha(ili_scal, check.keys = TRUE)
+alpha(ffmq_scal, check.keys = TRUE)
+alpha(grt_scal, check.keys = TRUE)
+alpha(auth_scal, check.keys = TRUE)
+alpha(tfl_scal, check.keys = TRUE)
+alpha(uh.vmi_scal, check.keys = TRUE)
+alpha(dis_scal, check.keys = TRUE)
+alpha(leadChal_scal, check.keys = TRUE)
+alpha(sc.hw_scal, check.keys = TRUE)
+alpha(mt_scal, check.keys = TRUE)
+#alpha(brs_scal, check.keys = TRUE)
 
 
 #This is how the person I was working with calculated variable scores - feel free to do it differently if you'd like.  
@@ -114,6 +125,7 @@ dis <- rowMeans(as.matrix(dis_scal[,-3])) #drop item 3
 leadChal <- rowMeans(as.matrix(leadChal_scal))
 sc.hw <- rowMeans(as.matrix(sc.hw_scal))
 uh.vmi <- rowMeans(as.matrix(uh.vmi_scal))
+mt <- rowMeans(as.matrix(mt_scal))
 #brs <- rowMeans(as.matrix(brs_scal))
 
 #Put those bad boys into a data frame
@@ -121,4 +133,6 @@ df <- as.data.frame(cbind(uh, ili, ffmq, grt, auth, tfl, dis, leadChal,
                           sc.hw, uh.vmi))
 
 #Save all the results in a convenient file
-save(df, file = "./data/processed_metrics.RData")
+time <- strsplit(strsplit(file, '/')[[1]][3], '\\.')[[1]][1]
+write.csv(df, file = paste("./data/processed_metrics_", time, ".csv", sep = ''),
+          row.names = FALSE)
