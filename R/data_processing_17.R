@@ -83,7 +83,8 @@ for (file in files) {
     uh.vmi_scal  <-  dat %>% select(starts_with("uh.vmi")) 
     dis_scal  <-  dat %>% select(dis_1, dis_2R, dis_3, dis_4R, dis_5, dis_6)
     leadChal_scal <- dat %>% select(starts_with("leadChal"))
-    sc.hw_scal <- dat %>% select(starts_with("sc.hw"))
+    sc.hw_scal <- dat %>% select(starts_with("sc.hw"))#This also selects reversed items, so let's fix that:
+    sc.hw_scal <- sc.hw_scal[,9:16]
     #brs_scal <- dat %>% select(starts_with("brs"))
 
     #See explanation document for differences in UH scale between semesters.  There was an error in survey for it in first semester.

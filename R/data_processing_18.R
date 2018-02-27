@@ -67,7 +67,19 @@ dat$dis_3 <- 10-dat$dis_3
 dat$dis_6 <- 10-dat$dis_6
 
 #Reverse the Leadership Nonresistance (LNR) scale
-dat$lnr_1R <- 6-dat$
+dat[,colnames(dat)[grep('lnr.*R', colnames(dat))]] <- 
+    5 - dat[,colnames(dat)[grep('har.*R', colnames(dat))]]
+#Change the column name to get rid of the R
+colnames(dat)[grep('lnr.*R', colnames(dat))] <- 
+    gsub('R$', '', colnames(dat)[grep('lnr.*R', colnames(dat))])
+
+#Reverse the hardiness (har) scale
+#Edit the score
+dat[,colnames(dat)[grep('har.*R', colnames(dat))]] <- 
+    5 - dat[,colnames(dat)[grep('har.*R', colnames(dat))]]
+#Change the column name
+colnames(dat)[grep('har.*R', colnames(dat))] <- 
+    gsub('R$', '', colnames(dat)[grep('har.*R', colnames(dat))])
 
 
 ##Decided not to use this scale in analyses after all.
@@ -89,9 +101,11 @@ tfl_scal  <-  dat %>% select(tfl_1, tfl_7, tfl_13, tfl_2, tfl_8, tfl_14, tfl_3, 
 uh.vmi_scal  <-  dat %>% select(starts_with("uh.vmi")) 
 dis_scal  <-  dat %>% select(dis_1, dis_2R, dis_3, dis_4R, dis_5, dis_6)
 leadChal_scal <- dat %>% select(starts_with("leadChal"))
-sc.hw_scal <- dat %>% select(starts_with("sc.hw"))
+sc.hw_scal <- dat %>% select(starts_with("sc.hw"))#This also selects reversed items, so let's fix that:
+sc.hw_scal <- sc.hw_scal[,9:16]
 mt_scal <- dat %>% select(starts_with("mt"))
 lnr_scal <- dat %>% select(starts_with("lnr"))
+har_scal <- dat %>% select(starts_with("har"))
 #brs_scal <- dat %>% select(starts_with("brs"))
 
 #See explanation document for differences in UH scale between semesters.  There was an error in survey for it in first semester.
@@ -111,6 +125,8 @@ alpha(dis_scal, check.keys = TRUE)
 alpha(leadChal_scal, check.keys = TRUE)
 alpha(sc.hw_scal, check.keys = TRUE)
 alpha(mt_scal, check.keys = TRUE)
+alpha(lnr_scal, check.keys = TRUE)
+alpha(har_scal, check.keys = TRUE)
 #alpha(brs_scal, check.keys = TRUE)
 
 
@@ -126,13 +142,13 @@ leadChal <- rowMeans(as.matrix(leadChal_scal))
 sc.hw <- rowMeans(as.matrix(sc.hw_scal))
 uh.vmi <- rowMeans(as.matrix(uh.vmi_scal))
 mt <- rowMeans(as.matrix(mt_scal))
+lnr <- rowMeans(as.matrix(lnr_scal))
+har <- rowMeans(as.matrix(har_scal))
 #brs <- rowMeans(as.matrix(brs_scal))
 
 #Put those bad boys into a data frame
 df <- as.data.frame(cbind(uh, ili, ffmq, grt, auth, tfl, dis, leadChal, 
-                          sc.hw, uh.vmi))
+                          sc.hw, uh.vmi, mt, lnr, har))
 
 #Save all the results in a convenient file
-time <- strsplit(strsplit(file, '/')[[1]][3], '\\.')[[1]][1]
-write.csv(df, file = paste("./data/processed_metrics_", time, ".csv", sep = ''),
-          row.names = FALSE)
+write.csv(df, file = "./data/processed_metrics_sp_18.csv", row.names = FALSE)

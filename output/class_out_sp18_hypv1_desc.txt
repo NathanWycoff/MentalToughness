@@ -1,0 +1,47 @@
+lavaan (0.5-23.1097) converged normally after  38 iterations
+
+  Number of observations                           179
+
+  Estimator                                         ML
+  Minimum Function Test Statistic              151.876
+  Degrees of freedom                                 6
+  P-value (Chi-square)                           0.000
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  coping =~                                           
+    har               1.000                           
+    mt                1.734    0.213    8.138    0.000
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  uh ~                                                
+    ffmq              0.242    0.130    1.860    0.063
+    coping            1.052    0.270    3.891    0.000
+  lnr ~                                               
+    uh                0.087    0.055    1.567    0.117
+  leadChal ~                                          
+    ffmq              0.002    0.144    0.017    0.986
+    coping            1.615    0.311    5.190    0.000
+  coping ~                                            
+    ffmq              0.310    0.049    6.306    0.000
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+ .lnr ~~                                              
+   .leadChal         -0.031    0.024   -1.299    0.194
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .har               0.057    0.009    6.646    0.000
+   .mt                0.090    0.021    4.387    0.000
+   .uh                0.340    0.038    8.938    0.000
+   .lnr               0.249    0.026    9.460    0.000
+   .leadChal          0.374    0.045    8.295    0.000
+   .coping            0.043    0.009    4.690    0.000
+

@@ -1,0 +1,54 @@
+blavaan (0.3-1) results of 10000 samples after 5000 adapt/burnin iterations
+
+  Number of observations                           179
+
+  Number of missing patterns                         1
+
+  Statistic                                 MargLogLik         PPP
+  Value                                       -721.863       0.000
+
+Parameter Estimates:
+
+
+Latent Variables:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  coping =~                                                                  
+    har               1.000                                                  
+    mt                1.573    0.175    1.245    1.921    1.010 dnorm(0,1e-2)
+
+Regressions:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  uh ~                                                                       
+    ffmq              0.251    0.135   -0.015    0.509    1.004 dnorm(0,1e-2)
+    coping            0.973    0.258    0.476    1.488    1.003 dnorm(0,1e-2)
+  lnr ~                                                                      
+    uh                0.083    0.056   -0.026    0.195    1.011 dnorm(0,1e-2)
+  leadChal ~                                                                 
+    ffmq              0.011    0.145   -0.269    0.303    1.009 dnorm(0,1e-2)
+    coping            1.534    0.308    0.942     2.15    1.007 dnorm(0,1e-2)
+  coping ~                                                                   
+    ffmq              0.334    0.051    0.234    0.434    1.021 dnorm(0,1e-2)
+
+Covariances:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+ .lnr ~~                                                                     
+   .leadChal         -0.035    0.029   -0.091    0.022    1.002    dbeta(1,1)
+
+Intercepts:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .har               2.163    0.119    1.929    2.393    1.021 dnorm(0,1e-3)
+   .mt                2.781    0.180    2.415    3.107    1.013 dnorm(0,1e-3)
+   .uh                2.094    0.253      1.6    2.599    1.016 dnorm(0,1e-3)
+   .lnr               2.625    0.192    2.239        3    1.011 dnorm(0,1e-3)
+   .leadChal          4.238    0.293    3.663    4.814    1.010 dnorm(0,1e-3)
+   .coping            0.000                                                  
+
+Variances:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .har               0.063    0.009    0.046    0.082    1.000  dgamma(1,.5)
+   .mt                0.107    0.020    0.069    0.147    1.004  dgamma(1,.5)
+   .uh                0.350    0.040    0.276    0.431    1.000  dgamma(1,.5)
+   .lnr               0.259    0.028    0.207    0.314    1.000  dgamma(1,.5)
+   .leadChal          0.385    0.048    0.292    0.478    1.000  dgamma(1,.5)
+   .coping            0.057    0.010    0.038    0.077    1.005  dgamma(1,.5)
+
