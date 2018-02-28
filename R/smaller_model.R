@@ -30,7 +30,7 @@ for (i in 1:length(datasets)) {
     d_name <- names(datasets)[i]
 
     #Do things the Bayesian way, taking full account of uncertainty
-    fit_bayes <- bsem(model_desc, data = df)
+    fit_bayes <- bsem(model_desc, data = df, sample = 1e5)
     capture.output(summary(fit_bayes), 
         file = paste('./output/bayes_out_', d_name, '.txt', sep = ''))
 
