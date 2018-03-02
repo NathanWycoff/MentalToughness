@@ -8,22 +8,28 @@
 # they are correlated with r > 0.7, and little correlation with the rest
 
 library(psych)
+library(corpcor)
 
-#Load up the data
+#Load up the full data
 sp17 <- read.csv("./data/sp_17.csv")
 fl17 <- read.csv("./data/fl_17.csv")
 
+#Load up the indicators
+ind <- read.csv('./data/processed_metrics_sp_18.csv')
+
 #Extract just the measurements
 sp17_facs <- sp17[,15:238]
-fl17_facs <- head(fl17[,14:248])
+fl17_facs <- fl17[,14:248]
 
 #A principle components analysis:
-# RC1 may correspond to ili
-# RC2 may correspond to uh
-# RC10 
 fit <- principal(sp17_facs, nfactors=10, rotate="varimax")
 capture.output(print(fit), 
-    file = './output/pca.txt')
+    file = './output/pcasp17.txt')
+fit <- principal(fl17_facs, nfactors=10, rotate="varimax")
+capture.output(print(fit), 
+    file = './output/pcafl17.txt')
 
-fit <- factanal(sp17_facs, 3, rotation="varimax")
-summary(fit)
+
+cor.shrink(ind)
+capture.output(print(fit),
+    file = './output/cor_mat_18.txt')

@@ -1,0 +1,43 @@
+
+Call:
+factanal(x = leadChal_cols, factors = 4, rotation = "promax")
+
+Uniquenesses:
+ leadChal_1  leadChal_2  leadChal_3  leadChal_4  leadChal_5  leadChal_6 
+      0.347       0.392       0.396       0.422       0.326       0.522 
+ leadChal_7  leadChal_8  leadChal_9 leadChal_10 leadChal_11 leadChal_12 
+      0.287       0.355       0.207       0.389       0.247       0.598 
+leadChal_13 
+      0.275 
+
+Loadings:
+            Factor1 Factor2 Factor3 Factor4
+leadChal_1           0.699           0.131 
+leadChal_2   0.357                   0.502 
+leadChal_3  -0.146   0.260   0.197   0.554 
+leadChal_4  -0.151   0.658           0.311 
+leadChal_5   0.264                   0.722 
+leadChal_6   0.111           0.571         
+leadChal_7           0.923          -0.189 
+leadChal_8   0.584  -0.132   0.305         
+leadChal_9  -0.261           1.081         
+leadChal_10  0.343   0.251   0.404  -0.185 
+leadChal_11  0.975          -0.197   0.102 
+leadChal_12  0.268   0.127   0.234         
+leadChal_13  0.638   0.305  -0.106         
+
+               Factor1 Factor2 Factor3 Factor4
+SS loadings      2.218   2.049   1.917   1.304
+Proportion Var   0.171   0.158   0.147   0.100
+Cumulative Var   0.171   0.328   0.476   0.576
+
+Factor Correlations:
+        Factor1 Factor2 Factor3 Factor4
+Factor1   1.000  -0.720   0.671   0.664
+Factor2  -0.720   1.000  -0.672  -0.467
+Factor3   0.671  -0.672   1.000   0.688
+Factor4   0.664  -0.467   0.688   1.000
+
+Test of the hypothesis that 4 factors are sufficient.
+The chi square statistic is 39.41 on 32 degrees of freedom.
+The p-value is 0.172 
