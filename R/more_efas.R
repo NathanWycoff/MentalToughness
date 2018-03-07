@@ -6,12 +6,14 @@
 
 #Load up the eigenvalue adjustement package (Horn Analysis)
 require(paran)
+require(random.polychor.pa)
+require(psych)
 
 #Read in data
 sp17 <- read.csv("./data/sp_17.csv")
 
 #### For the Spring 2017 Semester:
-### An EFA on leader toughness (leadChal) items:
+############################ An EFA on leader toughness (leadChal) items:
 leadChal_cols <- sp17[,grep('^leadChal', colnames(sp17))]
 
 #Plot the adjusted scree plot:
@@ -25,13 +27,23 @@ capture.output(print(fit),
                file =  './output/class_leadChal_efa_sp17.txt')
 
 
-### An EFA on Unconditional Happiness (uh) items and some FFMQ items:
-uh_cols <- sp17[,grep('^uh\\_', colnames(sp17))]
+############### ### An EFA on Unconditional Happiness (uh) items and some FFMQ items:
+uh_cols <- sp17[,grep('^uh\\_', colnames(sp17))] 
 ffmq_cols <- sp17[,grep('^ffmq', colnames(sp17))]
 #But remove columns 1, 6, and 11.
 ffmq_cols <- ffmq_cols[, -grep('(1$|6$)', colnames(ffmq_cols))]
 uhffmq_cols <- cbind(uh_cols, ffmq_cols)
 
+#Make a histogram for each column
+i <- 0
+for (col in colnames(uhffmq_cols)) {
+    i <- i + 1
+    png(paste('./images/hists/ffmquh_hist_', i , '.png', sep = ''))
+    hist(uhffmq_cols[,col], main = col)
+    dev.off()
+}
+
+## Using Gaussian assumptions:
 #Plot the adjusted scree plot:
 png("./images/uhffmq_scree.png")
 h_anal <- paran(uhffmq_cols, graph = TRUE)
@@ -42,8 +54,18 @@ fit <- factanal(uhffmq_cols, factors = 4, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/class_uhffmq_efa_sp17.txt')
 
+## Using Polychoric correlations (takes ordinal nature of data into account).
+## Can't seem to do the polychoric parallel analysis.
+#random.polychor.pa(nrep = 100, data.matrix = ffmq_cols, q.eigen = 0.99)
 
-### An EFA on leadChal, auth, tfl, ili
+cor <- mixedCor(uhffmq_cols, c = 1:ncol(uh_cols), 
+                 p = (ncol(uh_cols) + 1):(ncol(ffmq_cols) + ncol(uh_cols)))
+fit <- fa(r=cor$rho, nfactors=4)
+capture.output(print(fit),
+               file =  './output/class_polychor_uhffmq_efa_sp17.txt')
+
+
+###################################### An EFA on leadChal, auth, tfl, ili
 third_cols <- sp17[,grep('(^leadChal|^auth|^tfl|^ili)', colnames(sp17))]
 
 #Plot the adjusted scree plot:

@@ -54,10 +54,10 @@ Cumulative Var   0.156   0.288   0.361   0.423
 
 Factor Correlations:
         Factor1 Factor2 Factor3 Factor4
-Factor1   1.000   0.237  -0.593   0.195
-Factor2   0.237   1.000  -0.287   0.225
-Factor3  -0.593  -0.287   1.000  -0.146
-Factor4   0.195   0.225  -0.146   1.000
+Factor1   1.000  -0.237  -0.593   0.195
+Factor2  -0.237   1.000   0.287  -0.225
+Factor3  -0.593   0.287   1.000  -0.146
+Factor4   0.195  -0.225  -0.146   1.000
 
 Test of the hypothesis that 4 factors are sufficient.
 The chi square statistic is 651.72 on 374 degrees of freedom.
