@@ -3,25 +3,25 @@ Reliability analysis
 Call: alpha(x = get(scale), check.keys = TRUE)
 
   raw_alpha std.alpha G6(smc) average_r S/N  ase mean  sd
-      0.84      0.84    0.78      0.64 5.4 0.02  5.9 0.9
+      0.85      0.85    0.79      0.65 5.7 0.02  5.9 0.9
 
  lower alpha upper     95% confidence boundaries
-0.8 0.84 0.88 
+0.81 0.85 0.89 
 
  Reliability if an item is dropped:
        raw_alpha std.alpha G6(smc) average_r S/N alpha se
-tfl_5       0.78      0.79    0.65      0.65 3.7    0.031
-tfl_11      0.76      0.76    0.61      0.61 3.2    0.035
-tfl_17      0.80      0.80    0.67      0.67 4.0    0.029
+tfl_5       0.79      0.80    0.67      0.67 4.0    0.030
+tfl_11      0.77      0.77    0.63      0.63 3.4    0.034
+tfl_17      0.80      0.80    0.67      0.67 4.0    0.030
 
  Item statistics 
          n raw.r std.r r.cor r.drop mean   sd
-tfl_5  187  0.87  0.87  0.77   0.70  5.9 1.04
-tfl_11 187  0.87  0.88  0.80   0.73  5.9 0.93
-tfl_17 187  0.88  0.86  0.75   0.69  5.8 1.11
+tfl_5  181  0.87  0.87  0.77   0.71  5.9 1.05
+tfl_11 181  0.88  0.89  0.80   0.74  5.9 0.94
+tfl_17 181  0.88  0.87  0.77   0.71  5.8 1.10
 
 Non missing response frequency for each item
           1    2    3    4    5    6    7 miss
-tfl_5  0.01 0.02 0.00 0.06 0.19 0.46 0.27    0
+tfl_5  0.01 0.02 0.00 0.06 0.19 0.45 0.27    0
 tfl_11 0.01 0.00 0.00 0.09 0.17 0.50 0.24    0
-tfl_17 0.01 0.01 0.02 0.10 0.17 0.41 0.29    0
+tfl_17 0.01 0.01 0.02 0.10 0.16 0.42 0.29    0

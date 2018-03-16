@@ -3,28 +3,28 @@ Reliability analysis
 Call: alpha(x = get(scale), check.keys = TRUE)
 
   raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
-      0.74      0.75    0.71      0.42 2.9 0.035  5.7 0.88
+      0.74      0.75    0.72      0.42 2.9 0.036  5.7 0.88
 
  lower alpha upper     95% confidence boundaries
 0.67 0.74 0.81 
 
  Reliability if an item is dropped:
         raw_alpha std.alpha G6(smc) average_r S/N alpha se
-auth_2       0.64      0.65    0.59      0.38 1.9    0.050
-auth_5       0.69      0.70    0.63      0.44 2.3    0.043
-auth_9       0.77      0.77    0.69      0.53 3.3    0.032
-auth_13      0.60      0.61    0.55      0.35 1.6    0.057
+auth_2       0.63      0.64    0.58      0.37 1.8    0.053
+auth_5       0.70      0.70    0.63      0.44 2.4    0.043
+auth_9       0.77      0.77    0.70      0.53 3.4    0.033
+auth_13      0.60      0.62    0.56      0.35 1.6    0.058
 
  Item statistics 
           n raw.r std.r r.cor r.drop mean  sd
-auth_2  157  0.77  0.79  0.71   0.60  5.9 1.1
-auth_5  157  0.73  0.74  0.61   0.50  5.7 1.1
-auth_9  157  0.68  0.65  0.46   0.39  5.3 1.3
-auth_13 157  0.83  0.83  0.77   0.67  5.8 1.2
+auth_2  150  0.79  0.80  0.72   0.62  5.9 1.1
+auth_5  150  0.73  0.74  0.62   0.50  5.8 1.2
+auth_9  150  0.67  0.65  0.46   0.38  5.3 1.3
+auth_13 150  0.83  0.83  0.76   0.66  5.8 1.2
 
 Non missing response frequency for each item
            1    2    3    4    5    6    7 miss
-auth_2  0.00 0.01 0.03 0.06 0.19 0.41 0.31    0
-auth_5  0.01 0.01 0.03 0.08 0.24 0.36 0.29    0
-auth_9  0.01 0.03 0.06 0.13 0.31 0.27 0.18    0
-auth_13 0.01 0.01 0.01 0.09 0.19 0.37 0.32    0
+auth_2  0.00 0.01 0.03 0.05 0.19 0.41 0.31    0
+auth_5  0.01 0.01 0.03 0.07 0.23 0.35 0.30    0
+auth_9  0.01 0.03 0.06 0.13 0.31 0.27 0.19    0
+auth_13 0.01 0.01 0.01 0.09 0.19 0.37 0.33    0

@@ -1,6 +1,8 @@
 library(psych)
 library(dplyr)
 
+#TODO: Maybe rename file as parcelling.R?
+
 files <- c("./data/reversed_data_fl_17.csv", "./data/reversed_data_sp_17.csv", "./data/reversed_data_sp_18.csv")
 for (file in files) {
     dat <- read.csv(file)

@@ -1,0 +1,55 @@
+lavaan (0.5-23.1097) converged normally after  49 iterations
+
+  Number of observations                           150
+
+  Estimator                                         ML
+  Minimum Function Test Statistic               44.036
+  Degrees of freedom                                24
+  P-value (Chi-square)                           0.008
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  ffmq =~                                             
+    ffmq_de           1.000                           
+    ffmq_aa           0.282    0.193    1.464    0.143
+    ffmq_nj           0.096    0.239    0.400    0.689
+    ffmq_nr           1.029    0.375    2.746    0.006
+  leadChal =~                                         
+    leadChal_emb      1.000                           
+    leadChal_func     0.752    0.054   13.920    0.000
+    leadChal_pers     0.766    0.058   13.241    0.000
+  uh =~                                               
+    uh_hi             1.000                           
+    uh_lo             1.228    0.322    3.819    0.000
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  leadChal ~                                          
+    ffmq              0.742    0.411    1.806    0.071
+    uh                0.142    0.141    1.007    0.314
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  ffmq ~~                                             
+    uh                0.156    0.066    2.358    0.018
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .ffmq_de           0.511    0.081    6.320    0.000
+   .ffmq_aa           0.396    0.047    8.450    0.000
+   .ffmq_nj           0.703    0.081    8.647    0.000
+   .ffmq_nr           0.253    0.064    3.938    0.000
+   .leadChal_emb      0.353    0.056    6.333    0.000
+   .leadChal_func     0.102    0.024    4.197    0.000
+   .leadChal_pers     0.174    0.030    5.799    0.000
+   .uh_hi             0.698    0.204    3.418    0.001
+   .uh_lo             0.581    0.291    1.999    0.046
+    ffmq              0.149    0.073    2.034    0.042
+   .leadChal          0.776    0.134    5.781    0.000
+    uh                0.753    0.238    3.159    0.002
+
