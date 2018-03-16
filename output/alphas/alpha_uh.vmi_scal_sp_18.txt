@@ -1,0 +1,45 @@
+
+Reliability analysis   
+Call: alpha(x = get(scale), check.keys = TRUE)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd
+      0.78      0.79     0.8      0.29 3.7 0.024  3.7 0.7
+
+ lower alpha upper     95% confidence boundaries
+0.73 0.78 0.83 
+
+ Reliability if an item is dropped:
+         raw_alpha std.alpha G6(smc) average_r S/N alpha se
+uh.vmi_1      0.75      0.76    0.77      0.28 3.1    0.029
+uh.vmi_2      0.75      0.75    0.75      0.28 3.1    0.028
+uh.vmi_3      0.77      0.78    0.79      0.30 3.5    0.026
+uh.vmi_4      0.76      0.77    0.77      0.29 3.3    0.028
+uh.vmi_5      0.75      0.76    0.77      0.28 3.2    0.028
+uh.vmi_6      0.76      0.77    0.76      0.29 3.3    0.027
+uh.vmi_7      0.77      0.77    0.78      0.30 3.4    0.026
+uh.vmi_8      0.79      0.79    0.80      0.32 3.8    0.024
+uh.vmi_9      0.76      0.77    0.78      0.30 3.4    0.027
+
+ Item statistics 
+           n raw.r std.r r.cor r.drop mean   sd
+uh.vmi_1 179  0.68  0.68  0.63   0.56  3.6 1.13
+uh.vmi_2 179  0.66  0.69  0.67   0.56  3.9 0.98
+uh.vmi_3 179  0.57  0.56  0.47   0.41  3.8 1.22
+uh.vmi_4 179  0.64  0.63  0.58   0.51  3.5 1.21
+uh.vmi_5 179  0.67  0.66  0.60   0.54  3.6 1.25
+uh.vmi_6 179  0.59  0.63  0.59   0.48  4.1 0.94
+uh.vmi_7 179  0.59  0.57  0.51   0.43  3.2 1.28
+uh.vmi_8 179  0.48  0.47  0.35   0.30  3.4 1.25
+uh.vmi_9 179  0.60  0.60  0.51   0.46  3.8 1.16
+
+Non missing response frequency for each item
+            1    2    3    4    5 miss
+uh.vmi_1 0.04 0.17 0.17 0.39 0.23    0
+uh.vmi_2 0.02 0.07 0.15 0.45 0.31    0
+uh.vmi_3 0.07 0.11 0.13 0.35 0.35    0
+uh.vmi_4 0.09 0.13 0.14 0.43 0.21    0
+uh.vmi_5 0.08 0.13 0.12 0.39 0.27    0
+uh.vmi_6 0.03 0.04 0.09 0.45 0.39    0
+uh.vmi_7 0.11 0.24 0.16 0.32 0.16    0
+uh.vmi_8 0.08 0.18 0.19 0.31 0.24    0
+uh.vmi_9 0.05 0.12 0.13 0.38 0.32    0

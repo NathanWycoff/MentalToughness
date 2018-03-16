@@ -1,0 +1,57 @@
+
+Reliability analysis   
+Call: alpha(x = get(scale), check.keys = TRUE)
+
+  raw_alpha std.alpha G6(smc) average_r S/N    ase mean   sd
+      0.93      0.93    0.94      0.52  14 0.0077  5.4 0.88
+
+ lower alpha upper     95% confidence boundaries
+0.92 0.93 0.95 
+
+ Reliability if an item is dropped:
+            raw_alpha std.alpha G6(smc) average_r S/N alpha se
+leadChal_1       0.93      0.93    0.94      0.53  13   0.0082
+leadChal_2       0.93      0.93    0.93      0.52  13   0.0087
+leadChal_3       0.93      0.93    0.94      0.52  13   0.0085
+leadChal_4       0.93      0.93    0.94      0.52  13   0.0084
+leadChal_5       0.93      0.93    0.94      0.52  13   0.0087
+leadChal_6       0.93      0.93    0.94      0.53  14   0.0081
+leadChal_7       0.93      0.93    0.94      0.53  13   0.0083
+leadChal_8       0.93      0.93    0.94      0.53  13   0.0082
+leadChal_9       0.93      0.93    0.94      0.53  13   0.0082
+leadChal_10      0.93      0.93    0.94      0.53  13   0.0082
+leadChal_11      0.93      0.93    0.94      0.52  13   0.0084
+leadChal_12      0.93      0.93    0.94      0.53  13   0.0082
+leadChal_13      0.93      0.93    0.94      0.52  13   0.0085
+
+ Item statistics 
+              n raw.r std.r r.cor r.drop mean   sd
+leadChal_1  157  0.72  0.73  0.70   0.67  5.5 1.13
+leadChal_2  157  0.82  0.81  0.80   0.77  5.5 1.32
+leadChal_3  157  0.78  0.79  0.77   0.74  5.5 1.03
+leadChal_4  157  0.76  0.77  0.75   0.72  5.7 0.99
+leadChal_5  157  0.81  0.80  0.79   0.76  5.2 1.42
+leadChal_6  157  0.70  0.71  0.68   0.64  5.7 1.04
+leadChal_7  157  0.73  0.74  0.72   0.68  5.6 1.06
+leadChal_8  157  0.73  0.72  0.69   0.67  5.2 1.30
+leadChal_9  157  0.71  0.72  0.69   0.66  5.5 1.03
+leadChal_10 157  0.72  0.72  0.69   0.67  5.2 1.15
+leadChal_11 157  0.77  0.75  0.74   0.71  4.9 1.46
+leadChal_12 157  0.71  0.71  0.68   0.66  5.7 1.19
+leadChal_13 157  0.76  0.76  0.74   0.72  5.3 1.09
+
+Non missing response frequency for each item
+               1    2    3    4    5    6    7 miss
+leadChal_1  0.01 0.01 0.03 0.12 0.24 0.45 0.15    0
+leadChal_2  0.01 0.03 0.06 0.11 0.22 0.33 0.24    0
+leadChal_3  0.00 0.01 0.02 0.11 0.27 0.42 0.16    0
+leadChal_4  0.01 0.00 0.01 0.09 0.29 0.41 0.20    0
+leadChal_5  0.01 0.04 0.08 0.14 0.24 0.30 0.19    0
+leadChal_6  0.01 0.01 0.01 0.07 0.28 0.43 0.20    0
+leadChal_7  0.01 0.01 0.01 0.13 0.22 0.46 0.17    0
+leadChal_8  0.01 0.03 0.04 0.16 0.33 0.27 0.15    0
+leadChal_9  0.00 0.01 0.03 0.12 0.29 0.39 0.17    0
+leadChal_10 0.00 0.01 0.05 0.22 0.26 0.33 0.12    0
+leadChal_11 0.02 0.06 0.08 0.17 0.31 0.23 0.13    0
+leadChal_12 0.01 0.01 0.03 0.11 0.17 0.40 0.28    0
+leadChal_13 0.01 0.01 0.01 0.20 0.31 0.32 0.14    0
