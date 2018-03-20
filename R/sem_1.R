@@ -19,7 +19,10 @@ for (file in files) {
                 uh =~ uh_hi + uh_lo
 
                 #Latent Structure
-                leadChal ~ ffmq + uh #+ ffmq:uh
+                leadChal ~ lambda1*uh #+ ffmq:uh
+                leadChal ~ lambda2*ffmq
+
+                interac := lambda1*lambda2
 
                 #Correlation Structure
                 uh ~~ ffmq
