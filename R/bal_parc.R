@@ -4,18 +4,18 @@
 #' Create balanced parcels
 #' 
 #' @param cors The correlations of each item with a scale.
-#' @return A list of length [ceil(length(cors)/2)] with each item a numeric vector, representing the indices of each paried items.
-bal_parc <- function(cors) {
+#' @param parcels The number of parcels to create
+#' @return An integer vector of the same length as cors, giving assignemnts.
+bal_parc <- function(cors, parcels = 3) {
 
     ranks <- rank(cors)
     taken <- c()
-    it <- list()
     asgn <- rep(NA, length(cors))
 
     max_filter <- rep(1, length(ranks))
     min_filter <- rep(1, length(ranks))
 
-    for (r in 1:(min(floor(length(ranks)/2), 3))) {
+    for (r in 1:(min(floor(length(ranks)/2), parcels))) {
         max_filter[!is.na(asgn)] <- -Inf
         min_filter[!is.na(asgn)] <- Inf
 
@@ -26,18 +26,25 @@ bal_parc <- function(cors) {
         asgn[mi] <- r
     }
 
-    if (length(cors) > 6) {
-        base <- c(3:1, 1:3)
-        for (i in 7:length(cors)) {
+    if (length(cors) > 2*parcels) {
+        base <- c(parcels:1, 1:parcels)
+        for (i in (2*parcels+1):length(cors)) {
             max_filter <- rep(1, length(ranks))
             max_filter[!is.na(asgn)] <- -Inf
             cur <- which.max(ranks * max_filter)
-
-            print(cur)
-
-            asgn[cur] <- base[(i-7) %% 3 + 1]
+            asgn[cur] <- base[(i-(2*parcels+1)) %% parcels + 1]
         }
     }
 
-    return(it)
+    return(asgn)
 }
+
+## Test
+#require(psych)
+#file <- "./data/reversed_data_fl_17.csv"
+#dat <- read.csv(file)
+#lc_cols <- grep('leadChal_', colnames(dat))
+#leadChal_scal <- dat[,lc_cols]
+#fit <- alpha(leadChal_scal)
+#cors <- fit$item.stats$r.cor
+#asgn <- bal_parc(cors)

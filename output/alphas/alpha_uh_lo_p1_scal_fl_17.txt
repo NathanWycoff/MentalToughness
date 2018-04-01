@@ -1,0 +1,30 @@
+
+Reliability analysis   
+Call: alpha(x = get(scale), check.keys = TRUE)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd
+       0.7       0.7    0.64      0.37 2.4 0.037    5 1.4
+
+ lower alpha upper     95% confidence boundaries
+0.63 0.7 0.77 
+
+ Reliability if an item is dropped:
+      raw_alpha std.alpha G6(smc) average_r S/N alpha se
+uh_10      0.63      0.64    0.55      0.37 1.8    0.047
+uh_12      0.63      0.64    0.54      0.37 1.8    0.047
+uh_18      0.61      0.62    0.52      0.35 1.6    0.050
+uh_19      0.66      0.66    0.56      0.39 1.9    0.044
+
+ Item statistics 
+        n raw.r std.r r.cor r.drop mean  sd
+uh_10 181  0.73  0.73  0.58   0.49  5.8 2.0
+uh_12 181  0.72  0.73  0.58   0.48  5.0 2.0
+uh_18 181  0.73  0.75  0.62   0.52  5.2 1.8
+uh_19 181  0.72  0.71  0.54   0.45  4.2 2.1
+
+Non missing response frequency for each item
+         0    1    2    3    4    5    6    7    8 miss
+uh_10 0.02 0.00 0.07 0.05 0.13 0.11 0.21 0.13 0.28    0
+uh_12 0.01 0.04 0.06 0.13 0.20 0.14 0.20 0.08 0.14    0
+uh_18 0.01 0.03 0.03 0.08 0.23 0.14 0.27 0.09 0.12    0
+uh_19 0.06 0.04 0.14 0.12 0.20 0.13 0.14 0.10 0.06    0

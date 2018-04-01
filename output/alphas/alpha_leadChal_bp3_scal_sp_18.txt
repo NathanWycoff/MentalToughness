@@ -1,0 +1,33 @@
+
+Reliability analysis   
+Call: alpha(x = get(scale), check.keys = TRUE)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
+      0.78      0.78    0.75      0.41 3.5 0.026  5.3 0.82
+
+ lower alpha upper     95% confidence boundaries
+0.73 0.78 0.83 
+
+ Reliability if an item is dropped:
+            raw_alpha std.alpha G6(smc) average_r S/N alpha se
+leadChal_2       0.75      0.75    0.70      0.42 2.9    0.030
+leadChal_3       0.76      0.76    0.72      0.44 3.2    0.029
+leadChal_5       0.69      0.70    0.64      0.37 2.3    0.037
+leadChal_8       0.71      0.71    0.66      0.38 2.5    0.035
+leadChal_10      0.76      0.76    0.72      0.44 3.2    0.028
+
+ Item statistics 
+              n raw.r std.r r.cor r.drop mean   sd
+leadChal_2  179  0.73  0.71  0.60   0.53  5.1 1.25
+leadChal_3  179  0.64  0.68  0.54   0.48  5.7 0.89
+leadChal_5  179  0.81  0.80  0.76   0.67  5.2 1.18
+leadChal_8  179  0.78  0.78  0.71   0.63  5.1 1.17
+leadChal_10 179  0.67  0.67  0.54   0.47  5.2 1.11
+
+Non missing response frequency for each item
+               1    2    3    4    5    6    7 miss
+leadChal_2  0.02 0.01 0.09 0.17 0.28 0.34 0.08    0
+leadChal_3  0.00 0.01 0.01 0.08 0.23 0.51 0.17    0
+leadChal_5  0.00 0.03 0.08 0.13 0.31 0.36 0.09    0
+leadChal_8  0.00 0.01 0.10 0.15 0.33 0.30 0.11    0
+leadChal_10 0.01 0.01 0.06 0.14 0.36 0.34 0.09    0

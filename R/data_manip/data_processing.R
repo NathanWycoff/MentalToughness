@@ -1,7 +1,12 @@
+#!/usr/bin/Rscript
+#  data_manip/data_processing.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 03.25.2018
 library(psych)
 library(dplyr)
 
 #TODO: Maybe rename file as parcelling.R?
+
+#Load the balanced parcelling function
+source('./R/bal_parc.R')
 
 files <- c("./data/reversed_data_fl_17.csv", "./data/reversed_data_sp_17.csv", "./data/reversed_data_sp_18.csv")
 for (file in files) {
@@ -25,6 +30,17 @@ for (file in files) {
     ## Unconditional Happiness Subscale
     uh_hi_scal <- dat[,grep('uh_(1|2|3|6|7|8|9|11|14|17|20)$', colnames(dat))]#Low Arousal Situation
     uh_lo_scal <- dat[,grep('uh_(4|5|10|12|13|15|16|18|19)$', colnames(dat))]#High Arousal Situation
+    # Create two parcels for each scale using balanced parcelling
+    #Get correlations, and assignments
+    hi_cors <- alpha(uh_hi_scal)$item.stats$r.cor
+    hi_asgn <- bal_parc(hi_cors, parcels = 2)
+    lo_cors <- alpha(uh_lo_scal)$item.stats$r.cor
+    lo_asgn <- bal_parc(lo_cors, parcels = 2)
+    #Subset
+    uh_hi_p1_scal <- uh_hi_scal[,hi_asgn==1]
+    uh_hi_p2_scal <- uh_hi_scal[,hi_asgn==2]
+    uh_lo_p1_scal <- uh_lo_scal[,lo_asgn==1]
+    uh_lo_p2_scal <- uh_lo_scal[,lo_asgn==2]
 
     ## Auth subscales
     auth_sa_scal <- dat[,grep('auth_(4|7|11)$', colnames(dat))]#Self Awareness
@@ -33,9 +49,19 @@ for (file in files) {
     auth_bp_scal <- dat[,grep('auth_(3|6|10|14)$', colnames(dat))]#Balanced Processing
 
     ## Leadchal Subscales
-    leadChal_emb_scal <- dat[,grep('leadChal_(2|5|8|11)$', colnames(dat))]#Embracing
-    leadChal_func_scal <- dat[,grep('leadChal_(1|4|7|10|13)$', colnames(dat))]#Functioning
-    leadChal_pers_scal <- dat[,grep('leadChal_(3|6|9|12)$', colnames(dat))]#Perseverance
+    # The original idea for doing this:
+    #leadChal_emb_scal <- dat[,grep('leadChal_(2|5|8|11)$', colnames(dat))]#Embracing
+    #leadChal_func_scal <- dat[,grep('leadChal_(1|4|7|10|13)$', colnames(dat))]#Functioning
+    #leadChal_pers_scal <- dat[,grep('leadChal_(3|6|9|12)$', colnames(dat))]#Perseverance
+    ##Balanced Parcelling for leadChal, as supported by an EFA
+    lc_cols <- grep('leadChal_', colnames(dat))
+    leadChal_scal <- dat[,lc_cols]
+    fit <- alpha(leadChal_scal)
+    cors <- fit$item.stats$r.cor
+    asgn <- bal_parc(cors)
+    leadChal_bp1_scal <- leadChal_scal[,asgn==1]
+    leadChal_bp2_scal <- leadChal_scal[,asgn==2]
+    leadChal_bp3_scal <- leadChal_scal[,asgn==3]
 
     ##Transformational Leadership Subscales
     tfl_vis_scal <- dat[,grep('tfl_(1|7|13)$', colnames(dat))]#Perseverance

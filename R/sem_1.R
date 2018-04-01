@@ -1,7 +1,7 @@
 #!/usr/bin/Rscript
 #  sem_1.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 03.16.2018
 
-## Fit the SEM for the Spring and Fall semesters of 2017.
+## Do a SEM for the 2017 school year.
 
 require(lavaan)
 require(blavaan)
@@ -13,41 +13,79 @@ for (file in files) {
 
     time <- strsplit(strsplit(strsplit(file, '/')[[1]][3], '\\.')[[1]][1], 'proc_met_')[[1]][2]
     # Define the model
-    model <- '  #Measurement Model:
+    model_noint <- '  #Measurement Model:
                 ffmq =~ ffmq_de + ffmq_aa + ffmq_nj + ffmq_nr
-                leadChal =~ leadChal_emb + leadChal_func + leadChal_pers
-                uh =~ uh_hi + uh_lo
+                leadChal =~ leadChal_bp1 + leadChal_bp2 + leadChal_bp3 
+                uh =~ uh_hi_p1 + uh_hi_p2 + uh_lo_p1 + uh_lo_p2
 
                 #Latent Structure
-                leadChal ~ lambda1*uh #+ ffmq:uh
-                leadChal ~ lambda2*ffmq
-
-                interac := lambda1*lambda2
-
-                #Correlation Structure
-                uh ~~ ffmq
-
-                #Variance structure
-                #ffmq_de ~~ ffmq_de
-                #ffmq_aa ~~ ffmq_aa
-                #ffmq_nj ~~ ffmq_nj
-                #ffmq_nr ~~ ffmq_nr
-
-                #leadChal_emb ~~ leadChal_emb
-                #leadChal_func ~~ leadChal_func
-                #leadChal_pers ~~ leadChal_pers
-
-                #uh_hi ~~ uh_hi
-                #uh_lo ~~ uh_lo
-
-                #leadChal ~~ leadChal
-                #uh ~~ uh
-                #ffmq ~~ ffmq
+                leadChal ~ uh 
+                leadChal ~ ffmq
                 '
-    fit <- sem(model, data = df)
+
+    model_int <- '  #Measurement Model:
+                ffmq =~ ffmq_de + ffmq_aa + ffmq_nj + ffmq_nr
+                leadChal =~ leadChal_bp1 + leadChal_bp2 + leadChal_bp3 
+                uh =~ uh_hi_p1 + uh_hi_p2 + uh_lo_p1 + uh_lo_p2
+
+                #Latent Structure
+                leadChal ~ uh + ffmq_uh_int
+                leadChal ~ ffmq
+                '
+
+    ### Estimate the latent interaction using the product of the expectations
+    ### of the factors.
+    #First pass to get loadings
+    fit_class <- sem(model_noint, data = df)
+    fit_bayes <- bsem(model_noint, data = df)
+
+    ## First for the classical output
+    #Get the expected value of the latent factors
+    ffmq_coefs <- c(1,coef(fit_class)[1:3])
+    ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
+    ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
+                    diag(ffmq_coefs))
+    uh_coefs <- c(1, coef(fit_class)[6:8])
+    uh_coefs <- uh_coefs / uh_coefs 
+    uh_mean <- rowMeans(as.matrix(df[,c('uh_hi_p1', 'uh_hi_p2', 'uh_lo_p1', 'uh_lo_p2')]) %*% 
+                    diag(uh_coefs))
+
+    #Center the latent variables
+    ffmq_mean <- ffmq_mean - mean(ffmq_mean)
+    uh_mean <- uh_mean - mean(uh_mean)
+
+    #Get a guess of their interaction
+    ffmq_uh_int <- uh_mean * ffmq_mean
+
+    df_class <- df
+    df_class$ffmq_uh_int <- ffmq_uh_int
+
+    ## Then for the Bayes output
+    #Get the expected value of the latent factors
+    ffmq_coefs <- c(1,coef(fit_bayes)[1:3])
+    ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
+    ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
+                    diag(ffmq_coefs))
+    uh_coefs <- c(1, coef(fit_bayes)[6:8])
+    uh_coefs <- uh_coefs / uh_coefs 
+    uh_mean <- rowMeans(as.matrix(df[,c('uh_hi_p1', 'uh_hi_p2', 'uh_lo_p1', 'uh_lo_p2')]) %*% 
+                    diag(uh_coefs))
+
+    #Center the latent variables
+    ffmq_mean <- ffmq_mean - mean(ffmq_mean)
+    uh_mean <- uh_mean - mean(uh_mean)
+
+    #Get a guess of their interaction
+    ffmq_uh_int <- uh_mean * ffmq_mean
+
+    df_bayes <- df
+    df_bayes$ffmq_uh_int <- ffmq_uh_int
+
+    ## Fit the complete model
+    fit <- sem(model_int, data = df_class)
     capture.output(summary(fit),
                    file = paste('./output/class_sem_', time, '.txt', sep = ''))
-    fit <- bsem(model, data = df)
+    fit <- bsem(model_int, data = df_bayes)
     capture.output(summary(fit),
                    file = paste('./output/bayes_sem_', time, '.txt', sep = ''))
 }
