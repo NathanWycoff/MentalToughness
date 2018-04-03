@@ -1,7 +1,8 @@
 #!/usr/bin/Rscript
 #  sem_1.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 03.16.2018
 
-## Do a SEM for the 2017 school year.
+## Do a SEM for the 2017 school year, originally done with Unconditional happinesss
+## instead of DIS
 
 require(lavaan)
 require(blavaan)
@@ -19,20 +20,20 @@ for (file in files) {
     model_noint <- '  #Measurement Model:
                 ffmq =~ ffmq_de + ffmq_aa + ffmq_nj + ffmq_nr
                 leadChal =~ leadChal_bp1 + leadChal_bp2 + leadChal_bp3 
-                dis =~ dis_avd + dis_int
+                uh =~ uh_hi_p1 + uh_hi_p2 + uh_lo_p1 + uh_lo_p2
 
                 #Latent Structure
-                leadChal ~ dis 
+                leadChal ~ uh 
                 leadChal ~ ffmq
                 '
 
     model_int <- '  #Measurement Model:
                 ffmq =~ ffmq_de + ffmq_aa + ffmq_nj + ffmq_nr
                 leadChal =~ leadChal_bp1 + leadChal_bp2 + leadChal_bp3 
-                dis =~ dis_avd + dis_int
+                uh =~ uh_hi_p1 + uh_hi_p2 + uh_lo_p1 + uh_lo_p2
 
                 #Latent Structure
-                leadChal ~ dis + ffmq_dis_int
+                leadChal ~ uh + ffmq_uh_int
                 leadChal ~ ffmq
                 '
 
@@ -48,20 +49,20 @@ for (file in files) {
     ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
     ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
                     diag(ffmq_coefs))
-    dis_coefs <- c(1, coef(fit_class)[6])
-    dis_coefs <- dis_coefs / dis_coefs 
-    dis_mean <- rowMeans(as.matrix(df[,c('dis_avd', 'dis_int')]) %*% 
-                    diag(dis_coefs))
+    uh_coefs <- c(1, coef(fit_class)[6:8])
+    uh_coefs <- uh_coefs / uh_coefs 
+    uh_mean <- rowMeans(as.matrix(df[,c('uh_hi_p1', 'uh_hi_p2', 'uh_lo_p1', 'uh_lo_p2')]) %*% 
+                    diag(uh_coefs))
 
     #Center the latent variables
     ffmq_mean <- ffmq_mean - mean(ffmq_mean)
-    dis_mean <- dis_mean - mean(dis_mean)
+    uh_mean <- uh_mean - mean(uh_mean)
 
     #Get a guess of their interaction
-    ffmq_dis_int <- dis_mean * ffmq_mean
+    ffmq_uh_int <- uh_mean * ffmq_mean
 
     df_class <- df
-    df_class$ffmq_dis_int <- ffmq_dis_int
+    df_class$ffmq_uh_int <- ffmq_uh_int
 
     ## Then for the Bayes output
     #Get the expected value of the latent factors
@@ -69,20 +70,20 @@ for (file in files) {
     ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
     ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
                     diag(ffmq_coefs))
-    dis_coefs <- c(1, coef(fit_bayes)[6])
-    dis_coefs <- dis_coefs / dis_coefs 
-    dis_mean <- rowMeans(as.matrix(df[,c('dis_avd', 'dis_int')]) %*% 
-                    diag(dis_coefs))
+    uh_coefs <- c(1, coef(fit_bayes)[6:8])
+    uh_coefs <- uh_coefs / uh_coefs 
+    uh_mean <- rowMeans(as.matrix(df[,c('uh_hi_p1', 'uh_hi_p2', 'uh_lo_p1', 'uh_lo_p2')]) %*% 
+                    diag(uh_coefs))
 
     #Center the latent variables
     ffmq_mean <- ffmq_mean - mean(ffmq_mean)
-    dis_mean <- dis_mean - mean(dis_mean)
+    uh_mean <- uh_mean - mean(uh_mean)
 
     #Get a guess of their interaction
-    ffmq_dis_int <- dis_mean * ffmq_mean
+    ffmq_uh_int <- uh_mean * ffmq_mean
 
     df_bayes <- df
-    df_bayes$ffmq_dis_int <- ffmq_dis_int
+    df_bayes$ffmq_uh_int <- ffmq_uh_int
 
     ## Fit the complete model
     fit <- sem(model_int, data = df_class)

@@ -84,6 +84,10 @@ for (file in files) {
     bfi_neur <- dat %>% select(bfi_4, bfi_9, bfi_14, bfi_19, bfi_24, bfi_29, bfi_34, bfi_39)
     bfi_open <- dat %>% select(bfi_5, bfi_10, bfi_15, bfi_20, bfi_25, bfi_30, bfi_35, bfi_40, bfi_41, bfi_44)
 
+    #Discomfort Intolerance Scale (DIS)
+    dis_int_scal <- dat[,grep('dis_(1|2)$', colnames(dat))]#Intolerance
+    dis_avd_scal <- dat[,grep('dis_(3|5|6)$', colnames(dat))]#Avoidance
+
     #Scales - The starts_with code won't work for all scales because it would also bring in the reverse-coded items in some cases.  To get around this as needed, I just listed out all of the items where necessary.
     uh_scal   <-  dat %>% select(starts_with("uh_")) #need the underscore there to not select "uh-vmi" items
     ili_scal  <-  dat %>% select(starts_with("ili"))
