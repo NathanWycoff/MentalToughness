@@ -88,8 +88,8 @@ for (file in files) {
     ## Fit the complete model
     fit <- sem(model_int, data = df_class)
     capture.output(summary(fit),
-                   file = paste('./output/class_sem_', time, '.txt', sep = ''))
+                   file = paste('./output/uh_class_sem_', time, '.txt', sep = ''))
     fit <- bsem(model_int, data = df_bayes)
     capture.output(summary(fit),
-                   file = paste('./output/bayes_sem_', time, '.txt', sep = ''))
+                   file = paste('./output/uh_bayes_sem_', time, '.txt', sep = ''))
 }
