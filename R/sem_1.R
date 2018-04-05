@@ -44,11 +44,13 @@ for (file in files) {
 
     ## First for the classical output
     #Get the expected value of the latent factors
-    ffmq_coefs <- c(1,coef(fit_class)[1:3])
+    #ffmq_coefs <- c(1,coef(fit_class)[1:3])
+    ffmq_coefs <- standardizedSolution(fit_class)[1:4]
     ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
     ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
                     diag(ffmq_coefs))
-    dis_coefs <- c(1, coef(fit_class)[6])
+    #dis_coefs <- c(1, coef(fit_class)[6])
+    dis_coefs <- standardizedSolution(fit_class)[8:9]
     dis_coefs <- dis_coefs / dis_coefs 
     dis_mean <- rowMeans(as.matrix(df[,c('dis_avd', 'dis_int')]) %*% 
                     diag(dis_coefs))
@@ -65,11 +67,13 @@ for (file in files) {
 
     ## Then for the Bayes output
     #Get the expected value of the latent factors
-    ffmq_coefs <- c(1,coef(fit_bayes)[1:3])
+    #ffmq_coefs <- c(1,coef(fit_bayes)[1:3])
+    ffmq_coefs <- standardizedSolution(fit_class)[1:4]
     ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
     ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
                     diag(ffmq_coefs))
-    dis_coefs <- c(1, coef(fit_bayes)[6])
+    #dis_coefs <- c(1, coef(fit_bayes)[6])
+    dis_coefs <- standardizedSolution(fit_class)[8:9]
     dis_coefs <- dis_coefs / dis_coefs 
     dis_mean <- rowMeans(as.matrix(df[,c('dis_avd', 'dis_int')]) %*% 
                     diag(dis_coefs))
@@ -88,7 +92,11 @@ for (file in files) {
     fit <- sem(model_int, data = df_class)
     capture.output(summary(fit),
                    file = paste('./output/class_sem_', time, '.txt', sep = ''))
+    capture.output(standardizedSolution(fit),
+                   file = paste('./output/std_class_sem_', time, '.txt', sep = ''))
     fit <- bsem(model_int, data = df_bayes)
+    capture.output(standardizedSolution(fit),
+                   file = paste('./output/std_bayes_sem_', time, '.txt', sep = ''))
     capture.output(summary(fit),
                    file = paste('./output/bayes_sem_', time, '.txt', sep = ''))
 }
