@@ -1,0 +1,26 @@
+
+Call:
+factanal(x = lnr_cols, factors = 1, rotation = "promax")
+
+Uniquenesses:
+lnr_1R lnr_2R lnr_3R lnr_4R lnr_5R lnr_6R lnr_7R lnr_8R 
+ 0.702  0.355  0.695  0.378  0.535  0.671  0.396  0.448 
+
+Loadings:
+       Factor1
+lnr_1R 0.546  
+lnr_2R 0.803  
+lnr_3R 0.553  
+lnr_4R 0.788  
+lnr_5R 0.682  
+lnr_6R 0.574  
+lnr_7R 0.777  
+lnr_8R 0.743  
+
+               Factor1
+SS loadings      3.819
+Proportion Var   0.477
+
+Test of the hypothesis that 1 factor is sufficient.
+The chi square statistic is 54.62 on 20 degrees of freedom.
+The p-value is 0.0000469 

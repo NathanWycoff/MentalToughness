@@ -1,0 +1,96 @@
+
+Call:
+factanal(x = third_cols, factors = 1, rotation = "promax")
+
+Uniquenesses:
+      ili_1       ili_2       ili_3       ili_4       ili_5       ili_6 
+      0.788       0.800       0.782       0.769       0.689       0.869 
+      ili_7       ili_8       ili_9      ili_10      ili_11      ili_12 
+      0.693       0.826       0.711       0.704       0.788       0.825 
+     ili_13      ili_14      ili_15      auth_1      auth_2      auth_3 
+      0.732       0.748       0.899       0.640       0.497       0.822 
+     auth_4      auth_5      auth_6      auth_7      auth_8      auth_9 
+      0.737       0.758       0.751       0.681       0.746       0.854 
+    auth_10     auth_11     auth_12     auth_13     auth_14  leadChal_1 
+      0.752       0.703       0.714       0.622       0.846       0.575 
+ leadChal_2  leadChal_3  leadChal_4  leadChal_5  leadChal_6  leadChal_7 
+      0.589       0.542       0.696       0.710       0.592       0.594 
+ leadChal_8  leadChal_9 leadChal_10 leadChal_11 leadChal_12 leadChal_13 
+      0.715       0.598       0.735       0.775       0.630       0.719 
+      tfl_1       tfl_2       tfl_3       tfl_4       tfl_5       tfl_6 
+      0.444       0.492       0.597       0.837       0.526       0.546 
+      tfl_7       tfl_8       tfl_9      tfl_10      tfl_11      tfl_12 
+      0.510       0.493       0.604       0.781       0.609       0.493 
+    tfl_13R      tfl_14      tfl_15      tfl_16      tfl_17      tfl_18 
+      0.825       0.627       0.619       0.696       0.670       0.504 
+
+Loadings:
+            Factor1
+ili_1        0.461 
+ili_2        0.447 
+ili_3        0.467 
+ili_4        0.481 
+ili_5        0.558 
+ili_6        0.363 
+ili_7        0.554 
+ili_8        0.417 
+ili_9        0.537 
+ili_10       0.544 
+ili_11       0.461 
+ili_12       0.419 
+ili_13       0.517 
+ili_14       0.502 
+ili_15       0.318 
+auth_1       0.600 
+auth_2       0.709 
+auth_3       0.422 
+auth_4       0.513 
+auth_5       0.492 
+auth_6       0.499 
+auth_7       0.565 
+auth_8       0.504 
+auth_9       0.382 
+auth_10      0.498 
+auth_11      0.545 
+auth_12      0.535 
+auth_13      0.615 
+auth_14      0.392 
+leadChal_1   0.652 
+leadChal_2   0.641 
+leadChal_3   0.677 
+leadChal_4   0.552 
+leadChal_5   0.538 
+leadChal_6   0.638 
+leadChal_7   0.637 
+leadChal_8   0.534 
+leadChal_9   0.634 
+leadChal_10  0.514 
+leadChal_11  0.474 
+leadChal_12  0.609 
+leadChal_13  0.531 
+tfl_1        0.746 
+tfl_2        0.713 
+tfl_3        0.635 
+tfl_4        0.404 
+tfl_5        0.688 
+tfl_6        0.674 
+tfl_7        0.700 
+tfl_8        0.712 
+tfl_9        0.629 
+tfl_10       0.468 
+tfl_11       0.625 
+tfl_12       0.712 
+tfl_13R     -0.418 
+tfl_14       0.610 
+tfl_15       0.617 
+tfl_16       0.552 
+tfl_17       0.574 
+tfl_18       0.704 
+
+               Factor1
+SS loadings     18.910
+Proportion Var   0.315
+
+Test of the hypothesis that 1 factor is sufficient.
+The chi square statistic is 3946.08 on 1710 degrees of freedom.
+The p-value is 0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000931 

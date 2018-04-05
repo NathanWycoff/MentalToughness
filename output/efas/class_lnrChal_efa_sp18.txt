@@ -1,0 +1,51 @@
+
+Call:
+factanal(x = lnrChal_cols, factors = 2, rotation = "promax")
+
+Uniquenesses:
+ leadChal_1  leadChal_2  leadChal_3  leadChal_4  leadChal_5  leadChal_6 
+      0.372       0.677       0.463       0.731       0.554       0.726 
+ leadChal_7  leadChal_8  leadChal_9 leadChal_10 leadChal_11 leadChal_12 
+      0.540       0.592       0.669       0.679       0.641       0.562 
+leadChal_13      lnr_1R      lnr_2R      lnr_3R      lnr_4R      lnr_5R 
+      0.355       0.695       0.351       0.693       0.387       0.523 
+     lnr_6R      lnr_7R      lnr_8R 
+      0.666       0.398       0.432 
+
+Loadings:
+            Factor1 Factor2
+leadChal_1   0.806         
+leadChal_2   0.542         
+leadChal_3   0.752         
+leadChal_4   0.515         
+leadChal_5   0.650         
+leadChal_6   0.565         
+leadChal_7   0.679         
+leadChal_8   0.542  -0.165 
+leadChal_9   0.583         
+leadChal_10  0.549         
+leadChal_11  0.602         
+leadChal_12  0.597  -0.117 
+leadChal_13  0.812         
+lnr_1R               0.571 
+lnr_2R      -0.111   0.746 
+lnr_3R               0.565 
+lnr_4R               0.776 
+lnr_5R               0.704 
+lnr_6R               0.598 
+lnr_7R               0.734 
+lnr_8R       0.107   0.800 
+
+               Factor1 Factor2
+SS loadings      5.328   3.894
+Proportion Var   0.254   0.185
+Cumulative Var   0.254   0.439
+
+Factor Correlations:
+        Factor1 Factor2
+Factor1   1.000  -0.485
+Factor2  -0.485   1.000
+
+Test of the hypothesis that 2 factors are sufficient.
+The chi square statistic is 358.53 on 169 degrees of freedom.
+The p-value is 0.00000000000000106 

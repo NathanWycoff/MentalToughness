@@ -24,7 +24,7 @@ dev.off()
 #Fit a factor analysis with the appropriate number of cols
 fit <- factanal(leadChal_cols, factors = 1, rotation = 'promax')
 capture.output(print(fit),
-               file =  './output/class_leadChal_efa_sp17.txt')
+               file =  './output/efas/class_leadChal_efa_sp17.txt')
 
 
 ############### ### An EFA on Unconditional Happiness (uh) items and some FFMQ items:
@@ -52,7 +52,7 @@ dev.off()
 #Fit a factor analysis with the appropriate number of cols
 fit <- factanal(uhffmq_cols, factors = 4, rotation = 'promax')
 capture.output(print(fit),
-               file =  './output/class_uhffmq_efa_sp17.txt')
+               file =  './output/efas/class_uhffmq_efa_sp17.txt')
 
 ## Using Polychoric correlations (takes ordinal nature of data into account).
 ## Can't seem to do the polychoric parallel analysis.
@@ -62,7 +62,7 @@ cor <- mixedCor(uhffmq_cols, c = 1:ncol(uh_cols),
                  p = (ncol(uh_cols) + 1):(ncol(ffmq_cols) + ncol(uh_cols)))
 fit <- fa(r=cor$rho, nfactors=4)
 capture.output(print(fit),
-               file =  './output/class_polychor_uhffmq_efa_sp17.txt')
+               file =  './output/efas/class_polychor_uhffmq_efa_sp17.txt')
 
 
 ###################################### An EFA on leadChal, auth, tfl, ili
@@ -74,6 +74,32 @@ h_anal <- paran(third_cols, graph = TRUE)
 dev.off()
 
 #Fit a factor analysis with the appropriate number of cols
-fit <- factanal(third_cols, factors = 4, rotation = 'promax')
+fit <- factanal(third_cols, factors = 1, rotation = 'promax')
 capture.output(print(fit),
-               file =  './output/class_third_efa_sp17.txt')
+               file =  './output/efas/class_third_efa_sp17.txt')
+
+###################################### An EFA on Leadership Nonresistance
+sp18 <- read.csv("./data/sp_18.csv")
+
+lnr_cols <- sp18[,grep('(^lnr_)', colnames(sp18))]
+
+png("./images/lnr_scree.png")
+lnr_anal <- paran(lnr_cols, graph = TRUE)
+dev.off()
+
+#Fit a factor analysis with the appropriate number of cols
+fit <- factanal(lnr_cols, factors = 1, rotation = 'promax')
+capture.output(print(fit),
+               file =  './output/efas/class_lnr_efa_sp18.txt')
+
+###################################### An EFA on Leadership Nonresistance and Leader Toughness
+lnrChal_cols <- sp18[,grep('(^lnr_|^leadChal_)', colnames(sp18))]
+
+png("./images/lnrChal_scree.png")
+lnrChal_anal <- paran(lnrChal_cols, graph = TRUE)
+dev.off()
+
+#Fit a factor analysis with the appropriate number of cols
+fit <- factanal(lnrChal_cols, factors = 2, rotation = 'promax')
+capture.output(print(fit),
+               file =  './output/efas/class_lnrChal_efa_sp18.txt')
