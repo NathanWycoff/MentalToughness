@@ -103,9 +103,27 @@ for (file in files) {
 
     # Do the 18 scales if necessary
     if (length(grep('18', time)) > 0) {
-        mt_scal <- dat %>% select(starts_with("mt"))
-        lnr_scal <- dat %>% select(starts_with("lnr"))
         har_scal <- dat %>% select(starts_with("har"))
+
+        ##Create Mental Toughness subscales
+        mt_cols <- grep('mt_', colnames(dat))
+        mt_scal <- dat[,mt_cols]
+        fit <- alpha(mt_scal)
+        cors <- fit$item.stats$r.cor
+        asgn <- bal_parc(cors)
+        mt_bp1_scal <- mt_scal[,asgn==1]
+        mt_bp2_scal <- mt_scal[,asgn==2]
+        mt_bp3_scal <- mt_scal[,asgn==3]
+
+        ##Create Leadership Nonresistance
+        lnr_cols <- grep('lnr_', colnames(dat))
+        lnr_scal <- dat[,lnr_cols]
+        fit <- alpha(lnr_scal)
+        cors <- fit$item.stats$r.cor
+        asgn <- bal_parc(cors)
+        lnr_bp1_scal <- lnr_scal[,asgn==1]
+        lnr_bp2_scal <- lnr_scal[,asgn==2]
+        lnr_bp3_scal <- lnr_scal[,asgn==3]
     }
     #brs_scal <- dat %>% select(starts_with("brs"))
 

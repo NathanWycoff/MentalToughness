@@ -45,13 +45,13 @@ for (file in files) {
     ## First for the classical output
     #Get the expected value of the latent factors
     #ffmq_coefs <- c(1,coef(fit_class)[1:3])
-    ffmq_coefs <- standardizedSolution(fit_class)[1:4]
+    ffmq_coefs <- standardizedSolution(fit_class)[1:4, 4]
     ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
     ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
                     diag(ffmq_coefs))
     #dis_coefs <- c(1, coef(fit_class)[6])
-    dis_coefs <- standardizedSolution(fit_class)[8:9]
-    dis_coefs <- dis_coefs / dis_coefs 
+    dis_coefs <- standardizedSolution(fit_class)[8:9, 4]
+    dis_coefs <- dis_coefs / sum(dis_coefs)
     dis_mean <- rowMeans(as.matrix(df[,c('dis_avd', 'dis_int')]) %*% 
                     diag(dis_coefs))
 
@@ -68,13 +68,13 @@ for (file in files) {
     ## Then for the Bayes output
     #Get the expected value of the latent factors
     #ffmq_coefs <- c(1,coef(fit_bayes)[1:3])
-    ffmq_coefs <- standardizedSolution(fit_class)[1:4]
+    ffmq_coefs <- standardizedSolution(fit_class)[1:4,4]
     ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
     ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
                     diag(ffmq_coefs))
     #dis_coefs <- c(1, coef(fit_bayes)[6])
-    dis_coefs <- standardizedSolution(fit_class)[8:9]
-    dis_coefs <- dis_coefs / dis_coefs 
+    dis_coefs <- standardizedSolution(fit_class)[8:9,4]
+    dis_coefs <- dis_coefs / sum(dis_coefs)
     dis_mean <- rowMeans(as.matrix(df[,c('dis_avd', 'dis_int')]) %*% 
                     diag(dis_coefs))
 
