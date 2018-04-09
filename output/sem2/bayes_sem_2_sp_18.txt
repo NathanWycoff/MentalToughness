@@ -1,0 +1,101 @@
+blavaan (0.3-1) results of 10000 samples after 5000 adapt/burnin iterations
+
+  Number of observations                           179
+
+  Number of missing patterns                         1
+
+  Statistic                                 MargLogLik         PPP
+  Value                                      -2731.276       0.000
+
+Parameter Estimates:
+
+
+Latent Variables:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  ffmq =~                                                                    
+    ffmq_de           1.000                                                  
+    ffmq_aa           0.167    0.213   -0.233    0.571    1.011 dnorm(0,1e-2)
+    ffmq_nj           0.418    0.238   -0.019    0.879    1.007 dnorm(0,1e-2)
+    ffmq_nr           1.053    0.267    0.566     1.59    1.001 dnorm(0,1e-2)
+  leadChal =~                                                                
+    leadChal_bp1      1.000                                                  
+    leadChal_bp2      1.174    0.093    0.999     1.36    1.000 dnorm(0,1e-2)
+    leadChal_bp3      1.181    0.094    1.004    1.372    1.001 dnorm(0,1e-2)
+  dis =~                                                                     
+    dis_avd           1.000                                                  
+    dis_int           1.391    0.259    0.898    1.906    1.001 dnorm(0,1e-2)
+  mt =~                                                                      
+    mt_bp1            1.000                                                  
+    mt_bp2            1.041    0.107    0.836    1.248    1.006 dnorm(0,1e-2)
+    mt_bp3            0.965    0.105    0.762    1.173    1.006 dnorm(0,1e-2)
+  lnr =~                                                                     
+    lnr_bp1           1.000                                                  
+    lnr_bp2           0.976    0.077    0.829    1.133    1.001 dnorm(0,1e-2)
+    lnr_bp3           0.921    0.071    0.787    1.063    1.001 dnorm(0,1e-2)
+
+Regressions:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  lnr ~                                                                      
+    dis              -0.664    0.169   -1.002   -0.345    1.000 dnorm(0,1e-2)
+  leadChal ~                                                                 
+    lnr               0.352    0.080    0.199    0.514    1.000 dnorm(0,1e-2)
+    mt                0.455    0.232   -0.011     0.91    1.005 dnorm(0,1e-2)
+    ffmq              0.064    0.319   -0.555    0.714    1.003 dnorm(0,1e-2)
+    lnr_mt_int       -0.871    1.204   -3.265    1.478    1.000 dnorm(0,1e-2)
+    lnr_ffmq_int      1.927    1.824   -1.637    5.547    1.000 dnorm(0,1e-2)
+
+Covariances:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  ffmq ~~                                                                    
+    dis              -0.066    0.031   -0.128    -0.01    1.001 dwish(iden,4)
+  dis ~~                                                                     
+    mt               -0.096    0.027   -0.149   -0.045    1.001 dwish(iden,4)
+  ffmq ~~                                                                    
+    mt                0.145    0.036    0.077    0.216    1.000 dwish(iden,4)
+
+Intercepts:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .ffmq_de           3.008    0.064    2.883    3.133    1.001 dnorm(0,1e-3)
+   .ffmq_aa           2.322    0.052    2.222    2.424    1.000 dnorm(0,1e-3)
+   .ffmq_nj           2.579    0.057    2.466     2.69    1.000 dnorm(0,1e-3)
+   .ffmq_nr           3.465    0.058     3.35    3.576    1.001 dnorm(0,1e-3)
+   .leadChal_bp1      5.558    0.060    5.437    5.673    1.001 dnorm(0,1e-3)
+   .leadChal_bp2      5.462    0.063    5.336    5.582    1.001 dnorm(0,1e-3)
+   .leadChal_bp3      5.263    0.063    5.141     5.39    1.001 dnorm(0,1e-3)
+   .dis_avd           4.996    0.055     4.89    5.104    1.000 dnorm(0,1e-3)
+   .dis_int           4.014    0.061    3.893    4.134    1.001 dnorm(0,1e-3)
+   .mt_bp1            4.016    0.053     3.91    4.119    1.002 dnorm(0,1e-3)
+   .mt_bp2            4.034    0.045    3.944    4.121    1.003 dnorm(0,1e-3)
+   .mt_bp3            3.853    0.044    3.768    3.939    1.002 dnorm(0,1e-3)
+   .lnr_bp1           3.014    0.058    2.901     3.13    1.002 dnorm(0,1e-3)
+   .lnr_bp2           3.055    0.055    2.944    3.162    1.002 dnorm(0,1e-3)
+   .lnr_bp3           3.090    0.051    2.988    3.191    1.002 dnorm(0,1e-3)
+    ffmq              0.000                                                  
+   .leadChal          0.000                                                  
+    dis               0.000                                                  
+    mt                0.000                                                  
+   .lnr               0.000                                                  
+
+Variances:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .ffmq_de           0.553    0.072    0.419    0.698    1.000  dgamma(1,.5)
+   .ffmq_aa           0.465    0.051    0.369    0.567    1.001  dgamma(1,.5)
+   .ffmq_nj           0.554    0.065    0.432    0.684    1.001  dgamma(1,.5)
+   .ffmq_nr           0.403    0.067    0.275     0.54    1.001  dgamma(1,.5)
+   .leadChal_bp1      0.239    0.031    0.179      0.3    1.000  dgamma(1,.5)
+   .leadChal_bp2      0.159    0.028    0.106    0.213    1.001  dgamma(1,.5)
+   .leadChal_bp3      0.163    0.028     0.11    0.218    1.001  dgamma(1,.5)
+   .dis_avd           0.335    0.050    0.238    0.436    1.000  dgamma(1,.5)
+   .dis_int           0.296    0.073    0.152    0.437    1.001  dgamma(1,.5)
+   .mt_bp1            0.260    0.033    0.197    0.324    1.001  dgamma(1,.5)
+   .mt_bp2            0.106    0.019     0.07    0.145    1.001  dgamma(1,.5)
+   .mt_bp3            0.120    0.019    0.083    0.157    1.000  dgamma(1,.5)
+   .lnr_bp1           0.189    0.028    0.136    0.245    1.001  dgamma(1,.5)
+   .lnr_bp2           0.149    0.024    0.104    0.197    1.001  dgamma(1,.5)
+   .lnr_bp3           0.118    0.020    0.081    0.157    1.000  dgamma(1,.5)
+    ffmq              0.181    0.053    0.085    0.286    1.000 dwish(iden,4)
+   .leadChal          0.236    0.042    0.156    0.319    1.000  dgamma(1,.5)
+    dis               0.201    0.052    0.107    0.302    1.000 dwish(iden,4)
+    mt                0.242    0.047    0.154    0.335    1.005 dwish(iden,4)
+   .lnr               0.329    0.056    0.222    0.439    1.001  dgamma(1,.5)
+

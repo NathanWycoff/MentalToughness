@@ -91,12 +91,12 @@ for (file in files) {
     ## Fit the complete model
     fit <- sem(model_int, data = df_class)
     capture.output(summary(fit),
-                   file = paste('./output/class_sem_', time, '.txt', sep = ''))
+                   file = paste('./output/sem1/class_sem_1_', time, '.txt', sep = ''))
     capture.output(standardizedSolution(fit),
-                   file = paste('./output/std_class_sem_', time, '.txt', sep = ''))
+                   file = paste('./output/sem1/std_class_sem_1_', time, '.txt', sep = ''))
     fit <- bsem(model_int, data = df_bayes)
     capture.output(standardizedSolution(fit),
-                   file = paste('./output/std_bayes_sem_', time, '.txt', sep = ''))
+                   file = paste('./output/sem1/std_bayes_sem_1_', time, '.txt', sep = ''))
     capture.output(summary(fit),
-                   file = paste('./output/bayes_sem_', time, '.txt', sep = ''))
+                   file = paste('./output/sem1/bayes_sem_1_', time, '.txt', sep = ''))
 }

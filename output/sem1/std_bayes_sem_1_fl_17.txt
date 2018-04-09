@@ -1,0 +1,40 @@
+            lhs op          rhs est.std
+1          ffmq =~      ffmq_de   0.475
+2          ffmq =~      ffmq_aa   0.549
+3          ffmq =~      ffmq_nj   0.601
+4          ffmq =~      ffmq_nr   0.446
+5      leadChal =~ leadChal_bp1   0.923
+6      leadChal =~ leadChal_bp2   0.847
+7      leadChal =~ leadChal_bp3   0.941
+8           dis =~      dis_avd   0.609
+9           dis =~      dis_int   0.802
+10     leadChal  ~          dis  -0.437
+11     leadChal  ~ ffmq_dis_int  -0.010
+12     leadChal  ~         ffmq   0.105
+13      ffmq_de ~~      ffmq_de   0.774
+14      ffmq_aa ~~      ffmq_aa   0.698
+15      ffmq_nj ~~      ffmq_nj   0.639
+16      ffmq_nr ~~      ffmq_nr   0.801
+17 leadChal_bp1 ~~ leadChal_bp1   0.148
+18 leadChal_bp2 ~~ leadChal_bp2   0.282
+19 leadChal_bp3 ~~ leadChal_bp3   0.114
+20      dis_avd ~~      dis_avd   0.630
+21      dis_int ~~      dis_int   0.357
+22         ffmq ~~         ffmq   1.000
+23     leadChal ~~     leadChal   0.767
+24          dis ~~          dis   1.000
+25         ffmq ~~          dis  -0.348
+26 ffmq_dis_int ~~ ffmq_dis_int   1.000
+27      ffmq_de ~1                2.444
+28      ffmq_aa ~1                3.012
+29      ffmq_nj ~1                2.503
+30      ffmq_nr ~1                3.687
+31 leadChal_bp1 ~1                5.810
+32 leadChal_bp2 ~1                6.891
+33 leadChal_bp3 ~1                6.071
+34      dis_avd ~1                2.569
+35      dis_int ~1                2.277
+36 ffmq_dis_int ~1               -0.231
+37         ffmq ~1                0.000
+38     leadChal ~1                0.000
+39          dis ~1                0.000

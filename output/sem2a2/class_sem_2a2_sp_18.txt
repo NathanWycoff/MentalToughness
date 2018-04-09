@@ -1,0 +1,75 @@
+lavaan (0.5-23.1097) converged normally after  80 iterations
+
+  Number of observations                           179
+
+  Estimator                                         ML
+  Minimum Function Test Statistic              209.112
+  Degrees of freedom                                85
+  P-value (Chi-square)                           0.000
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  ffmq =~                                             
+    ffmq_de           1.000                           
+    ffmq_aa           2.730    1.495    1.826    0.068
+    ffmq_nj           2.950    1.618    1.823    0.068
+    ffmq_nr           0.813    0.642    1.267    0.205
+  leadChal =~                                         
+    leadChal_bp1      1.000                           
+    leadChal_bp2      1.212    0.099   12.277    0.000
+    leadChal_bp3      1.205    0.099   12.184    0.000
+  dis =~                                              
+    dis_avd           1.000                           
+    dis_int           1.290    0.292    4.422    0.000
+  mt =~                                               
+    mt_bp1            1.000                           
+    mt_bp2            1.047    0.116    9.028    0.000
+    mt_bp3            1.013    0.112    9.024    0.000
+  lnr =~                                              
+    lnr_bp1           1.000                           
+    lnr_bp2           1.013    0.078   12.992    0.000
+    lnr_bp3           0.942    0.072   13.016    0.000
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  lnr ~                                               
+    ffmq              2.066    1.273    1.623    0.105
+    dis              -0.179    0.196   -0.911    0.362
+  mt ~                                                
+    lnr               0.319    0.068    4.691    0.000
+  leadChal ~                                          
+    mt                0.702    0.121    5.809    0.000
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  ffmq ~~                                             
+    dis              -0.040    0.023   -1.705    0.088
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .ffmq_de           0.670    0.072    9.281    0.000
+   .ffmq_aa           0.301    0.048    6.219    0.000
+   .ffmq_nj           0.384    0.059    6.519    0.000
+   .ffmq_nr           0.562    0.060    9.320    0.000
+   .leadChal_bp1      0.235    0.030    7.755    0.000
+   .leadChal_bp2      0.140    0.028    4.942    0.000
+   .leadChal_bp3      0.156    0.029    5.358    0.000
+   .dis_avd           0.301    0.056    5.398    0.000
+   .dis_int           0.289    0.082    3.511    0.000
+   .mt_bp1            0.259    0.032    8.018    0.000
+   .mt_bp2            0.109    0.020    5.436    0.000
+   .mt_bp3            0.103    0.019    5.462    0.000
+   .lnr_bp1           0.202    0.028    7.245    0.000
+   .lnr_bp2           0.125    0.022    5.664    0.000
+   .lnr_bp3           0.106    0.019    5.601    0.000
+    ffmq              0.022    0.023    0.950    0.342
+   .leadChal          0.245    0.044    5.586    0.000
+    dis               0.216    0.064    3.381    0.001
+   .mt                0.180    0.038    4.693    0.000
+   .lnr               0.258    0.050    5.138    0.000
+

@@ -1,0 +1,69 @@
+blavaan (0.3-1) results of 10000 samples after 5000 adapt/burnin iterations
+
+  Number of observations                           150
+
+  Number of missing patterns                         1
+
+  Statistic                                 MargLogLik         PPP
+  Value                                      -1688.961       0.223
+
+Parameter Estimates:
+
+
+Latent Variables:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  ffmq =~                                                                    
+    ffmq_de           1.000                                                  
+    ffmq_aa           0.422    0.273   -0.056    0.997    1.001 dnorm(0,1e-2)
+    ffmq_nj           0.246    0.344   -0.389    0.949    1.000 dnorm(0,1e-2)
+    ffmq_nr           0.751    0.278    0.261    1.334    1.004 dnorm(0,1e-2)
+  leadChal =~                                                                
+    leadChal_bp1      1.000                                                  
+    leadChal_bp2      1.168    0.069    1.034    1.306    1.001 dnorm(0,1e-2)
+    leadChal_bp3      0.960    0.058    0.849    1.077    1.001 dnorm(0,1e-2)
+  dis =~                                                                     
+    dis_avd           1.000                                                  
+    dis_int           1.565    0.612    0.549    2.816    1.022 dnorm(0,1e-2)
+
+Regressions:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  leadChal ~                                                                 
+    dis              -0.439    0.179   -0.807   -0.117    1.002 dnorm(0,1e-2)
+    ffmq_dis_int     -0.960    0.783   -2.488    0.586    1.000 dnorm(0,1e-2)
+    ffmq              0.618    0.346   -0.025    1.331    1.001 dnorm(0,1e-2)
+
+Covariances:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+  ffmq ~~                                                                    
+    dis              -0.067    0.053   -0.182    0.026    1.009 dwish(iden,3)
+
+Intercepts:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .ffmq_de           2.323    0.067    2.192    2.454    1.000 dnorm(0,1e-3)
+   .ffmq_aa           2.194    0.053    2.088    2.295    1.000 dnorm(0,1e-3)
+   .ffmq_nj           2.296    0.070    2.159    2.433    1.000 dnorm(0,1e-3)
+   .ffmq_nr           2.413    0.053     2.31    2.519    1.000 dnorm(0,1e-3)
+   .leadChal_bp1      5.541    0.072    5.403    5.682    1.002 dnorm(0,1e-3)
+   .leadChal_bp2      5.388    0.083    5.219    5.547    1.001 dnorm(0,1e-3)
+   .leadChal_bp3      5.453    0.069    5.321    5.593    1.002 dnorm(0,1e-3)
+   .dis_avd           3.771    0.107    3.561    3.981    1.000 dnorm(0,1e-3)
+   .dis_int           3.606    0.120    3.369    3.838    1.000 dnorm(0,1e-3)
+    ffmq              0.000                                                  
+   .leadChal          0.000                                                  
+    dis               0.000                                                  
+
+Variances:
+                   Estimate  Post.SD  HPD.025  HPD.975     PSRF    Prior     
+   .ffmq_de           0.504    0.093    0.314    0.691    1.007  dgamma(1,.5)
+   .ffmq_aa           0.388    0.053    0.287    0.494    1.000  dgamma(1,.5)
+   .ffmq_nj           0.703    0.086    0.543    0.876    1.000  dgamma(1,.5)
+   .ffmq_nr           0.330    0.062    0.203    0.451    1.002  dgamma(1,.5)
+   .leadChal_bp1      0.128    0.023    0.086    0.175    1.001  dgamma(1,.5)
+   .leadChal_bp2      0.186    0.033    0.124    0.254    1.000  dgamma(1,.5)
+   .leadChal_bp3      0.141    0.024    0.096    0.188    1.000  dgamma(1,.5)
+   .dis_avd           1.197    0.243    0.706    1.673    1.010  dgamma(1,.5)
+   .dis_int           1.089    0.412    0.183    1.733    1.014  dgamma(1,.5)
+    ffmq              0.179    0.076    0.061    0.333    1.007 dwish(iden,3)
+   .leadChal          0.422    0.084    0.264    0.591    1.008  dgamma(1,.5)
+    dis               0.516    0.236    0.129    0.981    1.019 dwish(iden,3)
+

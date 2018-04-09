@@ -30,8 +30,8 @@ model_noint <- '  #Measurement Model:
     dis ~~ ffmq
     dis ~~ mt
     ffmq ~~ mt
-    ffmq ~~ lnr
-    mt ~~ lnr
+    #ffmq ~~ lnr
+    #mt ~~ lnr
     '
 
 model_int <- '  #Measurement Model:
@@ -49,8 +49,8 @@ model_int <- '  #Measurement Model:
     dis ~~ ffmq
     dis ~~ mt
     ffmq ~~ mt
-    ffmq ~~ lnr
-    mt ~~ lnr
+    #ffmq ~~ lnr
+    #mt ~~ lnr
     '
 
 ### Estimate the latent interaction using the product of the expectations
@@ -87,14 +87,42 @@ df_class <- df
 df_class$lnr_mt_int <- lnr_mt_int
 df_class$lnr_ffmq_int <- lnr_ffmq_int
 
+## First for the bayesical output
+#Get the expected value of the latent factors
+ffmq_coefs <- standardizedSolution(fit_bayes)[1:4,4]
+ffmq_coefs <- ffmq_coefs / sum(ffmq_coefs)
+ffmq_mean <- rowMeans(as.matrix(df[,c('ffmq_de', 'ffmq_aa', 'ffmq_nj', 'ffmq_nr')]) %*% 
+                diag(ffmq_coefs))
+mt_coefs <- standardizedSolution(fit_bayes)[10:12,4]
+mt_coefs <- mt_coefs / sum(mt_coefs)
+mt_mean <- rowMeans(as.matrix(df[,c('mt_bp1', 'mt_bp2','mt_bp3')]) %*% 
+                diag(mt_coefs))
+lnr_coefs <- standardizedSolution(fit_bayes)[13:15,4]
+lnr_coefs <- lnr_coefs / sum(lnr_coefs)
+lnr_mean <- rowMeans(as.matrix(df[,c('lnr_bp1', 'lnr_bp2','lnr_bp3')]) %*% 
+                diag(lnr_coefs))
+
+#Center the latent variables
+ffmq_mean <- ffmq_mean - mean(ffmq_mean)
+mt_mean <- mt_mean - mean(mt_mean)
+lnr_mean <- lnr_mean - mean(lnr_mean)
+
+#Get a guess of some interactions
+lnr_mt_int <- lnr_mean * mt_mean
+lnr_ffmq_int <- lnr_mean * ffmq_mean
+
+df_bayes <- df
+df_bayes$lnr_mt_int <- lnr_mt_int
+df_bayes$lnr_ffmq_int <- lnr_ffmq_int
+
 ## Fit the complete model
 fit <- sem(model_int, data = df_class)
 capture.output(summary(fit),
-               file = paste('./output/class_sem_', time, '.txt', sep = ''))
+               file = paste('./output/sem2/class_sem_2_', time, '.txt', sep = ''))
 capture.output(standardizedSolution(fit),
-               file = paste('./output/std_class_sem_', time, '.txt', sep = ''))
+               file = paste('./output/sem2/std_class_sem_2_', time, '.txt', sep = ''))
 fit <- bsem(model_int, data = df_bayes)
 capture.output(standardizedSolution(fit),
-               file = paste('./output/std_bayes_sem_', time, '.txt', sep = ''))
+               file = paste('./output/sem2/std_bayes_sem_2_', time, '.txt', sep = ''))
 capture.output(summary(fit),
-               file = paste('./output/bayes_sem_', time, '.txt', sep = ''))
+               file = paste('./output/sem2/bayes_sem_2_', time, '.txt', sep = ''))

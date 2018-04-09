@@ -1,0 +1,56 @@
+lavaan (0.5-23.1097) converged normally after  56 iterations
+
+  Number of observations                           150
+
+  Estimator                                         ML
+  Minimum Function Test Statistic               45.504
+  Degrees of freedom                                32
+  P-value (Chi-square)                           0.057
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  ffmq =~                                             
+    ffmq_de           1.000                           
+    ffmq_aa           0.337    0.192    1.756    0.079
+    ffmq_nj           0.146    0.222    0.660    0.509
+    ffmq_nr           0.727    0.310    2.343    0.019
+  leadChal =~                                         
+    leadChal_bp1      1.000                           
+    leadChal_bp2      1.161    0.067   17.347    0.000
+    leadChal_bp3      0.955    0.056   17.055    0.000
+  dis =~                                              
+    dis_avd           1.000                           
+    dis_int           1.047    0.320    3.274    0.001
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  leadChal ~                                          
+    dis              -0.369    0.130   -2.842    0.004
+    ffmq_dis_int     -1.010    0.759   -1.330    0.184
+    ffmq              0.485    0.266    1.827    0.068
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  ffmq ~~                                             
+    dis              -0.104    0.066   -1.570    0.116
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .ffmq_de           0.463    0.101    4.585    0.000
+   .ffmq_aa           0.385    0.047    8.151    0.000
+   .ffmq_nj           0.700    0.081    8.608    0.000
+   .ffmq_nr           0.307    0.058    5.306    0.000
+   .leadChal_bp1      0.113    0.022    5.123    0.000
+   .leadChal_bp2      0.177    0.032    5.603    0.000
+   .leadChal_bp3      0.131    0.022    5.885    0.000
+   .dis_avd           1.010    0.243    4.156    0.000
+   .dis_int           1.330    0.280    4.758    0.000
+    ffmq              0.197    0.101    1.945    0.052
+   .leadChal          0.414    0.074    5.626    0.000
+    dis               0.716    0.268    2.678    0.007
+
