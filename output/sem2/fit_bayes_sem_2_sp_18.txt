@@ -1,0 +1,4 @@
+      npar       logl        ppp        bic        dic      p_dic       waic 
+    54.000  -2439.073      0.000   5157.963   4975.306     48.580   4990.158 
+    p_waic      looic      p_loo margloglik 
+    61.224   4990.755     61.523  -2731.545 

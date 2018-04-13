@@ -1,0 +1,22 @@
+               npar                fmin               chisq                  df 
+             35.000               0.584             209.112              85.000 
+             pvalue      baseline.chisq         baseline.df     baseline.pvalue 
+              0.000            1219.850             105.000               0.000 
+                cfi                 tli                nnfi                 rfi 
+              0.889               0.862               0.862               0.788 
+                nfi                pnfi                 ifi                 rni 
+              0.829               0.671               0.891               0.889 
+               logl   unrestricted.logl                 aic                 bic 
+          -2447.910           -2343.354            4965.820            5077.379 
+             ntotal                bic2               rmsea      rmsea.ci.lower 
+            179.000            4966.536               0.090               0.075 
+     rmsea.ci.upper        rmsea.pvalue                 rmr          rmr_nomean 
+              0.106               0.000               0.066               0.066 
+               srmr        srmr_bentler srmr_bentler_nomean         srmr_bollen 
+              0.122               0.122               0.122               0.122 
+ srmr_bollen_nomean          srmr_mplus   srmr_mplus_nomean               cn_05 
+              0.122               0.122               0.122              93.039 
+              cn_01                 gfi                agfi                pgfi 
+            102.210               0.872               0.819               0.618 
+                mfi                ecvi 
+              0.707               1.559 

@@ -330,3 +330,175 @@ Warning messages:
   blavaan WARNING: Small effective sample sizes (< 100) for some parameters.
 2: In blavaan(model_int, data = df_bayes, model.type = "bsem", n.chains = 3,  :
   blavaan WARNING: Small effective sample sizes (< 100) for some parameters.
+Loading required package: lavaan
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Loading required namespace: rjags
+Compiling rjags model...
+Calling the simulation using the rjags method...
+Adapting the model for 1000 iterations...
+Loading required package: lavaan
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Error in captue.output(fitMeasures(fit), file = paste("./output/sem2a1/fit_class_sem_2a1_",  : 
+  could not find function "captue.output"
+Execution halted
+Loading required package: lavaan
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Error in captue.output(fitMeasures(fit), file = paste("./output/sem2a2/fit_class_sem_2a2_",  : 
+  could not find function "captue.output"
+Execution halted
+Burning in the model for 4000 iterations...
+Running the model for 10000 iterations...
+Simulation complete
+Calculating summary statistics...
+Note: The monitored variables 'lambda[1,1,1]', 'lambda[5,2,1]',
+'lambda[8,3,1]', 'lambda[10,4,1]', 'lambda[13,5,1]', 'alpha[1,1,1]',
+'alpha[2,1,1]', 'alpha[3,1,1]', 'alpha[4,1,1]' and 'alpha[5,1,1]'
+appear to be non-stochastic; they will not be included in the
+convergence diagnostic
+Calculating the Gelman-Rubin statistic for 62 variables....
+Finished running the simulation
+Computing posterior predictives...
+Error in captue.output(fitMeasures(fit), file = paste("./output/sem2/fit_class_sem_2_",  : 
+  could not find function "captue.output"
+Execution halted
+Loading required package: lavaan
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Error in fitMeasures(fit) : object 'fit' not found
+Calls: capture.output ... evalVis -> withVisible -> eval -> eval -> fitMeasures
+Execution halted
+Loading required package: lavaan
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Error in fitMeasures(fit) : object 'fit' not found
+Calls: capture.output ... evalVis -> withVisible -> eval -> eval -> fitMeasures
+Execution halted
+Loading required package: lavaan
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Loading required package: lavaan
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Loading required namespace: rjags
+Loading required package: lavaan
+Compiling rjags model...
+This is lavaan 0.5-23.1097
+lavaan is BETA software! Please report any bugs.
+Loading required package: blavaan
+Loading required package: methods
+Loading required package: runjags
+This is blavaan 0.3-1
+blavaan is more BETA than lavaan!
+Calling the simulation using the rjags method...
+Adapting the model for 1000 iterations...
+Loading required namespace: rjags
+Compiling rjags model...
+Calling the simulation using the rjags method...
+Adapting the model for 1000 iterations...
+Loading required namespace: rjags
+Compiling rjags model...
+Calling the simulation using the rjags method...
+Adapting the model for 1000 iterations...
+Burning in the model for 4000 iterations...
+Burning in the model for 4000 iterations...
+Burning in the model for 4000 iterations...
+Running the model for 10000 iterations...
+Running the model for 10000 iterations...
+Running the model for 10000 iterations...
+Simulation complete
+Calculating summary statistics...
+Note: The monitored variables 'lambda[1,1,1]', 'lambda[5,2,1]',
+'lambda[8,3,1]', 'lambda[10,4,1]', 'lambda[13,5,1]', 'alpha[1,1,1]',
+'alpha[2,1,1]', 'alpha[3,1,1]', 'alpha[4,1,1]' and 'alpha[5,1,1]'
+appear to be non-stochastic; they will not be included in the
+convergence diagnostic
+Calculating the Gelman-Rubin statistic for 60 variables....
+Finished running the simulation
+Computing posterior predictives...
+Simulation complete
+Calculating summary statistics...
+Note: The monitored variables 'lambda[1,1,1]', 'lambda[5,2,1]',
+'lambda[8,3,1]', 'lambda[10,4,1]', 'lambda[13,5,1]', 'alpha[1,1,1]',
+'alpha[2,1,1]', 'alpha[3,1,1]', 'alpha[4,1,1]' and 'alpha[5,1,1]'
+appear to be non-stochastic; they will not be included in the
+convergence diagnostic
+Calculating the Gelman-Rubin statistic for 62 variables....
+Note: Unable to calculate the multivariate psrf
+Simulation complete
+Calculating summary statistics...
+Finished running the simulation
+Computing posterior predictives...
+Note: The monitored variables 'lambda[1,1,1]', 'lambda[5,2,1]',
+'lambda[8,3,1]', 'lambda[10,4,1]', 'lambda[13,5,1]', 'alpha[1,1,1]',
+'alpha[2,1,1]', 'alpha[3,1,1]', 'alpha[4,1,1]' and 'alpha[5,1,1]'
+appear to be non-stochastic; they will not be included in the
+convergence diagnostic
+Calculating the Gelman-Rubin statistic for 62 variables....
+Warning messages:
+1: 41 (22.9%) p_waic estimates greater than 0.4.
+We recommend trying loo() instead. 
+2: Some Pareto k diagnostic values are slightly high. See help('pareto-k-diagnostic') for details. 
+Finished running the simulation
+Computing posterior predictives...
+Warning messages:
+1: 44 (24.6%) p_waic estimates greater than 0.4.
+We recommend trying loo() instead. 
+2: Some Pareto k diagnostic values are slightly high. See help('pareto-k-diagnostic') for details. 
+Compiling rjags model...
+Calling the simulation using the rjags method...
+Adapting the model for 1000 iterations...
+Burning in the model for 4000 iterations...
+Running the model for 10000 iterations...
+Simulation complete
+Calculating summary statistics...
+Note: The monitored variables 'lambda[1,1,1]', 'lambda[5,2,1]',
+'lambda[8,3,1]', 'lambda[10,4,1]', 'lambda[13,5,1]', 'psi[6,6,1]',
+'psi[7,7,1]', 'alpha[6,1,1]', 'alpha[7,1,1]', 'alpha[1,1,1]',
+'alpha[2,1,1]', 'alpha[3,1,1]', 'alpha[4,1,1]' and 'alpha[5,1,1]'
+appear to be non-stochastic; they will not be included in the
+convergence diagnostic
+Calculating the Gelman-Rubin statistic for 68 variables....
+Finished running the simulation
+Computing posterior predictives...
+Warning messages:
+1: 44 (24.6%) p_waic estimates greater than 0.4.
+We recommend trying loo() instead. 
+2: Some Pareto k diagnostic values are slightly high. See help('pareto-k-diagnostic') for details. 

@@ -33,8 +33,12 @@ capture.output(summary(fit_class),
                file = paste('./output/sem2a1/class_sem_2a1_', time, '.txt', sep = ''))
 capture.output(standardizedSolution(fit_class),
                file = paste('./output/sem2a1/std_class_sem_2a1_', time, '.txt', sep = ''))
+capture.output(fitMeasures(fit_class),
+              file = paste('./output/sem2a1/fit_class_sem_2a1_', time, '.txt', sep = ''))
 fit_bayes <- bsem(model, data = df)
 capture.output(summary(fit_bayes),
                file = paste('./output/sem2a1/bayes_sem_2a1_', time, '.txt', sep = ''))
 capture.output(standardizedSolution(fit_bayes),
                file = paste('./output/sem2a1/std_bayes_sem_2a1_', time, '.txt', sep = ''))
+capture.output(fitMeasures(fit_bayes),
+              file = paste('./output/sem2a1/fit_bayes_sem_2a1_', time, '.txt', sep = ''))
