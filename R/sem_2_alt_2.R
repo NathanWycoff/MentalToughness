@@ -26,9 +26,13 @@ model <- '  #Measurement Model:
     lnr ~ ffmq + dis
     mt ~ lnr
     leadChal ~ mt
+
+    #Correlations
+    ffmq ~~ dis
+    #ffmq ~~ mt
+    dis ~~ mt
     '
 
-#Fit the SEM
 #Fit the SEM
 fit_class <- sem(model, data = df)
 capture.output(summary(fit_class),

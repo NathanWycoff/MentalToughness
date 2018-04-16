@@ -1,61 +1,61 @@
             lhs op          rhs est.std
 1          ffmq =~      ffmq_de   0.515
-2          ffmq =~      ffmq_aa   0.178
-3          ffmq =~      ffmq_nj   0.292
-4          ffmq =~      ffmq_nr   0.525
+2          ffmq =~      ffmq_aa   0.166
+3          ffmq =~      ffmq_nj   0.281
+4          ffmq =~      ffmq_nr   0.532
 5      leadChal =~ leadChal_bp1   0.777
-6      leadChal =~ leadChal_bp2   0.874
+6      leadChal =~ leadChal_bp2   0.875
 7      leadChal =~ leadChal_bp3   0.880
-8           dis =~      dis_avd   0.611
-9           dis =~      dis_int   0.793
-10           mt =~       mt_bp1   0.709
-11           mt =~       mt_bp2   0.831
-12           mt =~       mt_bp3   0.804
-13          lnr =~      lnr_bp1   0.824
+8           dis =~      dis_avd   0.613
+9           dis =~      dis_int   0.792
+10           mt =~       mt_bp1   0.705
+11           mt =~       mt_bp2   0.832
+12           mt =~       mt_bp3   0.805
+13          lnr =~      lnr_bp1   0.825
 14          lnr =~      lnr_bp2   0.857
-15          lnr =~      lnr_bp3   0.863
-16          lnr  ~         ffmq   0.172
-17          lnr  ~          dis  -0.275
-18          lnr  ~           mt   0.195
+15          lnr =~      lnr_bp3   0.862
+16          lnr  ~         ffmq   0.171
+17          lnr  ~          dis  -0.278
+18          lnr  ~           mt   0.192
 19     leadChal  ~          lnr   0.516
-20      ffmq_de ~~      ffmq_de   0.735
-21      ffmq_aa ~~      ffmq_aa   0.968
-22      ffmq_nj ~~      ffmq_nj   0.915
-23      ffmq_nr ~~      ffmq_nr   0.724
-24 leadChal_bp1 ~~ leadChal_bp1   0.396
-25 leadChal_bp2 ~~ leadChal_bp2   0.236
-26 leadChal_bp3 ~~ leadChal_bp3   0.225
-27      dis_avd ~~      dis_avd   0.627
-28      dis_int ~~      dis_int   0.371
-29       mt_bp1 ~~       mt_bp1   0.497
-30       mt_bp2 ~~       mt_bp2   0.309
-31       mt_bp3 ~~       mt_bp3   0.354
-32      lnr_bp1 ~~      lnr_bp1   0.321
-33      lnr_bp2 ~~      lnr_bp2   0.266
-34      lnr_bp3 ~~      lnr_bp3   0.255
-35         ffmq ~~         ffmq   1.000
-36     leadChal ~~     leadChal   0.734
-37          dis ~~          dis   1.000
-38           mt ~~           mt   1.000
-39          lnr ~~          lnr   0.740
-40         ffmq ~~          dis  -0.309
-41         ffmq ~~           mt   0.675
-42          dis ~~           mt  -0.390
-43      ffmq_de ~1                3.512
-44      ffmq_aa ~1                3.386
-45      ffmq_nj ~1                3.366
-46      ffmq_nr ~1                4.479
-47 leadChal_bp1 ~1                7.125
-48 leadChal_bp2 ~1                6.578
-49 leadChal_bp3 ~1                6.295
-50      dis_avd ~1                6.840
-51      dis_int ~1                4.827
-52       mt_bp1 ~1                5.685
-53       mt_bp2 ~1                6.642
-54       mt_bp3 ~1                6.554
-55      lnr_bp1 ~1                3.856
-56      lnr_bp2 ~1                4.129
-57      lnr_bp3 ~1                4.497
+20         ffmq ~~          dis  -0.304
+21         ffmq ~~           mt   0.679
+22          dis ~~           mt  -0.390
+23      ffmq_de ~~      ffmq_de   0.734
+24      ffmq_aa ~~      ffmq_aa   0.972
+25      ffmq_nj ~~      ffmq_nj   0.921
+26      ffmq_nr ~~      ffmq_nr   0.717
+27 leadChal_bp1 ~~ leadChal_bp1   0.396
+28 leadChal_bp2 ~~ leadChal_bp2   0.235
+29 leadChal_bp3 ~~ leadChal_bp3   0.226
+30      dis_avd ~~      dis_avd   0.624
+31      dis_int ~~      dis_int   0.373
+32       mt_bp1 ~~       mt_bp1   0.503
+33       mt_bp2 ~~       mt_bp2   0.308
+34       mt_bp3 ~~       mt_bp3   0.352
+35      lnr_bp1 ~~      lnr_bp1   0.319
+36      lnr_bp2 ~~      lnr_bp2   0.266
+37      lnr_bp3 ~~      lnr_bp3   0.256
+38         ffmq ~~         ffmq   1.000
+39     leadChal ~~     leadChal   0.733
+40          dis ~~          dis   1.000
+41           mt ~~           mt   1.000
+42          lnr ~~          lnr   0.741
+43      ffmq_de ~1                3.515
+44      ffmq_aa ~1                3.387
+45      ffmq_nj ~1                3.368
+46      ffmq_nr ~1                4.473
+47 leadChal_bp1 ~1                7.116
+48 leadChal_bp2 ~1                6.574
+49 leadChal_bp3 ~1                6.290
+50      dis_avd ~1                6.835
+51      dis_int ~1                4.826
+52       mt_bp1 ~1                5.699
+53       mt_bp2 ~1                6.640
+54       mt_bp3 ~1                6.552
+55      lnr_bp1 ~1                3.853
+56      lnr_bp2 ~1                4.124
+57      lnr_bp3 ~1                4.493
 58         ffmq ~1                0.000
 59     leadChal ~1                0.000
 60          dis ~1                0.000

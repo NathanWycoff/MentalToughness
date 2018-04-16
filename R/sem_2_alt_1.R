@@ -25,6 +25,11 @@ model <- '  #Measurement Model:
     #Latent Structure
     lnr ~ lambda*ffmq + dis + lambda*mt
     leadChal ~ lnr
+
+    #Correlations
+    ffmq ~~ dis
+    ffmq ~~ mt
+    dis ~~ mt
     '
 
 #Fit the SEM
