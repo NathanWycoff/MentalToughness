@@ -20,7 +20,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     capture.output(print(cor.shrink(ind[,cor_cols])),
-                   file = paste('./output/corr_1_', time, '.txt', sep = ''))
+                   file = paste('./output/corr/corr_1_', time, '.txt', sep = ''))
 
     ## A second correlation matrix
     #Specify the columns the correlations of which are to be analyzed
@@ -33,5 +33,5 @@ for (file in files) {
 
     #Estimate a correlation matrix
     capture.output(print(cor.shrink(ind[,cor_cols])),
-                   file = paste('./output/corr_1_', time, '.txt', sep = ''))
+                   file = paste('./output/corr/corr_2_', time, '.txt', sep = ''))
 }

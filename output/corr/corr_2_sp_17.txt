@@ -1,0 +1,13 @@
+Estimating optimal shrinkage intensity lambda (correlation matrix): 0.1074 
+
+                dis       ffmq   leadChal         uh
+dis       1.0000000 -0.1681175 -0.2901759 -0.2796416
+ffmq     -0.1681175  1.0000000  0.2599151  0.1721809
+leadChal -0.2901759  0.2599151  1.0000000  0.1960425
+uh       -0.2796416  0.1721809  0.1960425  1.0000000
+attr(,"lambda")
+[1] 0.1074039
+attr(,"lambda.estimated")
+[1] TRUE
+attr(,"class")
+[1] "shrinkage"
