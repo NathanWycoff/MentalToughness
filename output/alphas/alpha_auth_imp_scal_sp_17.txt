@@ -9,11 +9,11 @@ Call: alpha(x = get(scale), check.keys = TRUE)
 0.67 0.74 0.81 
 
  Reliability if an item is dropped:
-        raw_alpha std.alpha G6(smc) average_r S/N alpha se
-auth_2       0.63      0.64    0.58      0.37 1.8    0.053
-auth_5       0.70      0.70    0.63      0.44 2.4    0.043
-auth_9       0.77      0.77    0.70      0.53 3.4    0.033
-auth_13      0.60      0.62    0.56      0.35 1.6    0.058
+        raw_alpha std.alpha G6(smc) average_r S/N alpha se     NA
+auth_2       0.63      0.64    0.58      0.37 1.8    0.053 0.0221
+auth_5       0.70      0.70    0.63      0.44 2.4    0.043 0.0116
+auth_9       0.77      0.77    0.70      0.53 3.4    0.033 0.0013
+auth_13      0.60      0.62    0.56      0.35 1.6    0.058 0.0282
 
  Item statistics 
           n raw.r std.r r.cor r.drop mean  sd

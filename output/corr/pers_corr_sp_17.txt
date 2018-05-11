@@ -1,0 +1,24 @@
+Estimating optimal shrinkage intensity lambda (correlation matrix): 0.1201 
+
+            bfi_agree   bfi_consc bfi_extrav   bfi_neur    bfi_open       ffmq
+bfi_agree   1.0000000  0.19928581  0.0158627 -0.3585133  0.25527260  0.1210963
+bfi_consc   0.1992858  1.00000000  0.1128734 -0.2027938  0.06061875  0.2346913
+bfi_extrav  0.0158627  0.11287341  1.0000000 -0.1374207  0.10878052  0.1701190
+bfi_neur   -0.3585133 -0.20279382 -0.1374207  1.0000000 -0.14161433 -0.3978013
+bfi_open    0.2552726  0.06061875  0.1087805 -0.1416143  1.00000000  0.2137496
+ffmq        0.1210963  0.23469132  0.1701190 -0.3978013  0.21374961  1.0000000
+leadChal    0.1283810  0.19865131  0.3100914 -0.2264337  0.27493485  0.2562222
+             leadChal
+bfi_agree   0.1283810
+bfi_consc   0.1986513
+bfi_extrav  0.3100914
+bfi_neur   -0.2264337
+bfi_open    0.2749349
+ffmq        0.2562222
+leadChal    1.0000000
+attr(,"lambda")
+[1] 0.1200857
+attr(,"lambda.estimated")
+[1] TRUE
+attr(,"class")
+[1] "shrinkage"

@@ -78,11 +78,11 @@ for (file in files) {
     ili_emb_scal <- dat[,grep('ili_(4|8|12)$', colnames(dat))]#Perseverance
 
     ## bfi subscales; these calcs use the recoded reversed items 
-    bfi_extrav <- dat %>% select(bfi_1, bfi_6, bfi_11, bfi_16, bfi_21, bfi_26, bfi_31, bfi_36)
-    bfi_agree <- dat %>% select(bfi_2, bfi_7, bfi_12, bfi_17, bfi_22, bfi_27, bfi_32, bfi_37, bfi_42)
-    bfi_consc <- dat %>% select(bfi_3, bfi_8, bfi_13, bfi_18, bfi_23, bfi_28, bfi_33, bfi_38, bfi_43)
-    bfi_neur <- dat %>% select(bfi_4, bfi_9, bfi_14, bfi_19, bfi_24, bfi_29, bfi_34, bfi_39)
-    bfi_open <- dat %>% select(bfi_5, bfi_10, bfi_15, bfi_20, bfi_25, bfi_30, bfi_35, bfi_40, bfi_41, bfi_44)
+    bfi_extrav_scal <- dat %>% select(bfi_1, bfi_6, bfi_11, bfi_16, bfi_21, bfi_26, bfi_31, bfi_36)
+    bfi_agree_scal <- dat %>% select(bfi_2, bfi_7, bfi_12, bfi_17, bfi_22, bfi_27, bfi_32, bfi_37, bfi_42)
+    bfi_consc_scal <- dat %>% select(bfi_3, bfi_8, bfi_13, bfi_18, bfi_23, bfi_28, bfi_33, bfi_38, bfi_43)
+    bfi_neur_scal <- dat %>% select(bfi_4, bfi_9, bfi_14, bfi_19, bfi_24, bfi_29, bfi_34, bfi_39)
+    bfi_open_scal <- dat %>% select(bfi_5, bfi_10, bfi_15, bfi_20, bfi_25, bfi_30, bfi_35, bfi_40, bfi_41, bfi_44)
 
     #Discomfort Intolerance Scale (DIS)
     dis_int_scal <- dat[,grep('dis_(1|2)$', colnames(dat))]#Intolerance
@@ -100,6 +100,7 @@ for (file in files) {
     dis_scal  <-  dat %>% select(dis_1, dis_2, dis_3, dis_4, dis_5, dis_6)
     leadChal_scal <- dat %>% select(starts_with("leadChal"))
     sc.hw_scal <- dat %>% select(starts_with("sc.hw"))#This also selects reversed items, so let's fix that:
+    brs_scal <- dat %>% select(starts_with("brs"))
 
     # Do the 18 scales if necessary
     if (length(grep('18', time)) > 0) {
@@ -125,7 +126,6 @@ for (file in files) {
         lnr_bp2_scal <- lnr_scal[,asgn==2]
         lnr_bp3_scal <- lnr_scal[,asgn==3]
     }
-    #brs_scal <- dat %>% select(starts_with("brs"))
 
     #See explanation document for differences in UH scale between semesters.  There was an error in survey for it in first semester.
 
