@@ -25,7 +25,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'lead_corr'
-    capture.output(print(cor.shrink(ind[,cor_cols])),
+    capture.output(print(cor(ind[,cor_cols])),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
     if (length(grep('18', time)) > 0) {
         tocomp <- list(match(c('lnr', 'leadChal'), cor_cols))
@@ -52,7 +52,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'disscal_corr'
-    capture.output(print(cor.shrink(ind[,cor_cols])),
+    capture.output(print(cor(ind[,cor_cols])),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
     bayes_fit <- bayes_cov(ind[,cor_cols])
     capture.output(print(cov2cor(bayes_fit$mean)),
@@ -75,7 +75,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'mt_corr'
-    capture.output(print(cor.shrink(ind[,cor_cols])),
+    capture.output(print(cor(ind[,cor_cols])),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
     bayes_fit <- bayes_cov(ind[,cor_cols])
     capture.output(print(cov2cor(bayes_fit$mean)),
@@ -94,7 +94,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'pers_corr'
-    capture.output(print(cor.shrink(ind[,cor_cols])),
+    capture.output(print(cor(ind[,cor_cols])),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
     bayes_fit <- bayes_cov(ind[,cor_cols])
     capture.output(print(cov2cor(bayes_fit$mean)),
@@ -118,7 +118,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'corr_2'
-    capture.output(print(cor.shrink(ind[,cor_cols])),
+    capture.output(print(cor(ind[,cor_cols])),
                    file = paste('./output/corr/', 'out_name', '_point', time, '.txt', sep = ''))
     bayes_fit <- bayes_cov(ind[,cor_cols])
     capture.output(print(cov2cor(bayes_fit$mean)),
