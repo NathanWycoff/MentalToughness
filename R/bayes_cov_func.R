@@ -14,6 +14,8 @@ bayes_cov <- function(X, tocomp = NULL) {
     P <- ncol(X)
     N <- nrow(X)
 
+    param_names <- colnames(X)
+
     ## Declare priors
     nu <- P + 1
     LAMBDA <- diag(P)
@@ -41,8 +43,14 @@ bayes_cov <- function(X, tocomp = NULL) {
 
     ret <- list()
     ret$mean <- matrix(summary(fit, pars = "SIGMA", probs = c(0.5))$summary[,'mean'], ncol = P)
+    colnames(ret$mean) <- param_names
+    rownames(ret$mean) <- param_names
     ret$lb <- matrix(summary(fit, pars = "SIGMA", probs = c(0.05))$summary[,'5%'], ncol = P)
+    colnames(ret$lb) <- param_names
+    rownames(ret$lb) <- param_names
     ret$ub <- matrix(summary(fit, pars = "SIGMA", probs = c(0.95))$summary[,'95%'], ncol = P)
+    colnames(ret$ub) <- param_names
+    rownames(ret$ub) <- param_names
     ret$conv <- summary(fit)$summary[,'Rhat']
 
     # Do pairwise comparisons if desired

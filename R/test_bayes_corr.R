@@ -13,6 +13,7 @@ P <- 4
 mu <- rnorm(P)
 SIGMA <- rWishart(1, P+1, diag(rep(0.1, 4)))[,,1]
 X <- rmvnorm(N, mu, SIGMA)
+colnames(X) <- paste("X", 1:P, sep = '¯\\_(ツ)_/¯')
 
 # Compare our est to the truth
 est <- bayes_cov(X)
