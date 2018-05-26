@@ -39,10 +39,10 @@ for (file in files) {
                    file = paste('./output/corr/', out_name, '_lb', time, '.txt', sep = ''))
     capture.output(print(cov2cor(bayes_fit$ub)),
                    file = paste('./output/corr/', out_name, '_ub', time, '.txt', sep = ''))
-    capture.output(print(cov2cor(bayes_fit$conv)),
+    capture.output(print(bayes_fit$conv),
                    file = paste('./output/corr/', out_name, '_conv', time, '.txt', sep = ''))
     if (length(grep('18', time)) > 0) {
-    capture.output(print(cov2cor(bayes_fit$probmax)),
+    capture.output(print(bayes_fit$probmax),
                    file = paste('./output/corr/', out_name, '_probmax', time, '.txt', sep = ''))
     }
 
@@ -54,6 +54,15 @@ for (file in files) {
     out_name <- 'disscal_corr'
     capture.output(print(cor.shrink(ind[,cor_cols])),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
+    bayes_fit <- bayes_cov(ind[,cor_cols])
+    capture.output(print(cov2cor(bayes_fit$mean)),
+                   file = paste('./output/corr/', out_name, '_mean', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$lb)),
+                   file = paste('./output/corr/', out_name, '_lb', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$ub)),
+                   file = paste('./output/corr/', out_name, '_ub', time, '.txt', sep = ''))
+    capture.output(print(bayes_fit$conv),
+                   file = paste('./output/corr/', out_name, '_conv', time, '.txt', sep = ''))
 
 
     ## Correlation matrix for mental toughness scales
@@ -68,6 +77,15 @@ for (file in files) {
     out_name <- 'mt_corr'
     capture.output(print(cor.shrink(ind[,cor_cols])),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
+    bayes_fit <- bayes_cov(ind[,cor_cols])
+    capture.output(print(cov2cor(bayes_fit$mean)),
+                   file = paste('./output/corr/', out_name, '_mean', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$lb)),
+                   file = paste('./output/corr/', out_name, '_lb', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$ub)),
+                   file = paste('./output/corr/', out_name, '_ub', time, '.txt', sep = ''))
+    capture.output(print(bayes_fit$conv),
+                   file = paste('./output/corr/', out_name, '_conv', time, '.txt', sep = ''))
 
 
     ## Correlation matrix for personality
@@ -78,6 +96,15 @@ for (file in files) {
     out_name <- 'pers_corr'
     capture.output(print(cor.shrink(ind[,cor_cols])),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
+    bayes_fit <- bayes_cov(ind[,cor_cols])
+    capture.output(print(cov2cor(bayes_fit$mean)),
+                   file = paste('./output/corr/', out_name, '_mean', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$lb)),
+                   file = paste('./output/corr/', out_name, '_lb', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$ub)),
+                   file = paste('./output/corr/', out_name, '_ub', time, '.txt', sep = ''))
+    capture.output(print(bayes_fit$conv),
+                   file = paste('./output/corr/', out_name, '_conv', time, '.txt', sep = ''))
 
 
     ## A second correlation matrix
@@ -92,5 +119,14 @@ for (file in files) {
     #Estimate a correlation matrix
     out_name <- 'corr_2'
     capture.output(print(cor.shrink(ind[,cor_cols])),
-                   file = paste('./output/corr/, 'out_name, '_point', time, '.txt', sep = ''))
+                   file = paste('./output/corr/', 'out_name', '_point', time, '.txt', sep = ''))
+    bayes_fit <- bayes_cov(ind[,cor_cols])
+    capture.output(print(cov2cor(bayes_fit$mean)),
+                   file = paste('./output/corr/', out_name, '_mean', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$lb)),
+                   file = paste('./output/corr/', out_name, '_lb', time, '.txt', sep = ''))
+    capture.output(print(cov2cor(bayes_fit$ub)),
+                   file = paste('./output/corr/', out_name, '_ub', time, '.txt', sep = ''))
+    capture.output(print(bayes_fit$conv),
+                   file = paste('./output/corr/', out_name, '_conv', time, '.txt', sep = ''))
 }
