@@ -1,12 +1,4 @@
-Estimating optimal shrinkage intensity lambda (correlation matrix): 0.0272 
-
           bfi_consc       grt  leadChal
-bfi_consc 1.0000000 0.6506809 0.3748563
-grt       0.6506809 1.0000000 0.3908052
-leadChal  0.3748563 0.3908052 1.0000000
-attr(,"lambda")
-[1] 0.02722048
-attr(,"lambda.estimated")
-[1] TRUE
-attr(,"class")
-[1] "shrinkage"
+bfi_consc 1.0000000 0.6688884 0.3853456
+grt       0.6688884 1.0000000 0.4017408
+leadChal  0.3853456 0.4017408 1.0000000
