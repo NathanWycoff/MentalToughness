@@ -18,9 +18,9 @@ for (file in files) {
     ## Correlation matrix for leadership scales.
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili$|lnr$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|lnr$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|leadChal$)', colnames(ind))]
     }
 
     #Estimate a correlation matrix
