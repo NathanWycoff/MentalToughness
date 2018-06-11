@@ -27,7 +27,7 @@ transformed parameters {
 }
 model {
     // -- Prior --
-    // Hierarchical Inverse Wishart as dicsussed in:
+    // Scaled Inverse Wishart as dicsussed in:
     // https://arxiv.org/pdf/1408.4050.pdf
     // On correlations
     Q ~ inv_wishart(nu, LAMBDA);

@@ -7,7 +7,7 @@ require(Matrix)
 
 ## Simulate some data
 set.seed(123)
-n <- 180 #Number of observations
+n <- 180000 #Number of observations
 ipf <- 3#Indicators per factor
 r <- 3#Number of Factors
 
@@ -51,8 +51,8 @@ Z1_coefs <- Z1_coefs  / sum(Z1_coefs)
 Z2_coefs <- c(1, coef(fit)[3:4])
 Z2_coefs <- Z2_coefs  / sum(Z2_coefs)
 
-Z1_hat <- rowMeans(X[,1:3] %*% diag(Z1_coefs))
-Z2_hat <- rowMeans(X[,4:6] %*% diag(Z2_coefs))
+Z1_hat <- rowMeans(X[,1:3] %*% diag(Z1_coefs)) + rnorm(n) / sqrt(ipf)
+Z2_hat <- rowMeans(X[,4:6] %*% diag(Z2_coefs)) + rnorm(n) / sqrt(ipf)
 
 Z1_hat <- Z1_hat - mean(Z1_hat)
 Z2_hat <- Z2_hat - mean(Z2_hat)
