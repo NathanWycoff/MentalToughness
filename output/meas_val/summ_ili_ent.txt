@@ -1,0 +1,20 @@
+
+Call:
+lm(formula = tdf)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5184 -0.5766  0.1128  0.6921  1.3689 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   1.56250    0.42107   3.711 0.000537 ***
+self_ili_ent  0.06863    0.18842   0.364 0.717296    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9213 on 48 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.002756,	Adjusted R-squared:  -0.01802 
+F-statistic: 0.1327 on 1 and 48 DF,  p-value: 0.7173
+

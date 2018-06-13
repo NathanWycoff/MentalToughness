@@ -1,0 +1,27 @@
+
+Reliability analysis   
+Call: psych::alpha(x = get(scale)[other_rows, ], check.keys = TRUE)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
+      0.81      0.81    0.75      0.59 4.3 0.013  2.5 0.87
+
+ lower alpha upper     95% confidence boundaries
+0.79 0.81 0.84 
+
+ Reliability if an item is dropped:
+        raw_alpha std.alpha G6(smc) average_r S/N alpha se      NA
+ffmq_4       0.81      0.81    0.68      0.68 4.3    0.015 0.0e+00
+ffmq_9       0.70      0.70    0.54      0.54 2.3    0.023 0.0e+00
+ffmq_14      0.70      0.70    0.54      0.54 2.3    0.023 1.2e-32
+
+ Item statistics 
+          n raw.r std.r r.cor r.drop mean  sd
+ffmq_4  445  0.81  0.81  0.64   0.59  2.3 1.0
+ffmq_9  445  0.87  0.87  0.78   0.70  2.6 1.1
+ffmq_14 445  0.87  0.87  0.78   0.70  2.6 1.0
+
+Non missing response frequency for each item
+           0    1    2    3    4 miss
+ffmq_4  0.05 0.16 0.39 0.30 0.11 0.32
+ffmq_9  0.03 0.11 0.27 0.36 0.23 0.32
+ffmq_14 0.03 0.11 0.30 0.36 0.20 0.32

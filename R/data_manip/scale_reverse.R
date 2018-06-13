@@ -6,7 +6,8 @@
 ## This script reverses such scales. After the data has been processed
 ## through this script, high readings on a scale always indicate high measurements.
 
-files <- c("./data/fl_17.csv", "./data/sp_17.csv", "./data/sp_18.csv")
+files <- c("./data/fl_16.csv", "./data/fl_17.csv", "./data/sp_17.csv", 
+           "./data/sp_18.csv")
 for (file in files) {
     dat <- read.csv(file)
     time <- strsplit(strsplit(file, '/')[[1]][3], '\\.')[[1]][1]
@@ -14,18 +15,19 @@ for (file in files) {
     ## Most reversed scales are labelled, this code block will take care of those.
     #Create Reversed Scales
     rev_col <- grep('R$', colnames(dat))
-    dat[,rev_col] <- apply(dat[,rev_col], 2, function(i) max(i) - i)
+    dat[,rev_col] <- apply(dat[,rev_col], 2, function(i) max(i, na.rm = TRUE) - i)
     #Change the column name to get rid of the R
     colnames(dat)[rev_col] <- gsub('R$', '', colnames(dat)[rev_col])
 
     ## Manually Correct some that are not labelled correctly
-    #Some dis cols have R but don't need it
-    dat$dis_2 <- 10-dat$dis_2
-    dat$dis_4 <- 10-dat$dis_4
+    if (!length(grep('16', time)) > 0) {
+        #Some dis cols have R but don't need it
+        dat$dis_2 <- 10-dat$dis_2
+        dat$dis_4 <- 10-dat$dis_4
 
-    #Some dis cols dont' have an R but do need it
-    dat$dis_3 <- 10-dat$dis_3
-    dat$dis_6 <- 10-dat$dis_6
+        #Some dis cols dont' have an R but do need it
+        dat$dis_3 <- 10-dat$dis_3
+        dat$dis_6 <- 10-dat$dis_6
 
     #Grit recoding; apparently I had NOT labeled the reversed items in this scale with an R
     #So I will replace the items entirely with the reverse-coded items.
@@ -33,6 +35,7 @@ for (file in files) {
     dat$grt_3 <- 6-dat$grt_3
     dat$grt_5 <- 6-dat$grt_5
     dat$grt_6 <- 6-dat$grt_6
+    }
 
     #Forgot to label with R for 2018 data
     if (length(grep('18', time)) > 0) {

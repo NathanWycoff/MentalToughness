@@ -8,7 +8,8 @@ library(dplyr)
 #Load the balanced parcelling function
 source('./R/bal_parc.R')
 
-files <- c("./data/reversed_data_fl_17.csv", "./data/reversed_data_sp_17.csv", "./data/reversed_data_sp_18.csv")
+files <- c("./data/reversed_data_fl_17.csv", 
+           "./data/reversed_data_sp_17.csv", "./data/reversed_data_sp_18.csv")
 for (file in files) {
     dat <- read.csv(file)
 
@@ -156,6 +157,7 @@ for (file in files) {
     rm(scale)
     rm(scales)
 
+    # For 2016 data, keep track of who the questions are about.
 
     #Save all the results in a convenient file
     write.csv(df, file = paste("./data/proc_met_", time, ".csv", sep = ''),
