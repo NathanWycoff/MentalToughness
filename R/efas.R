@@ -103,3 +103,40 @@ dev.off()
 fit <- factanal(lnrChal_cols, factors = 2, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_lnrChal_efa_sp18.txt')
+
+
+###################################### An EFA on LNR, UH, VMI-UH, DIS and sc-hw
+lnrother_cols <- sp18[,grep('(^lnr_|^uh_|^uh.vmi_|^dis_|^sc.hw_)', colnames(sp18))]
+
+png("./images/lnrother_scree.png")
+lnrother_anal <- paran(lnrother_cols, graph = TRUE)
+dev.off()
+
+#Fit a factor analysis with the appropriate number of cols
+fit <- factanal(lnrother_cols, factors = 5, rotation = 'promax')
+capture.output(print(fit),
+               file =  './output/efas/class_lnrother_efa_sp18.txt')
+
+###################################### An EFA on UH again.
+uh_cols <- sp18[,grep('^uh_', colnames(sp18))]
+
+png("./images/uh_scree.png")
+uh_anal <- paran(uh_cols, graph = TRUE)
+dev.off()
+
+#Fit a factor analysis with the appropriate number of cols
+fit <- factanal(uh_cols, factors = 2, rotation = 'promax')
+capture.output(print(fit),
+               file =  './output/efas/class_uh_efa_sp18.txt')
+
+###################################### An EFA on LeadChal
+leadChal_cols <- sp18[,grep('(^leadChal_)', colnames(sp18))]
+
+png("./images/lnr_scree.png")
+leadChal_anal <- paran(leadChal_cols, graph = TRUE)
+dev.off()
+
+#Fit a factor analysis with the appropriate number of cols
+fit <- factanal(leadChal_cols, factors = 1, rotation = 'promax')
+capture.output(print(fit),
+               file =  './output/efas/class_leadChal_efa_sp18.txt')
