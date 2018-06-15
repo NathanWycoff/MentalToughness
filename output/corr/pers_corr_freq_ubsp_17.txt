@@ -1,0 +1,16 @@
+            bfi_agree   bfi_consc bfi_extrav      bfi_neur  bfi_open      ffmq
+bfi_agree   1.0000000          NA         NA            NA        NA        NA
+bfi_consc   0.3731989  1.00000000         NA            NA        NA        NA
+bfi_extrav  0.1777755  0.28272696 1.00000000            NA        NA        NA
+bfi_neur   -0.2644473 -0.07290108 0.00419132  1.0000000000        NA        NA
+bfi_open    0.4303632  0.22665080 0.27837253 -0.0006975163 1.0000000        NA
+ffmq        0.2914561  0.40947898 0.34297065 -0.3146249168 0.3880744 1.0000000
+leadChal    0.2991680  0.37254462 0.48526570 -0.1012501768 0.4501755 0.4313232
+           leadChal
+bfi_agree        NA
+bfi_consc        NA
+bfi_extrav       NA
+bfi_neur         NA
+bfi_open         NA
+ffmq             NA
+leadChal          1
