@@ -10,7 +10,7 @@ require(random.polychor.pa)
 require(psych)
 
 #Read in data
-sp17 <- read.csv("./data/sp_17.csv")
+sp17 <- read.csv("./data/reversed_data_sp_17.csv")
 
 #### For the Spring 2017 Semester:
 ############################ An EFA on leader toughness (leadChal) items:
@@ -25,7 +25,6 @@ dev.off()
 fit <- factanal(leadChal_cols, factors = 1, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_leadChal_efa_sp17.txt')
-
 
 ############### ### An EFA on Unconditional Happiness (uh) items and some FFMQ items:
 uh_cols <- sp17[,grep('^uh\\_', colnames(sp17))] 
@@ -79,7 +78,7 @@ capture.output(print(fit),
                file =  './output/efas/class_third_efa_sp17.txt')
 
 ###################################### An EFA on Leadership Nonresistance
-sp18 <- read.csv("./data/sp_18.csv")
+sp18 <- read.csv("./data/reversed_data_sp_18.csv")
 
 lnr_cols <- sp18[,grep('(^lnr_)', colnames(sp18))]
 
@@ -106,14 +105,14 @@ capture.output(print(fit),
 
 
 ###################################### An EFA on LNR, UH, VMI-UH, DIS and sc-hw
-lnrother_cols <- sp18[,grep('(^lnr_|^uh_|^uh.vmi_|^dis_|^sc.hw_)', colnames(sp18))]
+lnrother_cols <- sp18[,grep('(^lnr_|^leadChal|^uh_|^uh.vmi_|^dis_|^sc.hw_)', colnames(sp18))]
 
 png("./images/lnrother_scree.png")
 lnrother_anal <- paran(lnrother_cols, graph = TRUE)
 dev.off()
 
 #Fit a factor analysis with the appropriate number of cols
-fit <- factanal(lnrother_cols, factors = 5, rotation = 'promax')
+fit <- factanal(lnrother_cols, factors = 6, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_lnrother_efa_sp18.txt')
 

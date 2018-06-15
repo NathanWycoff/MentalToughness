@@ -32,4 +32,4 @@ Proportion Var   0.525
 
 Test of the hypothesis that 1 factor is sufficient.
 The chi square statistic is 202.94 on 65 degrees of freedom.
-The p-value is 0.000000000000000421 
+The p-value is 4.21e-16 

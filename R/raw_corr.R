@@ -29,7 +29,7 @@ save_covar_info <- function(X, bayes_fit, out_name) {
         for (j in 1:i) {
             ret <- cor.test(X[,i], X[,j])$conf.int
             freq_lb[i,j] <- freq_lb[j,i] <- ret[1]
-            freq_ub[i,j] <- freq_lb[j,i] <- ret[2]
+            freq_ub[i,j] <- freq_ub[j,i] <- ret[2]
         }
     }
 
