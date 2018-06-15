@@ -1,0 +1,4 @@
+          bfi_consc       grt leadChal
+bfi_consc 1.0000000        NA       NA
+grt       0.7098774 1.0000000       NA
+leadChal  0.3725446 0.3500828        1

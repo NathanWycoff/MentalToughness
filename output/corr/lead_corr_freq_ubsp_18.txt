@@ -1,0 +1,51 @@
+            auth_bp  auth_imp   auth_rt   auth_sa ili_champ   ili_emb   ili_ent
+auth_bp   1.0000000        NA        NA        NA        NA        NA        NA
+auth_imp  0.4261892 1.0000000        NA        NA        NA        NA        NA
+auth_rt   0.5179496 0.5091941 1.0000000        NA        NA        NA        NA
+auth_sa   0.5502465 0.5050747 0.5775604 1.0000000        NA        NA        NA
+ili_champ 0.4515555 0.5232154 0.6059957 0.5726716 1.0000000        NA        NA
+ili_emb   0.5078735 0.4527184 0.5183310 0.6233257 0.5314646 1.0000000        NA
+ili_ent   0.5784546 0.5413092 0.5388641 0.6171635 0.6771799 0.6386877 1.0000000
+ili_pro   0.5502914 0.6001555 0.5139091 0.6317884 0.6491454 0.5971648 0.7320192
+leadChal  0.5414278 0.5833686 0.5763692 0.6140827 0.6069280 0.6229543 0.6667839
+lnr       0.2638737 0.3454821 0.2897281 0.2883094 0.3760813 0.3018038 0.4242149
+tfl_id    0.4691419 0.5626462 0.4939673 0.5498545 0.6435625 0.4755084 0.6495521
+tfl_insp  0.5238779 0.4845388 0.4946616 0.6200246 0.6447562 0.6665704 0.7580560
+tfl_int   0.4733887 0.4102242 0.4669894 0.5925060 0.5263659 0.5719024 0.6021953
+tfl_pers  0.4805272 0.4891608 0.4470723 0.5019275 0.4701800 0.3496013 0.5614747
+tfl_sup   0.5229345 0.4463469 0.3145590 0.5054000 0.5167557 0.5350660 0.5202798
+tfl_vis   0.3523812 0.3773907 0.4404512 0.4095507 0.4596061 0.5680589 0.4901078
+            ili_pro  leadChal       lnr    tfl_id  tfl_insp   tfl_int  tfl_pers
+auth_bp          NA        NA        NA        NA        NA        NA        NA
+auth_imp         NA        NA        NA        NA        NA        NA        NA
+auth_rt          NA        NA        NA        NA        NA        NA        NA
+auth_sa          NA        NA        NA        NA        NA        NA        NA
+ili_champ        NA        NA        NA        NA        NA        NA        NA
+ili_emb          NA        NA        NA        NA        NA        NA        NA
+ili_ent          NA        NA        NA        NA        NA        NA        NA
+ili_pro   1.0000000        NA        NA        NA        NA        NA        NA
+leadChal  0.6542935 1.0000000        NA        NA        NA        NA        NA
+lnr       0.3874261 0.5553620 1.0000000        NA        NA        NA        NA
+tfl_id    0.7399131 0.6407256 0.4604382 1.0000000        NA        NA        NA
+tfl_insp  0.7068431 0.6199833 0.3748567 0.5976866 1.0000000        NA        NA
+tfl_int   0.4834797 0.6420564 0.2815535 0.4374663 0.6398492 1.0000000        NA
+tfl_pers  0.4457670 0.4269866 0.2673227 0.4456785 0.6100298 0.4793371 1.0000000
+tfl_sup   0.5065094 0.3183289 0.2090627 0.3259733 0.5601270 0.4163653 0.4715538
+tfl_vis   0.5955713 0.6062285 0.3808251 0.5448605 0.5590306 0.4748130 0.2796529
+            tfl_sup tfl_vis
+auth_bp          NA      NA
+auth_imp         NA      NA
+auth_rt          NA      NA
+auth_sa          NA      NA
+ili_champ        NA      NA
+ili_emb          NA      NA
+ili_ent          NA      NA
+ili_pro          NA      NA
+leadChal         NA      NA
+lnr              NA      NA
+tfl_id           NA      NA
+tfl_insp         NA      NA
+tfl_int          NA      NA
+tfl_pers         NA      NA
+tfl_sup   1.0000000      NA
+tfl_vis   0.2032246       1

@@ -1,0 +1,5 @@
+                 dis      ffmq  leadChal uh
+dis       1.00000000        NA        NA NA
+ffmq     -0.02895929 1.0000000        NA NA
+leadChal -0.17389013 0.4313232 1.0000000 NA
+uh       -0.16111811 0.3425702 0.3669763  1
