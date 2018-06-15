@@ -1,0 +1,35 @@
+
+Call:
+factanal(x = leadChal_cols, factors = 1, rotation = "promax")
+
+Uniquenesses:
+ leadChal_1  leadChal_2  leadChal_3  leadChal_4  leadChal_5  leadChal_6 
+      0.379       0.669       0.473       0.734       0.545       0.735 
+ leadChal_7  leadChal_8  leadChal_9 leadChal_10 leadChal_11 leadChal_12 
+      0.549       0.609       0.669       0.678       0.636       0.567 
+leadChal_13 
+      0.355 
+
+Loadings:
+            Factor1
+leadChal_1  0.788  
+leadChal_2  0.575  
+leadChal_3  0.726  
+leadChal_4  0.516  
+leadChal_5  0.675  
+leadChal_6  0.515  
+leadChal_7  0.672  
+leadChal_8  0.625  
+leadChal_9  0.575  
+leadChal_10 0.567  
+leadChal_11 0.603  
+leadChal_12 0.658  
+leadChal_13 0.803  
+
+               Factor1
+SS loadings      5.401
+Proportion Var   0.415
+
+Test of the hypothesis that 1 factor is sufficient.
+The chi square statistic is 228.76 on 65 degrees of freedom.
+The p-value is 4.32e-20 

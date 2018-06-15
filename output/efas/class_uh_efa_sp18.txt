@@ -1,0 +1,51 @@
+
+Call:
+factanal(x = uh_cols, factors = 2, rotation = "promax")
+
+Uniquenesses:
+ uh_1  uh_2  uh_3  uh_4  uh_5  uh_6  uh_7  uh_8  uh_9 uh_10 uh_11 uh_12 uh_13 
+0.381 0.523 0.502 0.642 0.433 0.298 0.534 0.623 0.331 0.512 0.537 0.653 0.728 
+uh_14 uh_15 uh_16 uh_17 uh_18 uh_19 uh_20 uh_21 uh_22 uh_23 uh_24 uh_25 
+0.359 0.595 0.603 0.522 0.568 0.745 0.341 0.389 0.633 0.820 0.632 0.745 
+
+Loadings:
+      Factor1 Factor2
+uh_1   0.857  -0.103 
+uh_2   0.300   0.443 
+uh_3   0.631   0.100 
+uh_4           0.549 
+uh_5  -0.101   0.823 
+uh_6   0.927  -0.132 
+uh_7   0.464   0.269 
+uh_8   0.265   0.395 
+uh_9   0.828         
+uh_10 -0.220   0.839 
+uh_11  0.474   0.255 
+uh_12          0.526 
+uh_13          0.547 
+uh_14  0.880  -0.116 
+uh_15 -0.150   0.735 
+uh_16          0.601 
+uh_17  0.758         
+uh_18  0.189   0.508 
+uh_19  0.183   0.358 
+uh_20  0.893  -0.119 
+uh_21 -0.134   0.872 
+uh_22  0.317   0.337 
+uh_23 -0.243   0.563 
+uh_24  0.342   0.313 
+uh_25  0.471         
+
+               Factor1 Factor2
+SS loadings      6.105   5.402
+Proportion Var   0.244   0.216
+Cumulative Var   0.244   0.460
+
+Factor Correlations:
+        Factor1 Factor2
+Factor1   1.000  -0.717
+Factor2  -0.717   1.000
+
+Test of the hypothesis that 2 factors are sufficient.
+The chi square statistic is 384.75 on 251 degrees of freedom.
+The p-value is 1.11e-07 
