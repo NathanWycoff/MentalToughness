@@ -157,7 +157,8 @@ for (file in files) {
     rm(scale)
     rm(scales)
 
-    # For 2016 data, keep track of who the questions are about.
+    # Throw GPA in there as well.
+    df$gpa <- dat$gpa
 
     #Save all the results in a convenient file
     write.csv(df, file = paste("./data/proc_met_", time, ".csv", sep = ''),

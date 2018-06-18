@@ -18,16 +18,15 @@ source('R/bayes_cov_func.R')
 save_covar_info <- function(X, bayes_fit, out_name) {
 
     # Classical results
-    capture.output(print(cor(ind[,cor_cols])),
+    capture.output(print(cor(X)),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
 
-    X <- ind[,cor_cols]
     p <- ncol(X)
     freq_lb <- matrix(NA, nrow = p, ncol = p)
     freq_ub <- matrix(NA, nrow = p, ncol = p)
     for (i in 1:ncol(X)) {
         for (j in 1:i) {
-            ret <- cor.test(X[,i], X[,j])$conf.int
+            ret <- cor.test(X[,i], X[,j])
             freq_lb[i,j] <- freq_lb[j,i] <- ret[1]
             freq_ub[i,j] <- freq_ub[j,i] <- ret[2]
         }
@@ -36,7 +35,7 @@ save_covar_info <- function(X, bayes_fit, out_name) {
     colnames(freq_lb) <- colnames(freq_ub) <- rownames(freq_lb) <- 
         rownames(freq_ub) <- cor_cols
 
-    capture.output(print(cor(ind[,cor_cols])),
+    capture.output(print(cor(X)),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
     capture.output(print(freq_lb),
                    file = paste('./output/corr/', out_name, '_freq_lb', time, '.txt', sep = ''))
@@ -59,9 +58,12 @@ save_covar_info <- function(X, bayes_fit, out_name) {
     }
 }
 
+
+
 #Load up the full data
 files <- c("./data/proc_met_fl_17.csv", "./data/proc_met_sp_17.csv", "./data/proc_met_sp_18.csv")
 
+## Create a correlation matrix for each.
 for (file in files) {
     #Load up the indicators
     time <- strsplit(strsplit(strsplit(file, '/')[[1]][3], '\\.')[[1]][1], 'proc_met_')[[1]][2]
@@ -72,7 +74,7 @@ for (file in files) {
     if (length(grep('18', time)) > 0) {
         cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|lnr$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|gpa|tfl_|ili_|leadChal$)', colnames(ind))]
     }
 
     #Estimate a correlation matrix
@@ -97,6 +99,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'disscal_corr'
+    bayes_fit <- bayes_cov(ind[,cor_cols])
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 
 
@@ -110,6 +113,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'mt_corr'
+    bayes_fit <- bayes_cov(ind[,cor_cols])
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 
     ## Correlation matrix for personality
@@ -118,6 +122,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'pers_corr'
+    bayes_fit <- bayes_cov(ind[,cor_cols])
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 
     ## A second correlation matrix
@@ -131,5 +136,6 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'corr_2'
+    bayes_fit <- bayes_cov(ind[,cor_cols])
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 }
