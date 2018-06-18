@@ -97,11 +97,7 @@ for (file in files) {
     }
 
     #
-    out_name <- 'gpa'
     pair_cor <- sapply(cor_cols, function(i) cor.test(ind$gpa, ind[,i])$conf.int)
-    row.names(pair_cor) <- c('lb', 'ub')
-    capture.output(print(pair_cor),
-                   file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
 
     ## Correlation matrix for discomfort scales
     #Specify the columns the correlations of which are to be analyzed
