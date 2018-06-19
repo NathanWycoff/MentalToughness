@@ -17,6 +17,9 @@ source('R/bayes_cov_func.R')
 #' @return Nothing, used for side effect of saving data.
 save_covar_info <- function(X, bayes_fit, out_name) {
 
+    # Store the stuff for later processing.
+    save(X, bayes_fit, paste('./RData/', out_name, '_corr.RData', sep = ''))
+
     # Classical results
     capture.output(print(cor(X)),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
@@ -24,11 +27,13 @@ save_covar_info <- function(X, bayes_fit, out_name) {
     p <- ncol(X)
     freq_lb <- matrix(NA, nrow = p, ncol = p)
     freq_ub <- matrix(NA, nrow = p, ncol = p)
+    freq_pval <- matrix(NA, nrow = p, ncol = p)
     for (i in 1:ncol(X)) {
         for (j in 1:i) {
             ret <- cor.test(X[,i], X[,j])
-            freq_lb[i,j] <- freq_lb[j,i] <- ret[1]
-            freq_ub[i,j] <- freq_ub[j,i] <- ret[2]
+            freq_lb[i,j] <- freq_lb[j,i] <- ret$conf.int[1]
+            freq_ub[i,j] <- freq_ub[j,i] <- ret$conf.int[2]
+            freq_pval[i,j] <- freq_pval[j,i] <- ret$p.val
         }
     }
 
@@ -41,6 +46,8 @@ save_covar_info <- function(X, bayes_fit, out_name) {
                    file = paste('./output/corr/', out_name, '_freq_lb', time, '.txt', sep = ''))
     capture.output(print(freq_ub),
                    file = paste('./output/corr/', out_name, '_freq_ub', time, '.txt', sep = ''))
+    capture.output(print(freq_pval),
+                   file = paste('./output/corr/', out_name, '_freq_pval', time, '.txt', sep = ''))
 
     # Bayesian results
     capture.output(print(cov2cor(bayes_fit$mean)),
