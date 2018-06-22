@@ -8,6 +8,7 @@
 require(paran)
 require(random.polychor.pa)
 require(psych)
+require(xtable)
 
 #Read in data
 sp17 <- read.csv("./data/reversed_data_sp_17.csv")
@@ -25,6 +26,18 @@ dev.off()
 fit <- factanal(leadChal_cols, factors = 1, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_leadChal_efa_sp17.txt')
+
+# Make a pretty table.
+means <- apply(leadChal_cols, 2, mean)
+sds <- apply(leadChal_cols, 2, sd)
+loadings <- as.numeric(fit$loadings)
+total <- as.matrix(leadChal_cols) %*% as.numeric(fit$loadings)
+cors <- apply(leadChal_cols, 2, function(i) cor(i, total))
+df <- data.frame(means, sds, loadings, cors)
+colnames(df) <- c('Mean', 'SD', "Loading", "IT Corr")
+capture.output(print(xtable(df)), 
+               file = './latex_out/efa_table.tex')
+
 
 ############### ### An EFA on Unconditional Happiness (uh) items and some FFMQ items:
 uh_cols <- sp17[,grep('^uh\\_', colnames(sp17))] 
