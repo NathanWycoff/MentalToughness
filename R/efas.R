@@ -35,7 +35,24 @@ total <- as.matrix(leadChal_cols) %*% as.numeric(fit$loadings)
 cors <- apply(leadChal_cols, 2, function(i) cor(i, total))
 df <- data.frame(means, sds, loadings, cors)
 colnames(df) <- c('Mean', 'SD', "Loading", "IT Corr")
-capture.output(print(xtable(df)), 
+
+quest_text <- 
+    c("I perform well in leading groups through challenging situations. (F)",
+      "The thought of a challenging leadership situation excites me. (E)",
+      "I persevere in the face of challenging leadership tasks. (P)",
+      "I am able to stay calm when I run into unexpected leadership challenges. (F)",
+      "I am quick to accept difficult leadership challenges. (E)",
+      "I continue to put a lot of effort into leading my group even when progress is slow. (P)",
+      "I am able to think clearly when leading people through difficult situations. (F)",
+      "I like leading groups through challenges that might take a long time. (E)",
+      "I continue working hard to lead even when success is looking less likely. (P)",
+      "I perform well in leadership situations where my chances of success are slim. (F)",
+      "I volunteer for challenging leadership assignments. (E)",
+      "I never give up on a leadership challenge. (P)",
+      "I thrive in difficult leadership situations. (F)")
+rownames(df) <- quest_text
+
+print(xtable(df), 
                file = './latex_out/efa_table.tex')
 
 
