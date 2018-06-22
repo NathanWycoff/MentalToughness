@@ -18,7 +18,7 @@ source('R/bayes_cov_func.R')
 save_covar_info <- function(X, bayes_fit, out_name) {
 
     # Store the stuff for later processing.
-    save(X, bayes_fit, paste('./RData/', out_name, '_corr.RData', sep = ''))
+    save(X, bayes_fit, file = paste('./RData/', out_name, '_corr.RData', sep = ''))
 
     # Classical results
     capture.output(print(cor(X)),
