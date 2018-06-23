@@ -3,6 +3,7 @@
 
 ## Code that creates a beautiful LaTeX table from 
 ##      a CI and point estimate for a covariance matrix.
+require(xtable)
 
 ## Test data
 n <- 100
