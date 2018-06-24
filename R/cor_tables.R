@@ -1,10 +1,5 @@
 #!/usr/bin/Rscript
-#  R/make_corr_tables.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 06.21.2018
-
-## Make a nice table from our correlations data.
-source('R/cor2table.R')
-
-#TODO: One for each semester.
+#  R/cor_tables.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 06.23.2018
 
 ## Make the correlation tables.
 #Read in data
@@ -17,14 +12,10 @@ file_df <- data.frame(
               file = files)
 file_df$name <- as.character(file_df$name)
 
-#Make each table.
 unames <- as.character(unique(file_df$name))
-targets <- c('leadChal', 'leadChal', '')
-# This is a gross way of doing it, but it doesn't matter.
-#' @param n The name of the file
-#' @param titles The name of each group to be displayed.
-#' @param target The variable with which to display correlations, use its display name
-make_table <- function(n, titles, target) {
+
+#Make lead
+for (nam in unames) {
     means <- lapply(file_df$file[file_df$name==n], function(f) {
                         load(paste(datapath, f, sep = '/'))
                         bayes_fit$mean
@@ -58,17 +49,9 @@ make_table <- function(n, titles, target) {
                 freq_est[i,j] <- freq_est[j,i] <- ret$estimate
             }
         }
-        colnames(freq_pval) <- rownames(freq_pval) <- colnames(freq_est) <- 
-            rownames(freq_est) <- colnames(bayes_fit$mean)
         pvals[[fi]] <- freq_pval
         points[[fi]] <- freq_est
     }
 
-    vars <- colnames(X)
-    cor2table(n, means, lbs, ubs, points, pvals, titles, target, vars)
-}
-
-for (na in unames) {
-    print(make_table(na, titles = c('Semester1', 'Semester2', 'Semester3'), 'leadChal'), 
-          file = paste('latex_out/', na, '.tex', sep = ''))
+    target <- 'leadChal'
 }
