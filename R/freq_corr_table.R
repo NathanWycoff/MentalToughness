@@ -6,15 +6,17 @@ require(xtable)
 ## Make the correlation tables.
 
 get_sig <- function(est, p) {
+    est <- round(est, 2)
     if (p < 0.001) {
-        return(paste(est, '^***', sep = ''))
+        return(paste('$', est, '^***', '$', sep = ''))
     } 
     if (p < 0.1) {
-        return(paste(est, '^**', sep = ''))
+        return(paste('$', est, '^**', '$', sep = ''))
     }
     if (p < 0.05) {
-        return(paste(est, '^*', sep = ''))
+        return(paste('$', est, '^*', '$', sep = ''))
     }
+    return(paste('$', est, '$', sep = ''))
 }
 #Read in data
 datapath <- './RData'
@@ -52,7 +54,15 @@ for (f in file_df$file) {
             repr[i,j] <- repr[j,i] <- get_sig(point[i,j], pval[i,j])
         }
     }
+    colnames(repr) <- rownames(repr) <- 
+        gsub('_', '.', colnames(bayes_fit$mean))
 
-    print(xtable(repr), sanitize.text.function=identity, 
+    outname <- strsplit(f, '_')[[1]]
+    name <- gsub('_', '.', paste(outname[1:2], collapse = '_'))
+    semester <- gsub('_', '.', paste(outname[3:4], collapse = '_'))
+
+    print(xtable(repr, caption = 
+                 paste(name, semester, '$* p < 0.05; ** p < 0.01; *** p < 0.001$')), 
+          sanitize.text.function=identity, 
           file = paste('latex_out/freq_tables/freq_', strsplit(f, '\\.')[[1]][1], '.tex', sep = ''))
 }
