@@ -52,6 +52,7 @@ cor2table <- function(label, means, lbs, ubs, points, pvals, titles, target,
                            paste(means[[s]][target, i],
                                  ' (', points[[s]][target,i], ')\n',
                                  '[', lbs[[s]][target, i],
+                                 ', ',
                                 ubs[[s]][target, i], ']',
                                 sep = '')
                        } else {

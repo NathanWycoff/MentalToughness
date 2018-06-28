@@ -8,10 +8,10 @@ require(xtable)
 get_sig <- function(est, p) {
     est <- round(est, 2)
     if (p < 0.001) {
-        return(paste('$', est, '^***', '$', sep = ''))
+        return(paste('$', est, '^{***}', '$', sep = ''))
     } 
     if (p < 0.1) {
-        return(paste('$', est, '^**', '$', sep = ''))
+        return(paste('$', est, '^{**}', '$', sep = ''))
     }
     if (p < 0.05) {
         return(paste('$', est, '^*', '$', sep = ''))
@@ -51,7 +51,8 @@ for (f in file_df$file) {
     repr <- matrix("", nrow = nrow(point), ncol = ncol(pval))
     for (i in 1:nrow(point)) {
         for (j in 1:i) {
-            repr[i,j] <- repr[j,i] <- get_sig(point[i,j], pval[i,j])
+            repr[i,j] <- get_sig(point[i,j], pval[i,j])
+            repr[j,i] <- "--"
         }
     }
     colnames(repr) <- rownames(repr) <- 
@@ -62,7 +63,8 @@ for (f in file_df$file) {
     semester <- gsub('_', '.', paste(outname[3:4], collapse = '_'))
 
     print(xtable(repr, caption = 
-                 paste(name, semester, '$* p < 0.05; ** p < 0.01; *** p < 0.001$')), 
+                 paste(name, semester, '$* p < 0.05; ** p < 0.01; *** p < 0.001$'),
+             label = paste('freq_corr', name, semester, sep  ='.')), 
           sanitize.text.function=identity, 
           file = paste('latex_out/freq_tables/freq_', strsplit(f, '\\.')[[1]][1], '.tex', sep = ''))
 }

@@ -19,7 +19,6 @@ file_df$name <- as.character(file_df$name)
 
 #Make each table.
 unames <- as.character(unique(file_df$name))
-targets <- c('leadChal', 'leadChal', '')
 # This is a gross way of doing it, but it doesn't matter.
 #' @param n The name of the file
 #' @param titles The name of each group to be displayed.
@@ -68,7 +67,13 @@ make_table <- function(n, titles, target) {
     cor2table(n, means, lbs, ubs, points, pvals, titles, target, vars)
 }
 
+# Make tables for all 3 semesters vs leadChal
 for (na in unames) {
     print(make_table(na, titles = c('Semester1', 'Semester2', 'Semester3'), 'leadChal'), 
           file = paste('latex_out/', na, '.tex', sep = ''))
+}
+
+# Make tables for all 3 semesters vs leadChal
+for (na in unames) {
+    print(make_table(na, titles = c('Semester1', 'Semester2', 'Semester3'), 'leadChal')) 
 }
