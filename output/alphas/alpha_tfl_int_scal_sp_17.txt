@@ -2,17 +2,17 @@
 Reliability analysis   
 Call: alpha(x = get(scale), check.keys = TRUE)
 
-  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
-      0.82      0.82    0.75       0.6 4.5 0.026  5.1 0.96
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+      0.82      0.82    0.75       0.6 4.5 0.026  5.1 0.96      0.6
 
  lower alpha upper     95% confidence boundaries
 0.77 0.82 0.87 
 
  Reliability if an item is dropped:
-       raw_alpha std.alpha G6(smc) average_r S/N alpha se      NA
-tfl_3       0.79      0.79    0.65      0.65 3.7    0.034 0.0e+00
-tfl_9       0.71      0.71    0.54      0.54 2.4    0.048 1.2e-32
-tfl_15      0.75      0.75    0.60      0.60 3.0    0.041 1.2e-32
+       raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+tfl_3       0.79      0.79    0.65      0.65 3.7    0.034    NA  0.65
+tfl_9       0.71      0.71    0.54      0.54 2.4    0.048    NA  0.54
+tfl_15      0.75      0.75    0.60      0.60 3.0    0.041    NA  0.60
 
  Item statistics 
          n raw.r std.r r.cor r.drop mean  sd

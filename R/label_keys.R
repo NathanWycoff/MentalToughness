@@ -1,3 +1,34 @@
 #!/usr/bin/Rscript
 #  R/label_keys.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 06.27.2018
-
+id_to_pretty <- list(
+                     "dis" = "Discomfort Intolerance (DIS)",
+                     "ffmq" = "Mindfulness (FFMQ)",
+                     "uh" = "Unconditional Happiness (UHS)",
+                     "leadChal" = "Mentally Tough Leadership",
+                     "lnr" = "Leadership Nonresistance (LNR)",
+                     "mt" = "Mentally Toughness",
+                     "brs" = "Psychological Resilience",
+                     "sc.hw" = "Self-Control (SSCCS)",
+                     "uh.vmi" = "School-specific UH",
+                     "auth_bp" = "Balanced Processing",
+                     "auth_imp" = "Internalized Moral Perspective",
+                     "auth_rt" = "Relational Transparency",
+                     "auth_sa" = "Self-Awareness",
+                     "ili_champ" = "ili_champ",
+                     "ili_emb" = "ili_emb",
+                     "ili_ent" = "Identity Entrepreneurship",
+                     "ili_pro" = "Identity Prototypicality",
+                     "tfl_id" = "tfl_id",
+                     "tfl_insp" = "Inspirational Communication",
+                     "tfl_int" = "Intellectual Stimulation",
+                     "tfl_pers" = "Personal Recognition",
+                     "tfl_sup" = "Supportive Leadership",
+                     "tfl_vis" = "Vision",
+                     "bfi_consc" = "Conscientiousness (BFI)",
+                     "grt" = "Grit (Grit-S)",
+                     "har" = "Hardiness (DRS)",
+                     "bfi_agree" = "Agreeableness (BFI)",
+                     "bfi_extrav" = "Extraversion (BFI)",
+                     "bfi_neur" = "Neuroticism (BFI)",
+                     "bfi_open" = "Openness to Experience (BFI)"
+                     )

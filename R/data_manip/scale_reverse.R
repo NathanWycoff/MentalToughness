@@ -19,7 +19,7 @@ for (file in files) {
     #Change the column name to get rid of the R
     colnames(dat)[rev_col] <- gsub('R$', '', colnames(dat)[rev_col])
 
-    ## Manually Correct some that are not labelled correctly
+    ## Manually Correct some that are not labelled correctly (all years EXCEPT 2016)
     if (!length(grep('16', time)) > 0) {
         #Some dis cols have R but don't need it
         dat$dis_2 <- 10-dat$dis_2
@@ -29,15 +29,21 @@ for (file in files) {
         dat$dis_3 <- 10-dat$dis_3
         dat$dis_6 <- 10-dat$dis_6
 
-    #Grit recoding; apparently I had NOT labeled the reversed items in this scale with an R
-    #So I will replace the items entirely with the reverse-coded items.
-    dat$grt_1 <- 6-dat$grt_1
-    dat$grt_3 <- 6-dat$grt_3
-    dat$grt_5 <- 6-dat$grt_5
-    dat$grt_6 <- 6-dat$grt_6
+        # Correct BRS issue 2, 4, and 6
+        dat$brs_2 <- 6 - dat$brs_2
+        dat$brs_4 <- 6 - dat$brs_4
+        dat$brs_6 <- 6 - dat$brs_6
+
+        #Grit recoding; apparently I had NOT labeled the reversed items in this scale with an R
+        #So I will replace the items entirely with the reverse-coded items.
+        dat$grt_1 <- 6-dat$grt_1
+        dat$grt_3 <- 6-dat$grt_3
+        dat$grt_5 <- 6-dat$grt_5
+        dat$grt_6 <- 6-dat$grt_6
     }
 
-    #Forgot to label with R for 2018 data
+
+    #Forgot to label with R for 2018 data ONLY 2018
     if (length(grep('18', time)) > 0) {
         dat$tfl_13 <- max(dat$tfl_13 + 1) - dat$tfl_13
     }

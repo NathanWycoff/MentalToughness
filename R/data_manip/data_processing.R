@@ -136,10 +136,16 @@ for (file in files) {
     scales <- ls()[grep('scal', ls())]
 
     # Calculate alpha for each scale
+    alphas <- c()
     for (scale in scales) {
-        capture.output(alpha(get(scale), check.keys = TRUE),
+        a <- alpha(get(scale), check.keys = TRUE)
+        capture.output(a,
             file = paste('./output/alphas/alpha_', scale, '_', time, '.txt', sep = ''))
+        alphas <- c(alphas, summary(a)$raw_alpha)
     }
+    atable <- cbind(alphas, scales)
+    colnames(atable) <- c("alpha", "scale")
+    save(atable, file = paste('./RData/alphas/alphas_', time, '.RData', sep = ''))
 
     # We decide to drop item 3 for dis after examining the alphas
     dis_scal$dis_3 <- NULL
