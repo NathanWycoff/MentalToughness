@@ -36,7 +36,13 @@ for (file in files) {
         dat$dis_6 <- 10-dat$dis_6
                
        ##DIS recoding: ONLY SP18
-         #Same as above, but should be 6-...  e.g., (dat$dis_6 <- 6-dat$dis_6) since it was a 5-point scale in SP18.
+         #Same as above, but should be 6-... since it was a 5-point scale in SP18.
+        dat$dis_2 <- 6-dat$dis_2 #shouldn't the dis_2 on the right side be dis_2R?  Aren't you recoding it to say that it isn't reversed?
+        dat$dis_4 <- 6-dat$dis_4 #same as above
+
+        #Some dis cols dont' have an R but do need it
+        dat$dis_3 <- 6-dat$dis_3
+        dat$dis_6 <- 6-dat$dis_6
 
         # Correct BRS issue 2, 4, and 6; 7-point scale; this works for all 3 semesters.
         dat$brs_2 <- 8 - dat$brs_2
