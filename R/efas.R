@@ -169,3 +169,16 @@ dev.off()
 fit <- factanal(leadChal_cols, factors = 1, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_leadChal_efa_sp18.txt')
+
+###################################### An EFA on leadChal, lnr, auth, tfl, ili
+ldr_cols <- sp18[,grep('(^lnr|^leadChal|^auth|^tfl|^ili)', colnames(sp18))]
+
+#Plot the adjusted scree plot:
+png("./images/ldr_scree.png")
+h_anal <- paran(ldr_cols, graph = TRUE)
+dev.off()
+
+#Fit a factor analysis with the appropriate number of cols
+fit <- factanal(ldr_cols, factors = 4, rotation = 'promax')
+capture.output(print(fit),
+               file =  './output/efas/class_ldr_efa_sp18.txt')

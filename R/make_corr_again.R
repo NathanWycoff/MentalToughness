@@ -146,6 +146,7 @@ colnames(corr_df) <- c("Semester 3")
 make_table <- function(vars, label) {
     our_df <- data.frame(corr_df[vars,])
     rownames(our_df) <- sapply(vars, function(v) id_to_pretty[[v]])
+    colnames(our_df) <- "Semester 3"
     print(xtable(our_df, label = paste('tab:', label, sep = ''), 
                  caption = "\\textbf{Correlation of Various Scales to Leadership Nonresistance:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval on the next line."),
           file = paste("./latex_out/bayes_tables/", label, ".tex", sep = ''))

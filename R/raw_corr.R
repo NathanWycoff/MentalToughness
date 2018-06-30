@@ -103,10 +103,13 @@ for (file in files) {
         cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|leadChal$)', colnames(ind))]
     }
 
-    #
+    # Pairwise GPA correlations.
     out_name <- 'gpa'
-    pair_cor <- sapply(cor_cols, function(i) cor.test(ind$gpa, ind[,i])$conf.int)
-    row.names(pair_cor) <- c('lb', 'ub')
+    pair_cor <- sapply(cor_cols, function(i) {
+                       ret <- cor.test(ind$gpa, ind[,i])
+                       c(ret$conf.int[1], ret$estimate, ret$conf.int[2])
+                   })
+    row.names(pair_cor) <- c('lb', 'point', 'ub')
     capture.output(print(pair_cor),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
 
@@ -139,7 +142,7 @@ for (file in files) {
 
     ## Correlation matrix for personality
     #Specify the columns the correlations of which are to be analyzed
-    cor_cols <- colnames(ind)[grep('(bfi_|ffmq$|leadChal$)', colnames(ind))]
+    cor_cols <- colnames(ind)[grep('(bfi_|ffmq|leadChal$)', colnames(ind))]
 
     #Estimate a correlation matrix
     out_name <- 'pers_corr'

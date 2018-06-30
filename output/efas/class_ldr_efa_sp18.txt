@@ -1,0 +1,116 @@
+
+Call:
+factanal(x = ldr_cols, factors = 4, rotation = "promax")
+
+Uniquenesses:
+     auth_4      auth_7     auth_11      auth_1      auth_8     auth_12 
+      0.740       0.850       0.610       0.699       0.898       0.652 
+     auth_2      auth_5      auth_9     auth_13      auth_3      auth_6 
+      0.649       0.689       0.888       0.686       0.785       0.736 
+    auth_10     auth_14       tfl_1       tfl_7      tfl_13       tfl_2 
+      0.731       0.870       0.682       0.618       0.862       0.609 
+      tfl_8      tfl_14       tfl_3       tfl_9      tfl_15       tfl_4 
+      0.595       0.633       0.714       0.718       0.693       0.583 
+     tfl_10      tfl_16       tfl_5      tfl_11      tfl_17       tfl_6 
+      0.527       0.683       0.789       0.786       0.781       0.701 
+     tfl_12      tfl_18       ili_1       ili_5       ili_9      ili_13 
+      0.480       0.537       0.528       0.590       0.506       0.517 
+      ili_2       ili_6      ili_10      ili_14       ili_3       ili_7 
+      0.600       0.812       0.680       0.688       0.662       0.628 
+     ili_11      ili_15       ili_4       ili_8      ili_12  leadChal_1 
+      0.616       0.667       0.595       0.599       0.502       0.372 
+ leadChal_2  leadChal_3  leadChal_4  leadChal_5  leadChal_6  leadChal_7 
+      0.661       0.431       0.740       0.475       0.703       0.506 
+ leadChal_8  leadChal_9 leadChal_10 leadChal_11 leadChal_12 leadChal_13 
+      0.485       0.571       0.656       0.615       0.577       0.379 
+      lnr_1       lnr_2       lnr_3       lnr_4       lnr_5       lnr_6 
+      0.680       0.351       0.560       0.355       0.510       0.669 
+      lnr_7       lnr_8 
+      0.412       0.422 
+
+Loadings:
+            Factor1 Factor2 Factor3 Factor4
+auth_4       0.171   0.300   0.148  -0.119 
+auth_7               0.191   0.214  -0.114 
+auth_11      0.168   0.221   0.356         
+auth_1       0.415   0.307  -0.119  -0.166 
+auth_8       0.121           0.259         
+auth_12      0.398   0.334                 
+auth_2       0.560   0.165  -0.113         
+auth_5       0.620  -0.237                 
+auth_9       0.120   0.241                 
+auth_13      0.531           0.101         
+auth_3      -0.133   0.259   0.363         
+auth_6       0.239           0.341         
+auth_10      0.234   0.232   0.168  -0.131 
+auth_14      0.100           0.296         
+tfl_1        0.144   0.463                 
+tfl_7        0.187   0.486                 
+tfl_13       0.343   0.112  -0.203         
+tfl_2        0.343   0.150   0.253         
+tfl_8                        0.689         
+tfl_14               0.321   0.312         
+tfl_3                0.334   0.329         
+tfl_9                0.536                 
+tfl_15               0.403   0.268         
+tfl_4       -0.263           0.792         
+tfl_10      -0.164  -0.168   0.827         
+tfl_16       0.114           0.517         
+tfl_5        0.188  -0.117   0.387         
+tfl_11       0.241           0.256         
+tfl_17       0.257  -0.133   0.318         
+tfl_6        0.554  -0.111                 
+tfl_12       0.615   0.116                 
+tfl_18       0.617                   0.139 
+ili_1        0.524   0.131   0.152  -0.134 
+ili_5        0.293           0.413   0.140 
+ili_9        0.546   0.164   0.112  -0.128 
+ili_13       0.656           0.153         
+ili_2        0.128  -0.126   0.612         
+ili_6        0.223   0.240                 
+ili_10       0.433   0.190                 
+ili_14       0.394  -0.144   0.299         
+ili_3        0.238           0.390         
+ili_7        0.179   0.176   0.322   0.135 
+ili_11       0.565           0.132         
+ili_15               0.278   0.349         
+ili_4       -0.142   0.319   0.507         
+ili_8                0.441   0.357         
+ili_12      -0.128   0.626   0.252         
+leadChal_1   0.447   0.605  -0.344         
+leadChal_2           0.581  -0.113   0.152 
+leadChal_3   0.585   0.399  -0.251         
+leadChal_4   0.161   0.435  -0.102         
+leadChal_5  -0.129   0.750           0.155 
+leadChal_6   0.403   0.220                 
+leadChal_7   0.506   0.441  -0.319         
+leadChal_8  -0.126   0.637   0.123   0.252 
+leadChal_9   0.611   0.159  -0.113         
+leadChal_10          0.515           0.118 
+leadChal_11          0.606                 
+leadChal_12  0.212   0.419           0.197 
+leadChal_13  0.352   0.641  -0.256         
+lnr_1                                0.560 
+lnr_2                0.198           0.731 
+lnr_3        0.334  -0.280   0.120   0.522 
+lnr_4       -0.137   0.262           0.771 
+lnr_5       -0.148   0.159   0.128   0.680 
+lnr_6                        0.134   0.544 
+lnr_7                0.211           0.695 
+lnr_8                                0.739 
+
+               Factor1 Factor2 Factor3 Factor4
+SS loadings      6.865   6.653   5.449   3.968
+Proportion Var   0.101   0.098   0.080   0.058
+Cumulative Var   0.101   0.199   0.279   0.337
+
+Factor Correlations:
+        Factor1 Factor2 Factor3 Factor4
+Factor1   1.000 -0.1797 -0.5039   0.561
+Factor2  -0.180  1.0000  0.0627  -0.290
+Factor3  -0.504  0.0627  1.0000  -0.576
+Factor4   0.561 -0.2905 -0.5758   1.000
+
+Test of the hypothesis that 4 factors are sufficient.
+The chi square statistic is 3030.19 on 2012 degrees of freedom.
+The p-value is 1.6e-44 

@@ -1,7 +1,9 @@
-#!/usr/bin/Rscript
+#!/usr/bin/Rscript 
 #  R/freq_corr_table.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 06.25.2018
 
+
 require(xtable)
+source('R/label_keys.R')
 
 ## Make the correlation tables.
 
@@ -19,7 +21,7 @@ get_sig <- function(est, p) {
     return(paste('$', est, '$', sep = ''))
 }
 #Read in data
-datapath <- './RData'
+datapath <- './RData/bayes_output/'
 files <- list.files(datapath)
 outnames <- strsplit(files, '_')
 file_df <- data.frame(
@@ -34,6 +36,10 @@ fi <- 0
 for (f in file_df$file) {
     fi <- fi + 1
     load(paste(datapath, f, sep = '/'))
+    # Get rid of tfl_id
+    good_cols <- colnames(X) != "tfl_id"
+    X <- X[,good_cols]
+
     p <- ncol(X)
     pval <- matrix(NA, nrow = p, ncol = p)
     point <- matrix(NA, nrow = p, ncol = p)
@@ -45,18 +51,33 @@ for (f in file_df$file) {
         }
     }
     colnames(pval) <- rownames(pval) <- colnames(point) <- 
-        rownames(point) <- colnames(bayes_fit$mean)
+        rownames(point) <- setdiff(colnames(bayes_fit$mean), 'tfl_id')
 
     # Make a table.
     repr <- matrix("", nrow = nrow(point), ncol = ncol(pval))
     for (i in 1:nrow(point)) {
         for (j in 1:i) {
             repr[i,j] <- get_sig(point[i,j], pval[i,j])
-            repr[j,i] <- "--"
+            repr[j,i] <- ""
         }
     }
-    colnames(repr) <- rownames(repr) <- 
-        gsub('_', '.', colnames(bayes_fit$mean))
+
+    # Name its rows and columns nicely
+    nice_names <- setdiff(colnames(bayes_fit$mean), 'tfl_id')
+    nice_names <- sapply(nice_names, function(v) {
+                                  v <- gsub('_scal', '', v)
+
+                                  if (v %in% names(id_to_pretty)) {
+                                      id_to_pretty[[v]]
+                                  } else {
+                                      v
+                                  }})
+    nice_names <- paste(nice_names, ' (', 1:nrow(repr), ')', sep = '')
+
+    diag(repr) <- '--'
+    rownames(repr) <- nice_names
+        
+    colnames(repr) <- 1:ncol(repr)
 
     outname <- strsplit(f, '_')[[1]]
     name <- gsub('_', '.', paste(outname[1:2], collapse = '_'))

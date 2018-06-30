@@ -3,7 +3,7 @@ Reliability analysis
 Call: alpha(x = get(scale), check.keys = TRUE)
 
   raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
-      0.71      0.71    0.65      0.45 2.5 0.042  5.4 0.87     0.38
+      0.71      0.71    0.65      0.45 2.5 0.042    6 0.87     0.38
 
  lower alpha upper     95% confidence boundaries
 0.62 0.71 0.79 
@@ -18,10 +18,10 @@ tfl_13      0.77      0.77    0.63      0.63 3.4    0.037    NA  0.63
          n raw.r std.r r.cor r.drop mean  sd
 tfl_1  150  0.83  0.84  0.74   0.61  5.6 1.1
 tfl_7  150  0.81  0.83  0.72   0.58  5.8 1.0
-tfl_13 150  0.75  0.72  0.47   0.41  4.7 1.2
+tfl_13 150  0.75  0.72  0.47   0.41  6.7 1.2
 
 Non missing response frequency for each item
-          0    1    2    3    4    5    6    7 miss
-tfl_1  0.00 0.00 0.01 0.03 0.11 0.23 0.41 0.21    0
-tfl_7  0.00 0.00 0.01 0.00 0.08 0.28 0.33 0.29    0
-tfl_13 0.01 0.03 0.01 0.07 0.23 0.41 0.25 0.00    0
+          2    3    4    5    6    7    8 miss
+tfl_1  0.01 0.03 0.11 0.23 0.41 0.21 0.00    0
+tfl_7  0.01 0.00 0.08 0.28 0.33 0.29 0.00    0
+tfl_13 0.01 0.03 0.01 0.07 0.23 0.41 0.25    0
