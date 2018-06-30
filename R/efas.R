@@ -12,6 +12,7 @@ require(xtable)
 
 #Read in data
 sp17 <- read.csv("./data/reversed_data_sp_17.csv")
+sp18 <- read.csv("./data/reversed_data_sp_18.csv")
 
 #### For the Spring 2017 Semester:
 ############################ An EFA on leader toughness (leadChal) items:
@@ -103,12 +104,11 @@ h_anal <- paran(third_cols, graph = TRUE)
 dev.off()
 
 #Fit a factor analysis with the appropriate number of cols
-fit <- factanal(third_cols, factors = 1, rotation = 'promax')
+fit <- factanal(third_cols, factors = 4, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_third_efa_sp17.txt')
 
 ###################################### An EFA on Leadership Nonresistance
-sp18 <- read.csv("./data/reversed_data_sp_18.csv")
 
 lnr_cols <- sp18[,grep('(^lnr_)', colnames(sp18))]
 
@@ -170,8 +170,8 @@ fit <- factanal(leadChal_cols, factors = 1, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_leadChal_efa_sp18.txt')
 
-###################################### An EFA on leadChal, lnr, auth, tfl, ili
-ldr_cols <- sp18[,grep('(^lnr|^leadChal|^auth|^tfl|^ili)', colnames(sp18))]
+###################################### An EFA on leadChal, auth, tfl, ili
+ldr_cols <- sp18[,grep('(leadChal|^auth|^tfl|^ili)', colnames(sp18))]
 
 #Plot the adjusted scree plot:
 png("./images/ldr_scree.png")
@@ -182,3 +182,16 @@ dev.off()
 fit <- factanal(ldr_cols, factors = 4, rotation = 'promax')
 capture.output(print(fit),
                file =  './output/efas/class_ldr_efa_sp18.txt')
+
+###################################### An EFA on leadChal, lnr, auth, tfl, ili
+lnrldr_cols <- sp18[,grep('(^lnr|leadChal|^auth|^tfl|^ili)', colnames(sp18))]
+
+#Plot the adjusted scree plot:
+png("./images/lnrldr_scree.png")
+h_anal <- paran(lnrldr_cols, graph = TRUE)
+dev.off()
+
+#Fit a factor analysis with the appropriate number of cols
+fit <- factanal(lnrldr_cols, factors = 4, rotation = 'promax')
+capture.output(print(fit),
+               file =  './output/efas/class_lnrldr_efa_sp18.txt')

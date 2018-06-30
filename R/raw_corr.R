@@ -20,35 +20,6 @@ save_covar_info <- function(X, bayes_fit, out_name) {
     # Store the stuff for later processing.
     save(X, bayes_fit, file = paste('./RData/', out_name, '_corr.RData', sep = ''))
 
-    # Classical results
-    capture.output(print(cor(X)),
-                   file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
-
-    p <- ncol(X)
-    freq_lb <- matrix(NA, nrow = p, ncol = p)
-    freq_ub <- matrix(NA, nrow = p, ncol = p)
-    freq_pval <- matrix(NA, nrow = p, ncol = p)
-    for (i in 1:ncol(X)) {
-        for (j in 1:i) {
-            ret <- cor.test(X[,i], X[,j])
-            freq_lb[i,j] <- freq_lb[j,i] <- ret$conf.int[1]
-            freq_ub[i,j] <- freq_ub[j,i] <- ret$conf.int[2]
-            freq_pval[i,j] <- freq_pval[j,i] <- ret$p.val
-        }
-    }
-
-    colnames(freq_lb) <- colnames(freq_ub) <- rownames(freq_lb) <- 
-        rownames(freq_ub) <- cor_cols
-
-    capture.output(print(cor(X)),
-                   file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
-    capture.output(print(freq_lb),
-                   file = paste('./output/corr/', out_name, '_freq_lb', time, '.txt', sep = ''))
-    capture.output(print(freq_ub),
-                   file = paste('./output/corr/', out_name, '_freq_ub', time, '.txt', sep = ''))
-    capture.output(print(freq_pval),
-                   file = paste('./output/corr/', out_name, '_freq_pval', time, '.txt', sep = ''))
-
     # Bayesian results
     capture.output(print(cov2cor(bayes_fit$mean)),
                    file = paste('./output/corr/', out_name, '_mean', time, '.txt', sep = ''))
@@ -79,9 +50,9 @@ for (file in files) {
     ## Correlation matrix for leadership scales.
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|lnr$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|lnr$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|leadChal$)', colnames(ind))]
     }
 
     #Estimate a correlation matrix
@@ -98,22 +69,22 @@ for (file in files) {
 
     ## Compare GPA to some other things, pairwise.
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|lnr$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|lnr$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|leadChal$)', colnames(ind))]
     }
 
     # Pairwise GPA correlations.
     out_name <- 'gpa'
     pair_cor <- sapply(cor_cols, function(i) {
                        ret <- cor.test(ind$gpa, ind[,i])
-                       c(ret$conf.int[1], ret$estimate, ret$conf.int[2])
+                       c(ret$conf.int[1], ret$estimate, ret$conf.int[2], ret$p.value)
                    })
-    row.names(pair_cor) <- c('lb', 'point', 'ub')
+    row.names(pair_cor) <- c('lb', 'point', 'ub', 'pval')
     capture.output(print(pair_cor),
                    file = paste('./output/corr/', out_name, '_point', time, '.txt', sep = ''))
 
-    ## Correlation matrix for discomfort scales
+    ## Correlations of the MTLS with scales relevant to everyday discomfort:
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
         cor_cols <- colnames(ind)[grep('(lnr$|sc.hw|uh.vmi|dis|uh|brs|leadChal)$', colnames(ind))]
@@ -126,13 +97,12 @@ for (file in files) {
     bayes_fit <- bayes_cov(ind[,cor_cols])
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 
-
-    ## Correlation matrix for mental toughness scales
+    ##Correlations of the MTLS with scales relevant to personality:
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_consc|mt|har|leadChal)$', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq|mt|har|leadChal)$', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(grt|bfi_consc|leadChal)$', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq|leadChal)$', colnames(ind))]
     }
 
     #Estimate a correlation matrix
@@ -146,20 +116,6 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'pers_corr'
-    bayes_fit <- bayes_cov(ind[,cor_cols])
-    save_covar_info(ind[,cor_cols], bayes_fit, out_name)
-
-    ## A second correlation matrix
-    #Specify the columns the correlations of which are to be analyzed
-    # Do the 18 scales if necessary
-    if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(leadChal|uh|dis|ffmq|lnr|mt)$', colnames(ind))]
-    } else {
-        cor_cols <- colnames(ind)[grep('(leadChal|uh|dis|ffmq)$', colnames(ind))]
-    }
-
-    #Estimate a correlation matrix
-    out_name <- 'corr_2'
     bayes_fit <- bayes_cov(ind[,cor_cols])
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 }

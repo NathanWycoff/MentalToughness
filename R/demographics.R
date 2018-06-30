@@ -17,6 +17,8 @@ genders <- sapply(files, function(file) {
        ret <- gsub('1', 'M', as.character(dat$gender))
        table(gsub('2', 'F', ret))
            })
+genders[[3]] <- read.csv(files[3])$Q303
+table(genders[[3]])
 
 # grad year
 gradYrs <- sapply(files, function(file) {
@@ -79,3 +81,6 @@ df <- data.frame(Mean = sapply(chalFreq, mean), SD = sapply(chalFreq, sd))
 rownames(df) <- c("Semester 1", "Semester 2", "Semester 3")
 print(df)
 lapply(chalFreq, table)
+
+## Age for 2018 data
+table(read.csv(files[3])$Age)

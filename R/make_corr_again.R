@@ -6,6 +6,7 @@
 library(gsubfn)
 library(xtable)
 source('R/label_keys.R')
+source('R/lib.R')
 
 ## Make the correlation tables.
 #Read in data
@@ -32,7 +33,7 @@ for (file in file_df$file) {
     corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], var(X)[targ_ind, -targ_ind],
                    bayes_fit$lb[targ_ind,-targ_ind], bayes_fit$ub[targ_ind,-targ_ind])
     colnames(corrs) <- c('mean',  'freq', 'lb', 'ub')
-    corrs <- round(corrs, 2)
+    corrs <- apply(corrs, 2, function(i) sapply(i, function(j) num2presentable(j, 2)))
 
     # Recover Frequentist estimates
     var(X)
@@ -72,8 +73,10 @@ colnames(corr_df) <- c("Semester 1", "Semester 2", "Semester 3")
 make_table <- function(vars, label) {
     our_df <- corr_df[vars,]
     rownames(our_df) <- sapply(vars, function(v) id_to_pretty[[v]])
+    align <- rep('l', ncol(our_df) + 1)
     print(xtable(our_df, label = paste('tab:', label, sep = ''), 
-                 caption = "\\textbf{Correlation of Various Scales to Leader Toughness:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval on the next line."),
+                 caption = "\\textbf{Correlation of Various Scales to Leader Toughness:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval on the next line.",
+                 align = align),
           file = paste("./latex_out/bayes_tables/", label, ".tex", sep = ''))
 }
 
@@ -106,7 +109,7 @@ for (file in file_df$file) {
     corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], var(X)[targ_ind, -targ_ind],
                    bayes_fit$lb[targ_ind,-targ_ind], bayes_fit$ub[targ_ind,-targ_ind])
     colnames(corrs) <- c('mean',  'freq', 'lb', 'ub')
-    corrs <- round(corrs, 2)
+    corrs <- apply(corrs, 2, function(i) sapply(i, function(j) num2presentable(j, 2)))
 
     # Recover Frequentist estimates
     var(X)
@@ -147,8 +150,10 @@ make_table <- function(vars, label) {
     our_df <- data.frame(corr_df[vars,])
     rownames(our_df) <- sapply(vars, function(v) id_to_pretty[[v]])
     colnames(our_df) <- "Semester 3"
+    align <- rep('l', ncol(our_df) + 1)
     print(xtable(our_df, label = paste('tab:', label, sep = ''), 
-                 caption = "\\textbf{Correlation of Various Scales to Leadership Nonresistance:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval on the next line."),
+                 caption = "\\textbf{Correlation of Various Scales to Leadership Nonresistance:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval on the next line.",
+                 align = align),
           file = paste("./latex_out/bayes_tables/", label, ".tex", sep = ''))
 }
 

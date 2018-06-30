@@ -5,6 +5,7 @@
 
 #### Copy some code from R/make_alpha_tables.R to get variable names that we actually ended up using.
 source('R/label_keys.R')
+source('R/lib.R')
 require(xtable)
 
 ## Collect alphas for each scale.
@@ -18,6 +19,11 @@ tab <- lapply(files, function(file) {
 })
 
 all_table <- Reduce(function(i, j) merge(i, j, by = 'scale', all = TRUE), tab)
+# Parcels are identified as having two underscores (or three, in the case of uh) in their names. 
+# We wish to remove these from the table.
+all_table$scale <- as.character(all_table$scale) 
+not_parcels <- sapply(strsplit(all_table$scale, '_'), length) == 2
+all_table <- all_table[not_parcels,]
 #### End copied code
 
 root <- './data/proc_met_'
@@ -40,6 +46,8 @@ res <- lapply(files, function(file) {
 })
 
 all_table <- Reduce(function(i, j) merge(i, j, by = 'scale', all = TRUE), res)
+
+
 # Make row names nice.
 rownames(all_table) <- sapply(all_table$scale, function(v) {
                               v <- gsub('_scal', '', v)
@@ -52,6 +60,13 @@ rownames(all_table) <- sapply(all_table$scale, function(v) {
 all_table$scale <- NULL
 colnames(all_table) <- c("Mean S1", "SD S1", "Mean S2", "SD S2", "Mean S3", "SD S3")
 
+# Round etc
+all_table <- apply(all_table, 2, function(i) 
+                   sapply(i, function(j) num2presentable(j, 2)))
+
+align <- 'lll|ll|ll'
+
 print(xtable(all_table, label = "tab:summarystats", 
-             caption = "Means and Standard Deviation by Scale for Each Semester"),
+             caption = "Means and Standard Deviation by Scale for Each Semester",
+             align = align),
       file = "./latex_out/summary_table.tex")

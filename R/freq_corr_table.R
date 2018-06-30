@@ -1,7 +1,6 @@
 #!/usr/bin/Rscript 
 #  R/freq_corr_table.R Author "Nathan Wycoff <nathanbrwycoff@gmail.com>" Date 06.25.2018
 
-
 require(xtable)
 source('R/label_keys.R')
 
@@ -72,7 +71,7 @@ for (f in file_df$file) {
                                   } else {
                                       v
                                   }})
-    nice_names <- paste(nice_names, ' (', 1:nrow(repr), ')', sep = '')
+    nice_names <- paste(1:nrow(repr), '. ', nice_names, sep = '')
 
     diag(repr) <- '--'
     rownames(repr) <- nice_names
@@ -83,9 +82,12 @@ for (f in file_df$file) {
     name <- gsub('_', '.', paste(outname[1:2], collapse = '_'))
     semester <- gsub('_', '.', paste(outname[3:4], collapse = '_'))
 
+    align <- rep('l', ncol(repr) + 1)
+
     print(xtable(repr, caption = 
                  paste(name, semester, '$* p < 0.05; ** p < 0.01; *** p < 0.001$'),
-             label = paste('freq_corr', name, semester, sep  ='.')), 
+             label = paste('freq_corr', name, semester, sep  ='.'),
+             align = align), 
           sanitize.text.function=identity, 
           file = paste('latex_out/freq_tables/freq_', strsplit(f, '\\.')[[1]][1], '.tex', sep = ''))
 }
