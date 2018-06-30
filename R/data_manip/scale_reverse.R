@@ -103,12 +103,14 @@ for (file in files) {
         #dat$dis_2 <- 6-dat$dis_2 
         #dat$dis_4 <- 6-dat$dis_4 
 
+    }
+
+    # Do the following whenever the year is NOT 16
+    if (length(grep('16', time)) == 0) {
         #Some dis cols dont' have an R but do need it
         dat$dis_3 <- 6-dat$dis_3 #1-5 scale
         dat$dis_6 <- 6-dat$dis_6
 
-    #Is the code below being applied in all 3 semesters of data?  It should be but the way I read the code 
-     #it's only applying it to the '18 data
         # Correct BRS issue 2, 4, and 6; 7-point scale; this works for all 3 semesters.
         dat$brs_2 <- 8 - dat$brs_2 #1-7 scale
         dat$brs_4 <- 8 - dat$brs_4

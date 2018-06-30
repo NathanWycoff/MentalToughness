@@ -2,26 +2,26 @@
 Reliability analysis   
 Call: alpha(x = get(scale), check.keys = TRUE)
 
-  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
-      0.62      0.63    0.55      0.36 1.7 0.055  3.2 0.64     0.35
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
+      0.62      0.63    0.55      0.36 1.7 0.055  2.2 0.64
 
  lower alpha upper     95% confidence boundaries
 0.51 0.62 0.73 
 
  Reliability if an item is dropped:
-        raw_alpha std.alpha G6(smc) average_r  S/N alpha se var.r med.r
-ffmq_3       0.67      0.67    0.50      0.50 2.01    0.054    NA  0.50
-ffmq_8       0.52      0.52    0.35      0.35 1.08    0.078    NA  0.35
-ffmq_13      0.36      0.37    0.22      0.22 0.58    0.103    NA  0.22
+        raw_alpha std.alpha G6(smc) average_r  S/N alpha se      NA
+ffmq_3       0.67      0.67    0.50      0.50 2.01    0.054 1.2e-32
+ffmq_8       0.52      0.52    0.35      0.35 1.08    0.078 0.0e+00
+ffmq_13      0.36      0.37    0.22      0.22 0.58    0.103 0.0e+00
 
  Item statistics 
           n raw.r std.r r.cor r.drop mean   sd
-ffmq_3  150  0.72  0.69  0.42   0.33  3.5 0.92
-ffmq_8  150  0.74  0.76  0.58   0.43  3.0 0.81
-ffmq_13 150  0.80  0.82  0.69   0.54  3.1 0.82
+ffmq_3  150  0.72  0.69  0.42   0.33  2.5 0.92
+ffmq_8  150  0.74  0.76  0.58   0.43  2.0 0.81
+ffmq_13 150  0.80  0.82  0.69   0.54  2.1 0.82
 
 Non missing response frequency for each item
-           1    2    3    4    5 miss
+           0    1    2    3    4 miss
 ffmq_3  0.01 0.15 0.35 0.37 0.13    0
 ffmq_8  0.02 0.27 0.43 0.27 0.01    0
 ffmq_13 0.01 0.21 0.43 0.32 0.03    0
