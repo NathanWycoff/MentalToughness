@@ -8,21 +8,21 @@
 
 reverser_2017 <- function(scal, val) {
     if (strsplit(scal, '_')[[1]][1] == 'bfi') {
-        9 - val
+        8 - val #1-7 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'ffmq') {
-        5 - val
+        4 - val #since scale is 0-4, starting with 0, need to subtract from 4.
     } else if (strsplit(scal, '_')[[1]][1] == 'grt') {
-        7 - val
+        6 - val #1-5 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'sc.hw') {
-        9 - val
-    } else if (strsplit(scal, '_')[[1]][1] == 'sc.now') {
-        9 - val
+        8 - val #since scale is 0-8, starting with 0, need to subtract from 8.
+    } else if (strsplit(scal, '_')[[1]][1] == 'sc.now') { ##You don't need to include sc.now data in any results!
+        9 - val #can remove this - not using this variable
     } else if (strsplit(scal, '_')[[1]][1] == 'dis') {
-        11 - val
+        10 - val #1-9 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'tfl') {
-        9 - val
+        8 - val #1-7 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'brs') {
-        9 - val
+        8 - val #1-7 scale
     } else {
         stop(paste("Unrecognized Reverse Value:", scal))
     }
@@ -30,23 +30,23 @@ reverser_2017 <- function(scal, val) {
 
 reverser_2018 <- function(scal, val) {
     if (strsplit(scal, '_')[[1]][1] == 'bfi') {
-        9 - val
+        8 - val #1-7 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'ffmq') {
-        5 - val
+        6 - val #1-5 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'grt') {
-        7 - val
+        6 - val #1-5 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'sc.hw') {
-        9 - val
+        6 - val #1-5 scale in SP18
     } else if (strsplit(scal, '_')[[1]][1] == 'dis') {
-        7 - val
+        6 - val #1-5 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'tfl') {
-        9 - val
+        8 - val #1-7 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'brs') {
-        9 - val
+        8 - val #1-7 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'lnr') {
-        7 - val
+        6 - val #1-5 scale
     } else if (strsplit(scal, '_')[[1]][1] == 'har') {
-        6 - val
+        5 - val #1-4 scale
     } else {
         stop(paste("Unrecognized Reverse Value:", scal))
     }
@@ -77,13 +77,16 @@ for (file in files) {
         }
         #Change the column name to get rid of the R
         colnames(dat)[rev_col] <- gsub('R$', '', colnames(dat)[rev_col])
-
-        dat$dis_2 <- 11-dat$dis_2 #shouldn't the dis_2 on the right side be dis_2R?  Aren't you recoding it to say that it isn't reversed?
-        dat$dis_4 <- 11-dat$dis_4 #same as above
+        
+        ### Items 2 and 4 were incorrectly labeled as reversed but shouldn't have been.  
+         #So we DON'T actually need to reverse code them!  Just remove the R from the label.
+        #dat$dis_2 <- 10-dat$dis_2 
+        #dat$dis_4 <- 10-dat$dis_4 
 
         #Some dis cols dont' have an R but do need it
-        dat$dis_3 <- 11-dat$dis_3
-        dat$dis_6 <- 11-dat$dis_6
+        dat$dis_3 <- 10-dat$dis_3
+        dat$dis_6 <- 10-dat$dis_6
+        #dis_1R will be properly reverse coded automatically because it did have the R in the name, right?
     }
 
    ##DIS recoding: ONLY SP18
@@ -97,27 +100,29 @@ for (file in files) {
         colnames(dat)[rev_col] <- gsub('R$', '', colnames(dat)[rev_col])
 
          #Same as above, but should be 6-... since it was a 5-point scale in SP18.
-        dat$dis_2 <- 7-dat$dis_2 #shouldn't the dis_2 on the right side be dis_2R?  Aren't you recoding it to say that it isn't reversed?
-        dat$dis_4 <- 7-dat$dis_4 #same as above
+        #dat$dis_2 <- 6-dat$dis_2 
+        #dat$dis_4 <- 6-dat$dis_4 
 
         #Some dis cols dont' have an R but do need it
-        dat$dis_3 <- 7-dat$dis_3
-        dat$dis_6 <- 7-dat$dis_6
+        dat$dis_3 <- 6-dat$dis_3 #1-5 scale
+        dat$dis_6 <- 6-dat$dis_6
 
+    #Is the code below being applied in all 3 semesters of data?  It should be but the way I read the code 
+     #it's only applying it to the '18 data
         # Correct BRS issue 2, 4, and 6; 7-point scale; this works for all 3 semesters.
-        dat$brs_2 <- 9 - dat$brs_2
-        dat$brs_4 <- 9 - dat$brs_4
-        dat$brs_6 <- 9 - dat$brs_6
+        dat$brs_2 <- 8 - dat$brs_2 #1-7 scale
+        dat$brs_4 <- 8 - dat$brs_4
+        dat$brs_6 <- 8 - dat$brs_6
 
         #Grit recoding; apparently I had NOT labeled the reversed items in this scale with an R
         #So I will replace the items entirely with the reverse-coded items.  This works for all 3 semesters.
-        dat$grt_1 <- 7-dat$grt_1
-        dat$grt_3 <- 7-dat$grt_3
-        dat$grt_5 <- 7-dat$grt_5
-        dat$grt_6 <- 7-dat$grt_6
+        dat$grt_1 <- 6-dat$grt_1 #1-5 scale
+        dat$grt_3 <- 6-dat$grt_3
+        dat$grt_5 <- 6-dat$grt_5
+        dat$grt_6 <- 6-dat$grt_6
 
         #dat$tfl_13 <- max(dat$tfl_13 + 1) - dat$tfl_13
-        dat$tfl_13 <- 9 - dat$tfl_13 #I don't trust the max calc for this, so I did it manually
+        dat$tfl_13 <- 8 - dat$tfl_13 #1-7 scale
     }
 
     ##Save the output
