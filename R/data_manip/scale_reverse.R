@@ -87,7 +87,7 @@ for (file in files) {
         #dis_1R will be properly reverse coded automatically because it did have the R in the name, right?
     }
 
-   ##DIS recoding: ONLY SP18
+   ##DIS & TFL recoding: ONLY SP18
     if (length(grep('18', time)) > 0) {  
         # Reverse marked scales
         rev_col <- grep('R$', colnames(dat))
@@ -104,6 +104,11 @@ for (file in files) {
        #**You had this in the code block below, but I think it belongs here.
         dat$dis_3 <- 6-dat$dis_3 #1-5 scale
         dat$dis_6 <- 6-dat$dis_6
+                                
+      #I believe this tfl code is only needed for the SP18 dataset - the other datasets had the proper labeling for this variable.
+      #I (MJ) moved this up to this code block.
+        #dat$tfl_13 <- max(dat$tfl_13 + 1) - dat$tfl_13
+        dat$tfl_13 <- 8 - dat$tfl_13 #1-7 scale
     }
 
     # Do the following whenever the year is NOT 16
@@ -121,9 +126,7 @@ for (file in files) {
         dat$grt_5 <- 6-dat$grt_5
         dat$grt_6 <- 6-dat$grt_6
 
-        #I believe this tfl code is only needed for the SP18 dataset - I think the other datasets had the proper labeling for this variable.
-        #dat$tfl_13 <- max(dat$tfl_13 + 1) - dat$tfl_13
-        dat$tfl_13 <- 8 - dat$tfl_13 #1-7 scale
+        
     }
 
     ##Save the output
