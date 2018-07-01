@@ -77,11 +77,9 @@ for (file in files) {
         }
         #Change the column name to get rid of the R
         colnames(dat)[rev_col] <- gsub('R$', '', colnames(dat)[rev_col])
-        
-        ### Items 2 and 4 were incorrectly labeled as reversed but shouldn't have been.  
-         #So we DON'T actually need to reverse code them!  Just remove the R from the label.
-        #dat$dis_2 <- 10-dat$dis_2 
-        #dat$dis_4 <- 10-dat$dis_4 
+  
+        dat$dis_2 <- 10-dat$dis_2 
+        dat$dis_4 <- 10-dat$dis_4 
 
         #Some dis cols dont' have an R but do need it
         dat$dis_3 <- 10-dat$dis_3
@@ -89,7 +87,7 @@ for (file in files) {
         #dis_1R will be properly reverse coded automatically because it did have the R in the name, right?
     }
 
-   ##DIS recoding: ONLY SP18
+   ##DIS & TFL recoding: ONLY SP18
     if (length(grep('18', time)) > 0) {  
         # Reverse marked scales
         rev_col <- grep('R$', colnames(dat))
@@ -100,16 +98,21 @@ for (file in files) {
         colnames(dat)[rev_col] <- gsub('R$', '', colnames(dat)[rev_col])
 
          #Same as above, but should be 6-... since it was a 5-point scale in SP18.
-        #dat$dis_2 <- 6-dat$dis_2 
-        #dat$dis_4 <- 6-dat$dis_4 
+        dat$dis_2 <- 6-dat$dis_2 
+        dat$dis_4 <- 6-dat$dis_4 
 
+       #**You had this in the code block below, but I think it belongs here.
+        dat$dis_3 <- 6-dat$dis_3 #1-5 scale
+        dat$dis_6 <- 6-dat$dis_6
+                                
+      #I believe this tfl code is only needed for the SP18 dataset - the other datasets had the proper labeling for this variable.
+      #I (MJ) moved this up to this code block.
+        #dat$tfl_13 <- max(dat$tfl_13 + 1) - dat$tfl_13
+        dat$tfl_13 <- 8 - dat$tfl_13 #1-7 scale
     }
 
     # Do the following whenever the year is NOT 16
     if (length(grep('16', time)) == 0) {
-        #Some dis cols dont' have an R but do need it
-        dat$dis_3 <- 6-dat$dis_3 #1-5 scale
-        dat$dis_6 <- 6-dat$dis_6
 
         # Correct BRS issue 2, 4, and 6; 7-point scale; this works for all 3 semesters.
         dat$brs_2 <- 8 - dat$brs_2 #1-7 scale
@@ -123,8 +126,7 @@ for (file in files) {
         dat$grt_5 <- 6-dat$grt_5
         dat$grt_6 <- 6-dat$grt_6
 
-        #dat$tfl_13 <- max(dat$tfl_13 + 1) - dat$tfl_13
-        dat$tfl_13 <- 8 - dat$tfl_13 #1-7 scale
+        
     }
 
     ##Save the output
