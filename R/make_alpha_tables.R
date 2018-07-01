@@ -37,6 +37,8 @@ colnames(all_table) <- c("Semester 1", "Semester 2", "Semester 2")
 # Prettify output
 all_table <- apply(all_table, 2, function(i) sapply(i, function(j) ifelse(is.na(j), '--', round(as.numeric(j), 2))) )
 
+align <- rep('l', ncol(all_table)+1)
 print(xtable(all_table, label = "tab:alphas", 
-             caption = "The alphas for all scales for each semester."),
+             caption = "The alphas for all scales for each semester.",
+             align = align),
       file = "./latex_out/alpha_table.tex")

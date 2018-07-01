@@ -87,7 +87,7 @@ for (file in files) {
     ## Correlations of the MTLS with scales relevant to everyday discomfort:
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(lnr$|sc.hw|uh.vmi|dis|uh|brs|leadChal)$', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(lnr|sc.hw|uh.vmi|dis|uh|brs|leadChal)$', colnames(ind))]
     } else {
         cor_cols <- colnames(ind)[grep('(sc.hw|uh.vmi|dis|uh|brs|leadChal)$', colnames(ind))]
     }
@@ -100,22 +100,13 @@ for (file in files) {
     ##Correlations of the MTLS with scales relevant to personality:
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq|mt|har|leadChal)$', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq|mt|har|leadChal)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq|leadChal)$', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq|leadChal)', colnames(ind))]
     }
 
     #Estimate a correlation matrix
     out_name <- 'mt_corr'
-    bayes_fit <- bayes_cov(ind[,cor_cols])
-    save_covar_info(ind[,cor_cols], bayes_fit, out_name)
-
-    ## Correlation matrix for personality
-    #Specify the columns the correlations of which are to be analyzed
-    cor_cols <- colnames(ind)[grep('(bfi_|ffmq|leadChal$)', colnames(ind))]
-
-    #Estimate a correlation matrix
-    out_name <- 'pers_corr'
     bayes_fit <- bayes_cov(ind[,cor_cols])
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 }
