@@ -28,15 +28,17 @@ for (file in file_df$file) {
     vars <- colnames(bayes_fit$mean)
     sem <- strapplyc(file, ".._1.", simplify = TRUE)
 
+    # Rescale to correlations
+    bayes_fit$mean <- cov2cor(bayes_fit$mean)
+    bayes_fit$lb <- cov2cor(bayes_fit$lb)
+    bayes_fit$ub <- cov2cor(bayes_fit$ub)
+
     # Get the pertinent rows
     targ_ind <- which(vars=='leadChal')
     corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], var(X)[targ_ind, -targ_ind],
                    bayes_fit$lb[targ_ind,-targ_ind], bayes_fit$ub[targ_ind,-targ_ind])
     colnames(corrs) <- c('mean',  'freq', 'lb', 'ub')
     corrs <- apply(corrs, 2, function(i) sapply(i, function(j) num2presentable(j, 2)))
-
-    # Recover Frequentist estimates
-    var(X)
 
     # Store them
     it <- 0
@@ -103,6 +105,11 @@ for (file in file_df$file) {
     if (!'lnr' %in% vars) {
         next
     }
+
+    # Rescale to correlations
+    bayes_fit$mean <- cov2cor(bayes_fit$mean)
+    bayes_fit$lb <- cov2cor(bayes_fit$lb)
+    bayes_fit$ub <- cov2cor(bayes_fit$ub)
 
     # Get the pertinent rows
     targ_ind <- which(vars=='lnr')

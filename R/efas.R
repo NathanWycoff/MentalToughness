@@ -53,7 +53,7 @@ quest_text <-
       "I thrive in difficult leadership situations. (F)")
 rownames(df) <- quest_text
 
-print(xtable(df), 
+print(xtable(df, label = 'tab:efa'), 
                file = './latex_out/efa_table.tex')
 
 
