@@ -3,11 +3,12 @@
 
 require(xtable)
 source('R/label_keys.R')
+source('R/lib.R')
 
 ## Make the correlation tables.
 
 get_sig <- function(est, p) {
-    est <- round(est, 2)
+    est <- num2presentable(est, 2)
     if (p < 0.001) {
         return(paste('$', est, '^{***}', '$', sep = ''))
     } 
@@ -19,7 +20,7 @@ get_sig <- function(est, p) {
     }
     return(paste('$', est, '$', sep = ''))
 }
-#Read in data
+# See what files we have.
 datapath <- './RData/bayes_output/'
 files <- list.files(datapath)
 outnames <- strsplit(files, '_')

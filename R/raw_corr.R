@@ -18,7 +18,8 @@ source('R/bayes_cov_func.R')
 save_covar_info <- function(X, bayes_fit, out_name) {
 
     # Store the stuff for later processing.
-    save(X, bayes_fit, file = paste('./RData/', out_name, '_corr.RData', sep = ''))
+    save(X, bayes_fit, file = paste('./RData/corr_data/', out_name, 
+                                    '_', time, '_corr.RData', sep = ''))
 
     # Bayesian results
     capture.output(print(cov2cor(bayes_fit$mean)),
@@ -54,6 +55,9 @@ for (file in files) {
     } else {
         cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|leadChal$)', colnames(ind))]
     }
+
+    # Remove tfl_id from consideration.
+    cor_cols <- cor_cols[cor_cols!='tfl_id']
 
     #Estimate a correlation matrix
     out_name <- 'lead_corr'
@@ -100,9 +104,9 @@ for (file in files) {
     ##Correlations of the MTLS with scales relevant to personality:
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq|mt|har|leadChal)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq|mt$|har$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq|leadChal)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq|leadChal$)', colnames(ind))]
     }
 
     #Estimate a correlation matrix

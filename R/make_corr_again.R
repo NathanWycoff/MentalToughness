@@ -10,7 +10,7 @@ source('R/lib.R')
 
 ## Make the correlation tables.
 #Read in data
-datapath <- './RData/bayes_output/'
+datapath <- './RData/corr_data/'
 files <- list.files(datapath)
 outnames <- strsplit(files, '_')
 file_df <- data.frame(

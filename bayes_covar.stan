@@ -1,7 +1,7 @@
 data {
     int<lower=1> P; // Number of measurements
     int<lower=1> M; // Number of groups.
-    int<lower=1> N; // Sample size for each group
+    int<lower=1> N; // Total sample size of data
 
     real<lower=0> nu; //Prior degrees of freedom
 
