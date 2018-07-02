@@ -83,14 +83,15 @@ make_table <- function(vars, label) {
 }
 
 #Make the desired tables
-edc_vars <- c("dis", "uh", "uh.vmi", "brs", "sc.hw", "ffmq")
+edc_vars <- c("dis", "uh", "uh.vmi", "brs", "sc.hw", "lnr")
 make_table(edc_vars, 'edc_corr')
 
-pers_vars <- c("bfi_extrav", "bfi_agree", "bfi_neur", "bfi_open", "bfi_consc", "grt", "mt", "har")
+pers_vars <- c("bfi_extrav", "bfi_agree", "bfi_neur", "bfi_open", "bfi_consc", "grt", "mt", 
+               "har", "ffmq", "lnr")
 make_table(pers_vars, 'pers_corr')
 
 lead_vars <- c("auth_sa", "auth_rt", "auth_bp", "auth_imp", "tfl_vis", "tfl_insp", "tfl_int", "tfl_sup",
-               "tfl_pers", "ili_pro", "ili_champ", "ili_ent", "ili_emb")
+               "tfl_pers", "ili_pro", "ili_champ", "ili_ent", "ili_emb", "lnr")
 make_table(lead_vars, 'lead_corr')
 
 
