@@ -2,23 +2,23 @@
 Reliability analysis   
 Call: alpha(x = get(scale), check.keys = TRUE)
 
-  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd
-      0.89      0.89    0.91      0.47   8 0.014  5.9 1.4
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd median_r
+      0.89      0.89    0.91      0.47   8 0.014  5.9 1.4     0.44
 
  lower alpha upper     95% confidence boundaries
 0.86 0.89 0.91 
 
  Reliability if an item is dropped:
-         raw_alpha std.alpha G6(smc) average_r S/N alpha se    NA
-uh.vmi_1      0.87      0.87    0.89      0.46 6.9    0.016 0.014
-uh.vmi_2      0.87      0.87    0.88      0.46 6.8    0.016 0.011
-uh.vmi_3      0.88      0.88    0.90      0.48 7.4    0.015 0.017
-uh.vmi_4      0.88      0.88    0.89      0.48 7.5    0.015 0.013
-uh.vmi_5      0.87      0.87    0.89      0.46 6.7    0.017 0.016
-uh.vmi_6      0.87      0.87    0.88      0.45 6.5    0.017 0.012
-uh.vmi_7      0.88      0.88    0.88      0.48 7.3    0.015 0.013
-uh.vmi_8      0.88      0.88    0.90      0.49 7.7    0.015 0.015
-uh.vmi_9      0.88      0.88    0.90      0.48 7.4    0.015 0.018
+         raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+uh.vmi_1      0.87      0.87    0.89      0.46 6.9    0.016 0.014  0.44
+uh.vmi_2      0.87      0.87    0.88      0.46 6.8    0.016 0.011  0.44
+uh.vmi_3      0.88      0.88    0.90      0.48 7.4    0.015 0.017  0.45
+uh.vmi_4      0.88      0.88    0.89      0.48 7.5    0.015 0.013  0.46
+uh.vmi_5      0.87      0.87    0.89      0.46 6.7    0.017 0.016  0.41
+uh.vmi_6      0.87      0.87    0.88      0.45 6.5    0.017 0.012  0.42
+uh.vmi_7      0.88      0.88    0.88      0.48 7.3    0.015 0.013  0.44
+uh.vmi_8      0.88      0.88    0.90      0.49 7.7    0.015 0.015  0.46
+uh.vmi_9      0.88      0.88    0.90      0.48 7.4    0.015 0.018  0.45
 
  Item statistics 
            n raw.r std.r r.cor r.drop mean  sd
