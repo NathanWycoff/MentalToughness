@@ -25,6 +25,7 @@ file_df$file <- as.character(file_df$file)
 leadChal_corrs <- list()
 for (file in file_df$file) {
     load(paste(datapath, '/', file, sep = ''))
+
     vars <- colnames(bayes_fit$mean)
     sem <- strapplyc(file, ".._1.", simplify = TRUE)
 
@@ -33,9 +34,10 @@ for (file in file_df$file) {
     bayes_fit$lb <- cov2cor(bayes_fit$lb)
     bayes_fit$ub <- cov2cor(bayes_fit$ub)
 
+
     # Get the pertinent rows
     targ_ind <- which(vars=='leadChal')
-    corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], var(X)[targ_ind, -targ_ind],
+    corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], cor(X)[targ_ind, -targ_ind],
                    bayes_fit$lb[targ_ind,-targ_ind], bayes_fit$ub[targ_ind,-targ_ind])
     colnames(corrs) <- c('mean',  'freq', 'lb', 'ub')
     corrs <- apply(corrs, 2, function(i) sapply(i, function(j) num2presentable(j, 2)))
@@ -114,7 +116,7 @@ for (file in file_df$file) {
 
     # Get the pertinent rows
     targ_ind <- which(vars=='lnr')
-    corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], var(X)[targ_ind, -targ_ind],
+    corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], cor(X)[targ_ind, -targ_ind],
                    bayes_fit$lb[targ_ind,-targ_ind], bayes_fit$ub[targ_ind,-targ_ind])
     colnames(corrs) <- c('mean',  'freq', 'lb', 'ub')
     corrs <- apply(corrs, 2, function(i) sapply(i, function(j) num2presentable(j, 2)))
