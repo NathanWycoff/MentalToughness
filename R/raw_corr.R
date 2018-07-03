@@ -4,7 +4,6 @@
 ## Calculate a correlation matrix between some factors
 
 library(psych)
-library(corpcor)
 source('R/bayes_cov_func.R')
 
 #' A function which makes some output for covariance matrices.
@@ -51,9 +50,9 @@ for (file in files) {
     ## Correlation matrix for leadership scales.
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|lnr$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|lnr$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|leadChal$)', colnames(ind))]
     }
 
     # Remove tfl_id from consideration.
@@ -73,9 +72,9 @@ for (file in files) {
 
     ## Compare GPA to some other things, pairwise.
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|lnr$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|lnr$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(auth_|tfl_|ili_|leadChal$)', colnames(ind))]
     }
 
     # Pairwise GPA correlations.
@@ -104,9 +103,9 @@ for (file in files) {
     ##Correlations of the MTLS with scales relevant to personality:
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq|mt$|har$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq_|mt$|har$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq_|leadChal$)', colnames(ind))]
     }
 
     #Estimate a correlation matrix
