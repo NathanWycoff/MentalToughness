@@ -4,7 +4,6 @@
 ## Calculate a correlation matrix between some factors
 
 library(psych)
-library(corpcor)
 source('R/bayes_cov_func.R')
 
 #' A function which makes some output for covariance matrices.
@@ -104,9 +103,9 @@ for (file in files) {
     ##Correlations of the MTLS with scales relevant to personality:
     #Specify the columns the correlations of which are to be analyzed
     if (length(grep('18', time)) > 0) {
-        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq|mt$|har$|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|lnr$|bfi_|ffmq_|mt$|har$|leadChal$)', colnames(ind))]
     } else {
-        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq|leadChal$)', colnames(ind))]
+        cor_cols <- colnames(ind)[grep('(grt|bfi_|ffmq_|leadChal$)', colnames(ind))]
     }
 
     #Estimate a correlation matrix

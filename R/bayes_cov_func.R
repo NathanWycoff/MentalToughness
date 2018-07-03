@@ -37,9 +37,9 @@ bayes_cov <- function(X, tocomp = NULL) {
                      SIGMA_mu_0 = SIGMA_mu_0,
                      X = X)
 
-    iters <- 1e3
+    iters <- 5e3
     fit <- stan(file = 'R/bayes_covar.stan', data = stan_dat,
-                iter = iters, chains = 2)
+                iter = iters, chains = 2, control = list(max_treedepth = 15))
 
     ret <- list()
     ret$mean <- matrix(summary(fit, pars = "SIGMA", probs = c(0.5))$summary[,'mean'], ncol = P)
