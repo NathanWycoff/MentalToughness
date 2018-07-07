@@ -5,6 +5,7 @@
 
 library(psych)
 source('R/bayes_cov_func.R')
+options(warn=1)
 
 #' A function which makes some output for covariance matrices.
 #'
