@@ -49,12 +49,12 @@ bayes_cov <- function(X, tocomp = NULL) {
     ret$lb <- matrix(NA, nrow = P, ncol = P)
     ret$ub <- matrix(NA, nrow = P, ncol = P)
     for (p1 in 1:P) {
-        for (p2 in 1:P) {
+        for (p2 in 1:p1) {
             ret$mean[p1,p2] <- ret$mean[p2,p1] <- 
                 mean(sapply(1:iters, function(i) cors[[i]][p1, p2]))
-            ret$lb[p1,p2] <- ret$mean[p2,p1] <- 
+            ret$lb[p1,p2] <- ret$lb[p2,p1] <- 
                 quantile(sapply(1:iters, function(i) cors[[i]][p1, p2]), 0.025)
-            ret$ub[p1,p2] <- ret$mean[p2,p1] <- 
+            ret$ub[p1,p2] <- ret$ub[p2,p1] <- 
                 quantile(sapply(1:iters, function(i) cors[[i]][p1, p2]), 0.975)
         }
     }

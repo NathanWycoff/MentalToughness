@@ -26,13 +26,16 @@ leadChal_corrs <- list()
 for (file in file_df$file) {
     load(paste(datapath, '/', file, sep = ''))
 
+    # Give it the right names
+    colnames(bayes_fit$mean) <- rownames(bayes_fit$mean) <- colnames(X)
+    colnames(bayes_fit$lb) <- rownames(bayes_fit$lb) <- colnames(X)
+    colnames(bayes_fit$ub) <- rownames(bayes_fit$ub) <- colnames(X)
+
     vars <- colnames(bayes_fit$mean)
     sem <- strapplyc(file, ".._1.", simplify = TRUE)
 
     # Make the FFMQ total scale.
     targ_ind <- which(vars=='leadChal')
-
-    ffmq_cols <- vars[grepl('ffmq', vars)]
 
     # Get the pertinent rows
     corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], cor(X)[targ_ind, -targ_ind],
@@ -71,17 +74,13 @@ for (sem in sems) {
 corr_df <- data.frame(corr_list)
 colnames(corr_df) <- c("Semester 1", "Semester 2", "Semester 3")
 
-## Add FFMQ total
-ffmq_add <- 
-corr_df <- rbind(corr_df, c('--', '--', ))
-
 # Make a nice table for a combination of variables.
 make_table <- function(vars, label) {
     our_df <- corr_df[vars,]
     rownames(our_df) <- sapply(vars, function(v) id_to_pretty[[v]])
     align <- rep('l', ncol(our_df) + 1)
     print(xtable(our_df, label = paste('tab:', label, sep = ''), 
-                 caption = "\\textbf{Correlation of Various Scales to Leader Toughness:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval on the next line.",
+                 caption = "\\textbf{Correlation of Various Scales to Leader Toughness:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval in parenthesis.",
                  align = align),
           file = paste("./latex_out/bayes_tables/", label, ".tex", sep = ''))
 }
@@ -91,7 +90,7 @@ edc_vars <- c("dis", "uh", "uh.vmi", "brs", "sc.hw", "lnr")
 make_table(edc_vars, 'edc_corr')
 
 pers_vars <- c("bfi_extrav", "bfi_agree", "bfi_neur", "bfi_open", "bfi_consc", "grt", "mt", 
-               "har", "ffmq", "lnr")
+               "har", "lnr")
 make_table(pers_vars, 'pers_corr')
 
 lead_vars <- c("auth_sa", "auth_rt", "auth_bp", "auth_imp", "tfl_vis", "tfl_insp", "tfl_int", "tfl_sup",
@@ -104,6 +103,12 @@ make_table(lead_vars, 'lead_corr')
 lnr_corrs <- list()
 for (file in file_df$file) {
     load(paste(datapath, '/', file, sep = ''))
+
+    # Give it the right names
+    colnames(bayes_fit$mean) <- rownames(bayes_fit$mean) <- colnames(X)
+    colnames(bayes_fit$lb) <- rownames(bayes_fit$lb) <- colnames(X)
+    colnames(bayes_fit$ub) <- rownames(bayes_fit$ub) <- colnames(X)
+
     vars <- colnames(bayes_fit$mean)
     sem <- strapplyc(file, ".._1.", simplify = TRUE)
 
@@ -117,9 +122,6 @@ for (file in file_df$file) {
                    bayes_fit$lb[targ_ind,-targ_ind], bayes_fit$ub[targ_ind,-targ_ind])
     colnames(corrs) <- c('mean',  'freq', 'lb', 'ub')
     corrs <- apply(corrs, 2, function(i) sapply(i, function(j) num2presentable(j, 2)))
-
-    # Recover Frequentist estimates
-    var(X)
 
     # Store them
     it <- 0
@@ -159,13 +161,13 @@ make_table <- function(vars, label) {
     colnames(our_df) <- "Semester 3"
     align <- rep('l', ncol(our_df) + 1)
     print(xtable(our_df, label = paste('tab:', label, sep = ''), 
-                 caption = "\\textbf{Correlation of Various Scales to Leadership Nonresistance:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval on the next line.",
+                 caption = "\\textbf{Correlation of Various Scales to Leadership Nonresistance:} Table displays posterior mean first, classical frequentist, and a Bayesian credible interval in parenthesis.",
                  align = align),
           file = paste("./latex_out/bayes_tables/", label, ".tex", sep = ''))
 }
 
 #Make the desired tables
-lnr_vars <- c("leadChal", "dis", "uh", "uh.vmi", "brs", "sc.hw", "ffmq", "mt", "har", "auth_sa", "auth_rt", 
+lnr_vars <- c("leadChal", "dis", "uh", "uh.vmi", "brs", "sc.hw", "mt", "har", "auth_sa", "auth_rt", 
               "auth_bp", "auth_imp", "tfl_vis", "tfl_insp", "tfl_int", "tfl_sup", "tfl_pers",
               "ili_pro", "ili_champ", "ili_ent", "ili_emb")
 make_table(lnr_vars, 'lnr_corr')
