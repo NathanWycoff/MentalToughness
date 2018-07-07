@@ -37,7 +37,7 @@ bayes_cov <- function(X, tocomp = NULL) {
                      SIGMA_mu_0 = SIGMA_mu_0,
                      X = X)
 
-    iters <- 5e3
+    iters <- 5e2
     fit <- stan(file = 'R/bayes_covar.stan', data = stan_dat,
                 iter = iters, chains = 2, control = list(max_treedepth = 15))
 

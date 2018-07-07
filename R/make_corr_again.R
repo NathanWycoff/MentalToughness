@@ -29,6 +29,42 @@ for (file in file_df$file) {
     vars <- colnames(bayes_fit$mean)
     sem <- strapplyc(file, ".._1.", simplify = TRUE)
 
+    # Make the FFMQ total scale.
+    targ_ind <- which(vars=='leadChal')
+
+    ffmq_cols <- vars[grepl('ffmq', vars)]
+    if (length(ffmq_cols) > 0) {
+        # For mean
+        SIG <- bayes_fit$mean[ffmq_cols, ffmq_cols]
+        v_tot <- sum(SIG) / 25
+        v_ffmq <- bayes_fit$mean[targ_ind, targ_ind]
+        covar <- mean(bayes_fit$mean[targ_ind, ffmq_cols])
+        ffmq_corr_mean <- covar / sqrt(v_ffmq*v_tot)
+
+        # For freq
+        SIGMA <- var(X)
+        SIG <- SIGMA[ffmq_cols, ffmq_cols]
+        v_tot <- sum(SIG) / 25
+        v_ffmq <- SIGMA[targ_ind, targ_ind]
+        covar <- mean(SIGMA[targ_ind, ffmq_cols])
+        ffmq_corr_freq <- covar / sqrt(v_ffmq*v_tot)
+
+        # For lb
+        SIG <- bayes_fit$lb[ffmq_cols, ffmq_cols]
+        v_tot <- sum(SIG) / 25
+        v_ffmq <- bayes_fit$lb[targ_ind, targ_ind]
+        covar <- mean(bayes_fit$lb[targ_ind, ffmq_cols])
+        ffmq_corr_lb <- covar / sqrt(v_ffmq*v_tot)
+
+        # For ub
+        SIG <- bayes_fit$ub[ffmq_cols, ffmq_cols]
+        v_tot <- sum(SIG) / 25
+        v_ffmq <- bayes_fit$ub[targ_ind, targ_ind]
+        covar <- mean(bayes_fit$ub[targ_ind, ffmq_cols])
+        ffmq_corr_ub <- covar / sqrt(v_ffmq*v_tot)
+    }
+        
+
     # Rescale to correlations
     bayes_fit$mean <- cov2cor(bayes_fit$mean)
     bayes_fit$lb <- cov2cor(bayes_fit$lb)
@@ -36,7 +72,6 @@ for (file in file_df$file) {
 
 
     # Get the pertinent rows
-    targ_ind <- which(vars=='leadChal')
     corrs <- cbind(bayes_fit$mean[targ_ind,-targ_ind], cor(X)[targ_ind, -targ_ind],
                    bayes_fit$lb[targ_ind,-targ_ind], bayes_fit$ub[targ_ind,-targ_ind])
     colnames(corrs) <- c('mean',  'freq', 'lb', 'ub')
@@ -72,6 +107,10 @@ for (sem in sems) {
 }
 corr_df <- data.frame(corr_list)
 colnames(corr_df) <- c("Semester 1", "Semester 2", "Semester 3")
+
+## Add FFMQ total
+ffmq_add <- 
+corr_df <- rbind(corr_df, c('--', '--', ))
 
 # Make a nice table for a combination of variables.
 make_table <- function(vars, label) {
