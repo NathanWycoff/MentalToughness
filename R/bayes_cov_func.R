@@ -37,21 +37,27 @@ bayes_cov <- function(X, tocomp = NULL) {
                      SIGMA_mu_0 = SIGMA_mu_0,
                      X = X)
 
-    iters <- 5e3
+    iters <- 5e1
     fit <- stan(file = 'R/bayes_covar.stan', data = stan_dat,
                 iter = iters, chains = 2, control = list(max_treedepth = 15))
 
+    SIG_dat <- extract(fit, 'SIGMA')[[1]]
+    cors <- lapply(1:iters, function(i) cov2cor(SIG_dat[i,,]))
+
     ret <- list()
-    ret$mean <- matrix(summary(fit, pars = "SIGMA", probs = c(0.5))$summary[,'mean'], ncol = P)
-    colnames(ret$mean) <- param_names
-    rownames(ret$mean) <- param_names
-    ret$lb <- matrix(summary(fit, pars = "SIGMA", probs = c(0.05))$summary[,'5%'], ncol = P)
-    colnames(ret$lb) <- param_names
-    rownames(ret$lb) <- param_names
-    ret$ub <- matrix(summary(fit, pars = "SIGMA", probs = c(0.95))$summary[,'95%'], ncol = P)
-    colnames(ret$ub) <- param_names
-    rownames(ret$ub) <- param_names
-    ret$conv <- summary(fit)$summary[,'Rhat']
+    ret$mean <- matrix(NA, nrow = P, ncol = P)
+    ret$lb <- matrix(NA, nrow = P, ncol = P)
+    ret$ub <- matrix(NA, nrow = P, ncol = P)
+    for (p1 in 1:P) {
+        for (p2 in 1:P) {
+            ret$mean[p1,p2] <- ret$mean[p2,p1] <- 
+                mean(sapply(1:iters, function(i) cors[[i]][p1, p2]))
+            ret$lb[p1,p2] <- ret$mean[p2,p1] <- 
+                quantile(sapply(1:iters, function(i) cors[[i]][p1, p2]), 0.025)
+            ret$ub[p1,p2] <- ret$mean[p2,p1] <- 
+                quantile(sapply(1:iters, function(i) cors[[i]][p1, p2]), 0.975)
+        }
+    }
 
     # Do pairwise comparisons if desired
     if (!is.null(tocomp)) {
