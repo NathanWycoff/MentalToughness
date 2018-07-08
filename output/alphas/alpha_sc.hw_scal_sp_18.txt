@@ -2,24 +2,24 @@
 Reliability analysis   
 Call: alpha(x = get(scale), check.keys = TRUE)
 
-  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
-      0.85      0.85    0.86      0.37 5.8 0.016  3.2 0.71     0.38
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
+      0.85      0.85    0.86      0.37 5.8 0.016  3.2 0.71
 
  lower alpha upper     95% confidence boundaries
 0.82 0.85 0.89 
 
  Reliability if an item is dropped:
-         raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
-sc.hw_1       0.83      0.83    0.84      0.36 5.0    0.018 0.019  0.38
-sc.hw_2       0.84      0.84    0.85      0.37 5.2    0.018 0.018  0.39
-sc.hw_3       0.83      0.83    0.84      0.36 5.0    0.018 0.015  0.38
-sc.hw_4       0.86      0.85    0.86      0.40 5.9    0.016 0.015  0.41
-sc.hw_5       0.84      0.84    0.84      0.36 5.1    0.018 0.017  0.38
-sc.hw_6       0.84      0.84    0.85      0.37 5.3    0.017 0.019  0.39
-sc.hw_7       0.84      0.84    0.85      0.37 5.3    0.018 0.016  0.38
-sc.hw_8       0.86      0.86    0.86      0.40 6.0    0.016 0.012  0.40
-sc.hw_9       0.83      0.83    0.83      0.34 4.7    0.019 0.015  0.38
-sc.hw_10      0.83      0.83    0.84      0.36 5.0    0.019 0.015  0.38
+         raw_alpha std.alpha G6(smc) average_r S/N alpha se    NA
+sc.hw_1       0.83      0.83    0.84      0.36 5.0    0.018 0.019
+sc.hw_2       0.84      0.84    0.85      0.37 5.2    0.018 0.018
+sc.hw_3       0.83      0.83    0.84      0.36 5.0    0.018 0.014
+sc.hw_4       0.86      0.85    0.86      0.40 5.9    0.016 0.015
+sc.hw_5       0.84      0.84    0.84      0.36 5.1    0.018 0.017
+sc.hw_6       0.84      0.84    0.85      0.37 5.3    0.017 0.019
+sc.hw_7       0.84      0.84    0.85      0.37 5.3    0.018 0.016
+sc.hw_8       0.86      0.86    0.86      0.40 6.0    0.016 0.012
+sc.hw_9       0.83      0.83    0.83      0.34 4.7    0.019 0.015
+sc.hw_10      0.83      0.83    0.84      0.36 5.0    0.019 0.015
 
  Item statistics 
            n raw.r std.r r.cor r.drop mean   sd

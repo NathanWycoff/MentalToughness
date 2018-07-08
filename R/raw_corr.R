@@ -61,11 +61,12 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'lead_corr'
+    lab <- paste(out_name, '_', time, sep = '')
     if (length(grep('18', time)) > 0) {
         tocomp <- list(match(c('lnr', 'leadChal'), cor_cols))
-        bayes_fit <- bayes_cov(ind[,cor_cols], tocomp = tocomp)
+        bayes_fit <- bayes_cov(ind[,cor_cols], lab, tocomp = tocomp)
     } else {
-        bayes_fit <- bayes_cov(ind[,cor_cols])
+        bayes_fit <- bayes_cov(ind[,cor_cols], lab)
     }
 
     # Save the output
@@ -80,6 +81,7 @@ for (file in files) {
 
     # Pairwise GPA correlations.
     out_name <- 'gpa'
+    lab <- paste(out_name, '_', time, sep = '')
     pair_cor <- sapply(cor_cols, function(i) {
                        ret <- cor.test(ind$gpa, ind[,i])
                        c(ret$conf.int[1], ret$estimate, ret$conf.int[2], ret$p.value)
@@ -98,7 +100,8 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'disscal_corr'
-    bayes_fit <- bayes_cov(ind[,cor_cols])
+    lab <- paste(out_name, '_', time, sep = '')
+    bayes_fit <- bayes_cov(ind[,cor_cols], lab)
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 
     ##Correlations of the MTLS with scales relevant to personality:
@@ -111,6 +114,7 @@ for (file in files) {
 
     #Estimate a correlation matrix
     out_name <- 'mt_corr'
-    bayes_fit <- bayes_cov(ind[,cor_cols])
+    lab <- paste(out_name, '_', time, sep = '')
+    bayes_fit <- bayes_cov(ind[,cor_cols], lab)
     save_covar_info(ind[,cor_cols], bayes_fit, out_name)
 }

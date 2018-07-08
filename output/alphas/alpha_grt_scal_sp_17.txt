@@ -2,22 +2,22 @@
 Reliability analysis   
 Call: alpha(x = get(scale), check.keys = TRUE)
 
-  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd median_r
-      0.68      0.68    0.72      0.21 2.1 0.039  3.5 0.5     0.16
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd
+      0.68      0.68    0.72      0.21 2.1 0.039  3.5 0.5
 
  lower alpha upper     95% confidence boundaries
 0.61 0.68 0.76 
 
  Reliability if an item is dropped:
-      raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
-grt_1      0.63      0.64    0.68      0.20 1.8    0.045 0.034  0.15
-grt_2      0.72      0.71    0.74      0.26 2.5    0.035 0.031  0.26
-grt_3      0.66      0.66    0.69      0.22 1.9    0.043 0.033  0.17
-grt_4      0.67      0.66    0.68      0.22 2.0    0.040 0.030  0.20
-grt_5      0.62      0.63    0.65      0.19 1.7    0.047 0.029  0.15
-grt_6      0.63      0.63    0.68      0.20 1.7    0.047 0.035  0.14
-grt_7      0.63      0.62    0.66      0.19 1.6    0.045 0.037  0.11
-grt_8      0.66      0.65    0.67      0.21 1.8    0.042 0.033  0.15
+      raw_alpha std.alpha G6(smc) average_r S/N alpha se    NA
+grt_1      0.63      0.64    0.68      0.20 1.8    0.045 0.033
+grt_2      0.72      0.71    0.74      0.26 2.5    0.035 0.031
+grt_3      0.66      0.66    0.69      0.22 1.9    0.043 0.032
+grt_4      0.67      0.66    0.68      0.22 2.0    0.040 0.030
+grt_5      0.62      0.63    0.65      0.19 1.7    0.047 0.028
+grt_6      0.63      0.63    0.68      0.20 1.7    0.047 0.034
+grt_7      0.63      0.62    0.66      0.19 1.6    0.045 0.036
+grt_8      0.66      0.65    0.67      0.21 1.8    0.042 0.032
 
  Item statistics 
         n raw.r std.r r.cor r.drop mean   sd

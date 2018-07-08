@@ -1,0 +1,20 @@
+model {
+    # Likelihood
+    for (i in 1:N) {
+        X[i,] ~ dmnorm(mu, SIGMA_inv)
+    }
+
+    # Priors
+    SIGMA_inv ~ dwish(SIG_0, nu + P - 1)
+    for (p in 1:P) {
+        lambda[p] ~ dgamma(0.5, 1/xi[p]^2)
+    }
+    for (p1 in 1:P) {
+        for (p2 in 1:P) {
+            SIG_0[p1,p2] <- ifelse(p1==p2, 1/2*nu*lambda[p1], 0)
+        }
+    }
+
+    # Loose prior on mean
+    mu ~ dmnorm(mu_0, SIGMA_mu_0)
+}
